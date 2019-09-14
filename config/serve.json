@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://frasertechnicalsolutions.sharepoint.com/sites/NelsonMullins",
+      "customActions": {
+        "5edb8d26-5767-4b30-9ed2-cc8c7d1d181f": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    },
+    "nmrsNavigation": {
+      "pageUrl": "https://frasertechnicalsolutions.sharepoint.com/sites/NelsonMullins",
+      "customActions": {
+        "5edb8d26-5767-4b30-9ed2-cc8c7d1d181f": {
+          "location": "ClientSideExtension.ApplicationCustomizer",
+          "properties": {
+            "testMessage": "Test message"
+          }
+        }
+      }
+    }
+  }
+}
