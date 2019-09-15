@@ -48,3 +48,35 @@
     border: none;
     cursor: pointer;
 }
+.nmrs-nav-alert-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    background-color: #af1422;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+.nmrs-nav-alert-message{
+    width: 90%;
+}
+.nmrs-nav-alert-close-button{
+    background-color: #af1422;
+    border: none;
+    cursor: pointer;
+}
+.nmrs-nav-menu-container{
+    background-color: #475666;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    height: 60px;
+}
+.nmrs-nav-menu-container li{
+    display: inline;
+    padding: 0 15px 0 15px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
