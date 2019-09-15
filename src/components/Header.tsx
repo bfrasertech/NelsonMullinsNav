@@ -7,6 +7,7 @@ import '../styles/style.css';
 export interface IHeaderProps {}
 export interface IHeaderState {
     showAlert: boolean;
+    searchTerm: string;
 }
 
 /* tslint:disable no-any */
@@ -18,7 +19,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         super(props);
 
         this.state = {
-            showAlert: true
+            showAlert: true,
+            searchTerm: ''
         };
 
         document.addEventListener('keypress', this.handleKeyPress, false);
@@ -49,7 +51,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             <div className='nmrs-nav-header-container'>
             <img src={nmLogo} alt='Logo' />
             <div className='nmrs-nav-search-container'>
-                <input type="text" className='nmrs-nav-search-box' value="Search for People, Clients, Matters and Internet Content here…"></input>
+                <input type="text" className='nmrs-nav-search-box' onChange={() => this.setState({searchTerm: ''})} value="Search for People, Clients, Matters and Internet Content here…"></input>
                 <button type='button' className='nmrs-nav-advanced-search-button'>Advanced Search</button>
                 <button type='button' className='nmrs-nav-search-button'><FontAwesomeIcon icon={faSearch} /></button>
             </div>
