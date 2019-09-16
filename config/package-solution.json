@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "nmrs-nav-extension",
-    "id": "9f951298-7026-41cb-8f92-f890e6b017c3",
-    "version": "1.0.0.2",
+    "id": "66b40486-1d32-4fbb-80b0-08cf0d7f76ff",
+    "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "features": [
       {
         "title": "NMRS Intranet Navigation",
         "description": "Deploys a custom action with ClientSideComponentId association",
-        "id": "20a3cfa3-f450-4687-b7aa-c6a4b1beb00c",
+        "id": "171b58e1-f66b-481e-9902-c58caac1be98",
         "version": "1.0.0.0",
         "assets": {
           "elementManifests": [

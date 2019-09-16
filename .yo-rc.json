@@ -4,7 +4,7 @@
     "environment": "onprem19",
     "version": "1.9.1",
     "libraryName": "nmrs-nav-extension",
-    "libraryId": "9f951298-7026-41cb-8f92-f890e6b017c3",
+    "libraryId": "66b40486-1d32-4fbb-80b0-08cf0d7f76ff",
     "packageManager": "npm",
     "componentType": "extension",
     "extensionType": "ApplicationCustomizer"

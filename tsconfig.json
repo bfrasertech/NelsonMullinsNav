@@ -1,9 +1,6 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -21,7 +18,7 @@
       "webpack-env"
     ],
     "lib": [
-      "es6",
+      "es5",
       "dom",
       "es2015.collection"
     ]

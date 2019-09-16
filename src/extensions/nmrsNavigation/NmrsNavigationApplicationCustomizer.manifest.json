@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-extension-manifest.schema.json",
 
-  "id": "5edb8d26-5767-4b30-9ed2-cc8c7d1d181f",
+  "id": "6250f76e-4880-46ed-8184-3a71403ec7ea",
   "alias": "NmrsNavigationApplicationCustomizer",
   "componentType": "Extension",
   "extensionType": "ApplicationCustomizer",

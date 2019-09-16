@@ -3,7 +3,7 @@
     <ClientSideComponentInstance
         Title="NmrsNavigation"
         Location="ClientSideExtension.ApplicationCustomizer"
-        ComponentId="5edb8d26-5767-4b30-9ed2-cc8c7d1d181f"
+        ComponentId="6250f76e-4880-46ed-8184-3a71403ec7ea"
         Properties="{&quot;testMessage&quot;:&quot;Test message&quot;}">
     </ClientSideComponentInstance>
 </Elements>

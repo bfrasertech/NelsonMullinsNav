@@ -3,13 +3,14 @@ import * as ReactDOM from 'react-dom';
 
 import { override } from '@microsoft/decorators';
 import { Log } from '@microsoft/sp-core-library';
-
 import {
-  BaseApplicationCustomizer, PlaceholderName, PlaceholderContent
+  BaseApplicationCustomizer,
+  PlaceholderName,
+  PlaceholderContent
 } from '@microsoft/sp-application-base';
 
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
-import Top, { IHeaderProps } from '../../components/Header';
+import Header, { IHeaderProps } from '../../components/Header';
 
 const LOG_SOURCE: string = 'NmrsNavigationApplicationCustomizer';
 
@@ -32,7 +33,7 @@ export default class NmrsNavigationApplicationCustomizer
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
     const placeHolder: PlaceholderContent | undefined =
-      this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, {});
+      this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this.handleDispose });
     /* tslint:disable no-any */
     const newDiv: any = document.createElement('div');
     newDiv.innerText = 'OK';
@@ -40,51 +41,14 @@ export default class NmrsNavigationApplicationCustomizer
     if (placeHolder) {
       placeHolder.domElement.appendChild(newDiv);
 
-      const element: React.ReactElement<IHeaderProps> = React.createElement(Top);
+      const element: React.ReactElement<IHeaderProps> = React.createElement(Header);
       ReactDOM.render(element, placeHolder.domElement);
-
-
     }
 
     return Promise.resolve();
   }
 
-  private wrapMainContent(placeHolder: PlaceholderContent | undefined) {
-    /////
-    const wrapperDiv: any = document.createElement('div');
-    wrapperDiv.id = 'wrapper';
-    if (placeHolder && placeHolder.domElement && placeHolder.domElement.parentElement && placeHolder.domElement.parentElement.parentElement && placeHolder.domElement.parentElement.parentElement.parentElement) {
-      //const elementsToMove = placeHolder.domElement.parentElement.parentElement.parentElement.querySelectorAll('> :not([data-sp-placeholder=Top])');
-      let elementsToMove = [];
-
-      let bottomElem: any;
-
-      for (let i = 0; i < placeHolder.domElement.parentElement.parentElement.parentElement.children.length; i++) {
-        const e: any = placeHolder.domElement.parentElement.parentElement.parentElement.children[i];
-
-        const ds = e.dataset.spPlaceholder;
-
-        if (ds === 'Bottom') {
-          bottomElem = placeHolder.domElement.parentElement.parentElement.parentElement.children[i];
-        }
-
-        if (ds !== 'Top' && ds != 'Bottom') {
-          elementsToMove.push(placeHolder.domElement.parentElement.parentElement.parentElement.children[i]);
-        }
-      }
-
-      if (elementsToMove && elementsToMove.length > 0) {
-        for (let i = 0; i < elementsToMove.length; i++) {
-          // placeHolder.domElement.parentElement.parentElement.parentElement.removeChild(elementsToMove[i]);
-          //wrapperDiv.appendChild(elementsToMove[i]);
-        }
-      }
-
-      // placeHolder.domElement.parentElement.parentElement.parentElement.appendChild(wrapperDiv);
-      wrapperDiv.style.display = 'flex';
-      wrapperDiv.style.flexFlow = 'row wrap';
-      //placeHolder.domElement.parentElement.parentElement.parentElement.insertBefore(wrapperDiv, bottomElem);
-    }
-    ////////////
+  private handleDispose(): void {
+    console.log('dispose');
   }
 }
