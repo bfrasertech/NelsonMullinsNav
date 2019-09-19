@@ -10,7 +10,7 @@ import {
 } from '@microsoft/sp-application-base';
 
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
-import Header, { IHeaderProps } from '../../components/Header';
+import App, { IAppProps } from '../../components/App';
 
 const LOG_SOURCE: string = 'NmrsNavigationApplicationCustomizer';
 
@@ -32,17 +32,14 @@ export default class NmrsNavigationApplicationCustomizer
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
 
-    const placeHolder: PlaceholderContent | undefined =
+    const topPlaceholder: PlaceholderContent | undefined =
       this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this.handleDispose });
-    /* tslint:disable no-any */
-    const newDiv: any = document.createElement('div');
-    newDiv.innerText = 'OK';
+    
+      /* tslint:disable no-any */
 
-    if (placeHolder) {
-      placeHolder.domElement.appendChild(newDiv);
-
-      const element: React.ReactElement<IHeaderProps> = React.createElement(Header);
-      ReactDOM.render(element, placeHolder.domElement);
+    if (topPlaceholder) {
+      const element: React.ReactElement<IAppProps> = React.createElement(App);
+      ReactDOM.render(element, topPlaceholder.domElement);
     }
 
     return Promise.resolve();

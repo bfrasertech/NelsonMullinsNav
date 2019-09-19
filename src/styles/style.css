@@ -68,14 +68,18 @@
 }
 .nmrs-nav-menu-container{
     background-color: #475666;
-    display: flex;
-    align-items: center;
+    display: absolute;
+    left: 0;
+    top: 100px;
     color: #fff;
-    height: 60px;
+    height: 100%;
+    width: 206px;
+}
+.nmrs-nav-menu-container ul{
+    list-style: none;
 }
 .nmrs-nav-menu-container li{
-    display: inline;
-    padding: 0 15px 0 15px;
+    padding: 15px 5px 15px 5px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;

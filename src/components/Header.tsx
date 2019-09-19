@@ -2,6 +2,7 @@ import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
+import LeftNav from './LeftNav';
 import '../styles/style.css';
 
 export interface IHeaderProps { }
@@ -66,18 +67,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         <button type='button' className='nmrs-nav-search-button'><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                 </div>
-                <div className='nmrs-nav-menu-container'>
-                    <ul>
-                        <li>Home</li>
-                        <li>Firm</li>
-                        <li>Management Groups</li>
-                        <li>Teams</li>
-                        <li>Committees</li>
-                        <li>Offices</li>
-                        <li>Administration</li>
-                        <li>How Do I?</li>
-                    </ul>
-                </div>
+                
             </div>
         );
     }
