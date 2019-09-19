@@ -1,0 +1,68 @@
+.headerContainer{
+    height: 80px;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    align-items: center;
+}
+.searchBox{
+    border: none;
+	background: #E9E9E9;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0.35em 0.75em;
+	border: none;
+	font-size: 1.1em;
+	text-decoration: none;
+	line-height: normal;
+	max-height: 4em;
+    flex: 2 0 500px;
+    margin-left: 50px;
+    min-width: 200px;
+    width: 70%;
+}
+.searchContainer{
+    border: 1px solid #e7e7e7;
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    margin: 0 auto;
+    width: 50%;
+}
+.searchButton{
+    max-height: 3em;
+    font-size: 1.1em;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+	background: #3275af;
+    color: white;
+    border: none;
+    padding: 0.35em 0.75em;
+    cursor: pointer;
+}
+.advancedSearchButton{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+.alertContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    background-color: #af1422;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+.alertMessage{
+    width: 90%;
+}
+.alertCloseButton{
+    background-color: #af1422;
+    border: none;
+    cursor: pointer;
+}
