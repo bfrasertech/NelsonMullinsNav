@@ -15,27 +15,11 @@ export default class Header extends React.Component<ILeftNavProps, ILeftNavState
 
         super(props);
 
-        this.state = {
-            
-        };
+        this.state = {};
 
     }
 
     public render(): React.ReactElement<ILeftNavProps> {
-        const searchElements: any = document.getElementsByClassName('ms-searchux-searchbox');
-        if (searchElements && searchElements.length > 0){
-            searchElements[0].style.display = 'none';
-        }
-
-        const leftNavElements: any = document.getElementsByClassName('ms-Nav');
-        if (leftNavElements && leftNavElements.length > 0){
-            leftNavElements[0].style.display = 'none';
-        }
-
-        const pageContainer: any = document.getElementsByClassName('pageContainer_787f4038 container_787f4038');
-        if (pageContainer && pageContainer.length > 0){
-           // pageContainer[0].style.display = 'none';
-        }
 
         return (
             <div className='nmrs-nav-menu-container'>

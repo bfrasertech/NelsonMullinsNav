@@ -11,6 +11,7 @@ import {
 
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
 import App, { IAppProps } from '../../components/App';
+import LeftNav, {ILeftNavProps} from '../../components/LeftNav';
 
 const LOG_SOURCE: string = 'NmrsNavigationApplicationCustomizer';
 
@@ -34,12 +35,19 @@ export default class NmrsNavigationApplicationCustomizer
 
     const topPlaceholder: PlaceholderContent | undefined =
       this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this.handleDispose });
-    
-      /* tslint:disable no-any */
+
+    /* tslint:disable no-any */
 
     if (topPlaceholder) {
       const element: React.ReactElement<IAppProps> = React.createElement(App);
       ReactDOM.render(element, topPlaceholder.domElement);
+
+      // if (document.readyState === 'complete' || document.readyState !== 'loading') {
+      //   this.removeSearchBox();
+      // } else{
+        document.addEventListener('DOMContentLoaded', () => this.modifyPage);
+        setTimeout(this.modifyPage, 1000);
+      //}
     }
 
     return Promise.resolve();
@@ -47,5 +55,35 @@ export default class NmrsNavigationApplicationCustomizer
 
   private handleDispose(): void {
     console.log('dispose');
+  }
+
+  private modifyPage = (): void => {
+    this.removeSearchBox();
+    this.removeLeftNav();
+    
+  }
+
+  private removeSearchBox = () => {
+    const searchBoxElements: NodeListOf<Element> = document.querySelectorAll('.ms-searchux-searchbox');
+
+    for (let i = 0; i < searchBoxElements.length; i++) {
+      const element: any = searchBoxElements[i];
+      element.style.display = 'none';
+    }
+  }
+
+  private removeLeftNav = () => {
+    const leftNavElements: NodeListOf<Element> = document.querySelectorAll('.ms-Nav');
+
+    for (let i = 0; i < leftNavElements.length; i++) {
+      const element: any = leftNavElements[i];
+      while(element.firstChild){
+        element.removeChild(element.firstChild);
+      }
+    }
+
+    leftNavElements[0].insertAdjacentHTML('afterbegin', '<div class="nmrs-left-nav">test</div>');
+    const element: React.ReactElement<ILeftNavProps> = React.createElement(LeftNav);
+    ReactDOM.render(element, leftNavElements[0]);
   }
 }
