@@ -88,6 +88,7 @@ export default class NmrsNavigationApplicationCustomizer
 
     for (let i = 0; i < leftNavElements.length; i++) {
       const element: any = leftNavElements[i];
+      element.style.top = '0';
       while(element.firstChild && !element.firstChild.classList.contains('nmrs-left-nav')){
         element.removeChild(element.firstChild);
       }

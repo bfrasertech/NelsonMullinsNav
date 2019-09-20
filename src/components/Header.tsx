@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimesCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './Header.module.scss';
 
@@ -9,6 +9,7 @@ export interface IHeaderProps { }
 export interface IHeaderState {
     showAlert: boolean;
     searchTerm: string;
+    showLeftNav: boolean;
 }
 
 /* tslint:disable no-any */
@@ -21,7 +22,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
         this.state = {
             showAlert: true,
-            searchTerm: ''
+            searchTerm: '',
+            showLeftNav: true
         };
 
         document.addEventListener('keypress', this.handleKeyPress, false);
@@ -55,7 +57,12 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         </button>
                     </div>}
                 <div className={classes.headerContainer}>
-                    <img src={nmLogo} alt='Logo' />
+                    <div className={classes.menuControl}>
+                        <button type='button' className={classes.menuControlButton}
+                            onClick={() => this.setState({ showLeftNav: false })}><FontAwesomeIcon icon={faTimesCircle} size='2x' />
+                        </button>
+                    </div>
+                    <img src={nmLogo} alt='Logo' className={classes.logoImage} />
                     <div className={classes.searchContainer}>
                         <input
                             type='text'

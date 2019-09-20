@@ -2,7 +2,7 @@ import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-import '../styles/style.css';
+import classes from './LeftNav.module.scss';
 
 export interface ILeftNavProps { }
 export interface ILeftNavState {}
@@ -22,7 +22,7 @@ export default class Header extends React.Component<ILeftNavProps, ILeftNavState
     public render(): React.ReactElement<ILeftNavProps> {
 
         return (
-            <div className='nmrs-nav-menu-container'>
+            <div className={classes.menuContainer}>
             <ul>
                 <li>Home</li>
                 <li>Firm</li>

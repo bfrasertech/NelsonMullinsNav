@@ -32,6 +32,21 @@
     margin: 0 auto;
     width: 50%;
 }
+.menuControl{
+    height: 100%;
+    background-color: #475666;
+    width: 80px;
+    color: #fff;
+}
+.menuControlButton{
+    background-color: #475666;
+    border: none;
+    cursor: pointer;
+    padding: 30% 0 0 30%;
+}
+.logoImage{
+    margin-left: 20px;
+}
 .searchButton{
     max-height: 3em;
     font-size: 1.1em;
