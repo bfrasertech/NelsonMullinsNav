@@ -24,7 +24,7 @@ export default class Header extends React.Component<ILeftNavProps, ILeftNavState
         return (
             <div className='nmrs-nav-menu-container'>
             <ul>
-                <li>Homex</li>
+                <li>Home</li>
                 <li>Firm</li>
                 <li>Management Groups</li>
                 <li>Teams</li>
