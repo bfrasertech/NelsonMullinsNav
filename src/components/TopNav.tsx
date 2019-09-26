@@ -11,7 +11,6 @@ export interface ITopNavState {
     showCommittees: boolean;
     showOffices: boolean;
     showAdministration: boolean;
-    showGuidedSearch: boolean;
 }
 
 /* tslint:disable no-any */
@@ -27,8 +26,7 @@ export default class TopNav extends React.Component<ITopNavProps, ITopNavState> 
             showTeams: false,
             showCommittees: false,
             showOffices: false,
-            showAdministration: false,
-            showGuidedSearch: true
+            showAdministration: false
         };
 
     }
@@ -120,12 +118,6 @@ export default class TopNav extends React.Component<ITopNavProps, ITopNavState> 
                         <li>Business Development</li>
                         <li>Document Services</li>
                     </ul>    
-                </div>  
-                }
-                {
-                    this.state.showGuidedSearch &&
-                <div className={classes.guidedSearchContainer}>
-                    search
                 </div>  
                 }
             </div>

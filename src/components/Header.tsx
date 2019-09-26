@@ -5,7 +5,9 @@ import { faSearch, faTimesCircle, faTimes } from '@fortawesome/free-solid-svg-ic
 import classes from './Header.module.scss';
 
 
-export interface IHeaderProps { }
+export interface IHeaderProps { 
+    handleToggleGuidedSearch: () => void;
+}
 export interface IHeaderState {
     showAlert: boolean;
     searchTerm: string;
@@ -65,7 +67,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                             onChange={() => this.setState({ searchTerm: '' })}
                             value='Search for People, Clients, Matters and Internet Content here…'>
                         </input>
-                        <button type='button' className={classes.advancedSearchButton}>Advanced Search</button>
+                        <button type='button' className={classes.advancedSearchButton} onClick={this.props.handleToggleGuidedSearch}>Advanced Search</button>
                         <button type='button' className={classes.searchButton}><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                 </div>
