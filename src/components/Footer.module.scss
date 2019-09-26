@@ -1,3 +1,45 @@
 .footerContainer{
     width: 100%;
+    display: flex;
+    background-color: #E9EEF2;
+    height: 60px;
+    .footerLeftPanel{
+        background-color: #C1CDD3;
+        width: 40%;
+        display: flex;
+        justify-content: space-around;
+        .timeZoneContainer{
+            line-height: 8px;
+            .header{
+                font-weight: 600;
+            }
+            .time{
+                font-weight: 500;
+            }
+            .location{
+                margin-left: 6px;
+                font-weight: 200;
+            }
+        }
+    }
+    .footerRightPanel{
+        background-color: #fff;
+        width: 60%;
+        display: flex;
+        .timeZoneContainer{
+            line-height: 8px;
+            padding: 0 15px;
+            .header{
+                font-weight: 600;
+            }
+            .time{
+                font-weight: 500;
+            }
+        }
+        .location{
+            line-height: 8px;
+            margin-left: 6px;
+            padding: 0 15px;
+        }
+    }
 }
