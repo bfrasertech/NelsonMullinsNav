@@ -1,17 +1,15 @@
 .menuContainer{
     background-color: #475666;
-    display: absolute;
-    left: 0;
-    top: 100px;
     color: #fff;
-    height: 100%;
-    width: 206px;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    height: 60px;
 
     ul{
         list-style: none;
         li{
-            padding: 15px 5px 15px 5px;
+            display: inline;
+            padding: 0 15px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;

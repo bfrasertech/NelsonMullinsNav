@@ -3,6 +3,7 @@ import * as React from 'react';
 import classes from './App.module.scss';
 
 import Header from './Header';
+import TopNav from './TopNav';
 
 export interface IAppProps { }
 export interface IAppState { }
@@ -20,7 +21,10 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
     public render(): React.ReactElement<IAppProps> {
         return (
-            <div className={classes.appContainer}><Header /></div>
+            <div className={classes.appContainer}>
+                <Header />
+                <TopNav />
+            </div>
         );
     }
 }

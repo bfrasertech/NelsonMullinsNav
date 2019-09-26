@@ -57,11 +57,6 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         </button>
                     </div>}
                 <div className={classes.headerContainer}>
-                    <div className={classes.menuControl}>
-                        <button type='button' className={classes.menuControlButton}
-                            onClick={() => this.setState({ showLeftNav: false })}><FontAwesomeIcon icon={faTimesCircle} size='2x' />
-                        </button>
-                    </div>
                     <img src={nmLogo} alt='Logo' className={classes.logoImage} />
                     <div className={classes.searchContainer}>
                         <input
@@ -74,7 +69,6 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         <button type='button' className={classes.searchButton}><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                 </div>
-
             </div>
         );
     }

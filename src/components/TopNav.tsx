@@ -2,16 +2,16 @@ import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-import classes from './LeftNav.module.scss';
+import classes from './TopNav.module.scss';
 
-export interface ILeftNavProps { }
-export interface ILeftNavState {}
+export interface ITopNavProps { }
+export interface ITopNavState {}
 
 /* tslint:disable no-any */
 const nmLogo: any = require('../images/nm_logo.png');
 
-export default class Header extends React.Component<ILeftNavProps, ILeftNavState> {
-    constructor(props: ILeftNavProps) {
+export default class TopNav extends React.Component<ITopNavProps, ITopNavState> {
+    constructor(props: ITopNavProps) {
 
         super(props);
 
@@ -19,7 +19,7 @@ export default class Header extends React.Component<ILeftNavProps, ILeftNavState
 
     }
 
-    public render(): React.ReactElement<ILeftNavProps> {
+    public render(): React.ReactElement<ITopNavProps> {
 
         return (
             <div className={classes.menuContainer}>

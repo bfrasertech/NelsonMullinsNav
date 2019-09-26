@@ -11,7 +11,6 @@ import {
 
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
 import App, { IAppProps } from '../../components/App';
-import LeftNav, {ILeftNavProps} from '../../components/LeftNav';
 
 const LOG_SOURCE: string = 'NmrsNavigationApplicationCustomizer';
 
@@ -41,17 +40,17 @@ export default class NmrsNavigationApplicationCustomizer
     if (topPlaceholder) {
       const element: React.ReactElement<IAppProps> = React.createElement(App);
       ReactDOM.render(element, topPlaceholder.domElement);
-
-        document.addEventListener('DOMContentLoaded', () => this.modifyPage);
-        const modPage = setInterval(() => {
-          if (this.modifyPage()){
-            clearInterval(modPage);
-          }
-
-        }, 100);
-        
-        setTimeout(this.modifyPage, 1000);
     }
+
+    document.addEventListener('DOMContentLoaded', () => this.modifyPage);
+    const modPage = setInterval(() => {
+      if (this.modifyPage()) {
+        clearInterval(modPage);
+      }
+
+    }, 100);
+
+    setTimeout(this.modifyPage, 1000);
 
     return Promise.resolve();
   }
@@ -61,50 +60,14 @@ export default class NmrsNavigationApplicationCustomizer
   }
 
   private modifyPage = (): boolean => {
-    return this.removeSearchBox() && this.removeLeftNav() && this.hideSuiteBar();
+    return this.hideSuiteBar();
   }
 
-  private removeSearchBox = () => {
-    const searchBoxElements: NodeListOf<Element> = document.querySelectorAll('.ms-searchux-searchbox');
-
-    if (!searchBoxElements || searchBoxElements.length === 0){
-      return false;
-    }
-
-    for (let i = 0; i < searchBoxElements.length; i++) {
-      const element: any = searchBoxElements[i];
-      element.style.display = 'none';
-    }
-
-    return true;
-  }
-
-  private removeLeftNav = () => {
-    const leftNavElements: NodeListOf<Element> = document.querySelectorAll('.ms-Nav');
-
-    if (!leftNavElements || leftNavElements.length === 0){
-      return false;
-    }
-
-    for (let i = 0; i < leftNavElements.length; i++) {
-      const element: any = leftNavElements[i];
-      element.style.top = '0';
-      while(element.firstChild && !element.firstChild.classList.contains('nmrs-left-nav')){
-        element.removeChild(element.firstChild);
-      }
-    }
-
-    leftNavElements[0].insertAdjacentHTML('afterbegin', '<div class="nmrs-left-nav">test</div>');
-    const element: React.ReactElement<ILeftNavProps> = React.createElement(LeftNav);
-    ReactDOM.render(element, leftNavElements[0]);
-
-    return true;
-  }
 
   private hideSuiteBar = () => {
     const suiteBar: HTMLElement = document.getElementById('SuiteNavPlaceHolder');
 
-    if (!suiteBar){
+    if (!suiteBar) {
       return false;
     }
 
