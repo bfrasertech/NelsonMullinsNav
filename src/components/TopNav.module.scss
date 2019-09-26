@@ -2,17 +2,128 @@
     background-color: #475666;
     color: #fff;
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     height: 60px;
 
-    ul{
+    .topMenu{
         list-style: none;
+        margin: 0;
+        height: 100%;
+        width: 100%;
         li{
-            display: inline;
+            line-height: 60px;
+            a{
+                line-height: 60px;
+                display: inline-block;
+            }
+            display: inline-block;
             padding: 0 15px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
+        }
+        li:hover{
+            background-color: #acafb3;
+        }
+    }
+
+    .managementMenu{
+        // position: absolute;
+        // top: 180px;
+        // left: 0;
+        background-color: #acafb3;
+        padding: 20px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 200px;
+        z-index: 1;
+        min-height: 200px;
+        li{
+            display: block;
+            padding: 0 15px;
+        }
+    }
+    .teamsMenu{
+        // position: absolute;
+        // top: 180px;
+        // left: 0;
+        display: flex;
+        background-color: #acafb3;
+        padding: 20px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 200px;
+        z-index: 1;
+        min-height: 200px;
+        li{
+            display: block;
+            padding: 0 15px;
+        }
+    }
+    .committeesMenu{
+        // position: absolute;
+        // top: 180px;
+        // left: 0;
+        background-color: #acafb3;
+        padding: 20px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 200px;
+        z-index: 1;
+        min-height: 200px;
+        li{
+            display: block;
+            padding: 0 15px;
+        }
+    }
+    .officesMenu{
+        // position: absolute;
+        // top: 180px;
+        // left: 0;
+        background-color: #acafb3;
+        padding: 20px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 200px;
+        z-index: 1;
+        min-height: 200px;
+        li{
+            display: block;
+            padding: 0 15px;
+        }
+    }
+    .administrationMenu{
+        // position: absolute;
+        // top: 180px;
+        // left: 0;
+        background-color: #acafb3;
+        padding: 20px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 200px;
+        z-index: 1;
+        min-height: 200px;
+        li{
+            display: block;
+            padding: 0 15px;
+        }
+    }
+    .guidedSearchContainer{
+        // position: absolute;
+        // top: 180px;
+        // left: 0;
+        background-color: #acafb3;
+        padding: 20px;
+        width: 100%;
+        min-width: 250px;
+        min-height: 200px;
+        z-index: 1;
+        min-height: 200px;
+        li{
+            display: block;
+            padding: 0 15px;
         }
     }
 }
