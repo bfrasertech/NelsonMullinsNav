@@ -62,6 +62,7 @@ export default class TopNav extends React.Component<ITopNavProps, ITopNavState> 
                 {
                     this.state.showManagementGroups &&
                 <div className={classes.managementMenu} onMouseEnter={() => this.handleManagementToggle(true)} onMouseLeave={() => this.handleManagementToggle(false)}>
+                    <div className={classes.heading}>Management Groups</div>
                     <ul>
                         <li>Corporate</li>
                         <li>Litigation</li>
@@ -73,6 +74,7 @@ export default class TopNav extends React.Component<ITopNavProps, ITopNavState> 
                 {
                     this.state.showTeams &&
                 <div className={classes.teamsMenu} onMouseEnter={() => this.handleTeamsToggle(true)} onMouseLeave={() => this.handleTeamsToggle(false)}>
+                    <div className={classes.heading}>Teams</div>
                     <ul>
                         <li>Affordable Housing and Tax Credit</li>
                         <li>Bill Hogan Team</li>
@@ -90,6 +92,7 @@ export default class TopNav extends React.Component<ITopNavProps, ITopNavState> 
                 {
                     this.state.showCommittees &&
                 <div className={classes.committeesMenu} onMouseEnter={() => this.handleCommitteesToggle(true)} onMouseLeave={() => this.handleCommitteesToggle(false)}>
+                    <div className={classes.heading}>Committees</div>
                     <ul>
                         <li>Associates</li>
                         <li>Counsel</li>
@@ -101,6 +104,7 @@ export default class TopNav extends React.Component<ITopNavProps, ITopNavState> 
                 {
                     this.state.showOffices &&
                 <div className={classes.officesMenu} onMouseEnter={() => this.handleOfficesToggle(true)} onMouseLeave={() => this.handleOfficesToggle(false)}>
+                    <div className={classes.heading}>Offices</div>
                     <ul>
                         <li>Atlanta</li>
                         <li>Baltimore</li>
@@ -112,6 +116,7 @@ export default class TopNav extends React.Component<ITopNavProps, ITopNavState> 
                  {
                     this.state.showAdministration &&
                 <div className={classes.administrationMenu} onMouseEnter={() => this.handleAdministrationToggle(true)} onMouseLeave={() => this.handleAdministrationToggle(false)}>
+                    <div className={classes.heading}>Administration</div>
                     <ul>
                         <li>Accounting</li>
                         <li>Administrative Assistants</li>

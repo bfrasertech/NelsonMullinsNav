@@ -25,15 +25,19 @@
             cursor: pointer;
         }
         li:hover{
-            background-color: #acafb3;
+            background-color: #FFF;
+            color: #E7A91E;
         }
     }
 
     .managementMenu{
-        // position: absolute;
-        // top: 180px;
-        // left: 0;
-        background-color: #acafb3;
+        .heading{
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: #E7A91E;
+        }
+        background-color: #fff;
+        color: #0A0A0A;
         padding: 20px;
         width: 100%;
         min-width: 250px;
@@ -46,11 +50,14 @@
         }
     }
     .teamsMenu{
-        // position: absolute;
-        // top: 180px;
-        // left: 0;
+        .heading{
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: #E7A91E;
+        }
         display: flex;
-        background-color: #acafb3;
+        background-color: #fff;
+        color: #0A0A0A;
         padding: 20px;
         width: 100%;
         min-width: 250px;
@@ -63,10 +70,13 @@
         }
     }
     .committeesMenu{
-        // position: absolute;
-        // top: 180px;
-        // left: 0;
-        background-color: #acafb3;
+        .heading{
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: #E7A91E;
+        }
+        background-color: #fff;
+        color: #0A0A0A;
         padding: 20px;
         width: 100%;
         min-width: 250px;
@@ -79,10 +89,13 @@
         }
     }
     .officesMenu{
-        // position: absolute;
-        // top: 180px;
-        // left: 0;
-        background-color: #acafb3;
+        .heading{
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: #E7A91E;
+        }
+        background-color: #fff;
+        color: #0A0A0A;
         padding: 20px;
         width: 100%;
         min-width: 250px;
@@ -95,10 +108,13 @@
         }
     }
     .administrationMenu{
-        // position: absolute;
-        // top: 180px;
-        // left: 0;
-        background-color: #acafb3;
+        .heading{
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-color: #E7A91E;
+        }
+        background-color: #fff;
+        color: #0A0A0A;
         padding: 20px;
         width: 100%;
         min-width: 250px;
