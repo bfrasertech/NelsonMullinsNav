@@ -1,8 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "nmrs-nav-extension",
-    "id": "66b40486-1d32-4fbb-80b0-08cf0d7f76ff",
+    "name": "nmrs navigation",
+    "id": "F46DAD5A-B663-4D3A-B17D-24F813548CD4",
     "version": "1.0.0.3",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,

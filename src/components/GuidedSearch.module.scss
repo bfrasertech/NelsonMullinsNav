@@ -1,13 +1,114 @@
 .guidedSearchContainer{
-    background-color: #acafb3;
-    padding: 20px;
-    width: 100%;
-    min-width: 250px;
-    min-height: 200px;
-    z-index: 1;
-    min-height: 200px;
-    li{
-        display: block;
-        padding: 0 15px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .peopleResultsContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .peopleDirectoryHeader{
+        width: 100%;
+        font-family: 'QuattrocentoSans';
+        font-size: 20px;
+        color: #000;
+        line-height: 17px;
+        margin: 0 0 7px 0;
+    };
+    .peopleCard{
+        border: 1px solid #e8edf1;
+        height: 130px;
+        width: 305px;
+        .headerContainer{
+            font-family: 'OpenSans-SemiBold';
+            .personName{
+                font-size: 14px;
+                line-height: 24px;
+                letter-spacing: .16px;
+                color: #689ac5;
+                width: 80%;
+            };
+            .personExtension{
+                font-size: 12px;
+                line-height: 16px;
+                letter-spacing: 0;
+                color: #464646;
+            }
+        };
+    };
+    .title{
+        font-size: 12px;
+        line-height: 16px;
+        color: #464646;
+    };
+    .department{
+        font-size: 12px;
+        line-height: 16px;
+        color: #464646;
+    };
+    .rate{
+        font-family: 'OpenSans-SemiBold';
+        font-size: 12px;
+        line-height: 16px;
+        color: #464646;
+    };
+    .assistant{
+        font-family: 'OpenSans-SemiBold';
+        font-size: 12px;
+        line-height: 16px;
+        color: #689ac5;
+    };
+    .floorPlan{
+        font-family: 'OpenSans-SemiBold';
+        font-size: 12px;
+        line-height: 16px;
+        color: #689ac5;
+    };
+    .header{
+        width: 100%;
+        font-family: 'QuattrocentoSans';
+        font-size: 20px;
+        color: #000;
+        line-height: 17px;
+        margin: 0 0 7px 0;
+    };
+    .clientDirectoryContainer{
+        width: 31%;
+        margin: 25px 10px;
+        height: 190px;
+        .inner{
+            height: 100%;
+            border: 1px solid #e8edf1;
+            ul{
+                list-style: none;
+                li{
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+    .matterLookupContainer{
+        width: 31%;
+        margin: 25px 10px;
+        height: 190px;
+        .inner{
+            border: 1px solid #e8edf1;
+            ul{
+                list-style: none;
+                li{
+                    padding: 5px 0;
+                }
+            }
+        }
+    }
+    .selectASearchContainer{
+        width: 31%;
+        margin: 25px 10px;
+        height: 190px;
+        .inner{
+            border: 1px solid #e8edf1;
+        }
     }
 }

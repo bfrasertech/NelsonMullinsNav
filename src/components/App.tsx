@@ -5,9 +5,13 @@ import classes from './App.module.scss';
 import Header from './Header';
 import TopNav from './TopNav';
 import GuidedSearch from './GuidedSearch';
+import { NavData } from '../data/topnav';
+import { PeopleData } from '../data/people';
+import { ClientData } from '../data/clients';
+import { MatterData } from '../data/matters';
 
 export interface IAppProps { }
-export interface IAppState { 
+export interface IAppState {
     showGuidedSearch: boolean;
 }
 
@@ -25,15 +29,15 @@ export default class App extends React.Component<IAppProps, IAppState> {
     }
 
     private handleToggleGuidedSearch = () => {
-        this.setState({showGuidedSearch: !this.state.showGuidedSearch});
+        this.setState({ showGuidedSearch: !this.state.showGuidedSearch });
     }
 
     public render(): React.ReactElement<IAppProps> {
         return (
             <div className={classes.appContainer}>
                 <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} />
-                <TopNav />
-                {this.state.showGuidedSearch && <GuidedSearch />}
+                <TopNav navItems={NavData.menuItems} />
+                {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={ClientData.clients} matterResults={MatterData.matters} />}
             </div>
         );
     }

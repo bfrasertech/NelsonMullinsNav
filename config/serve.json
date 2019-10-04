@@ -4,7 +4,7 @@
   "https": true,
   "serveConfigurations": {
     "default": {
-      "pageUrl": "http://hub-dev.nmrs.com/bftest",
+      "pageUrl": "http://hub-dev.nmrs.com/",
       "customActions": {
         "6250f76e-4880-46ed-8184-3a71403ec7ea": {
           "location": "ClientSideExtension.ApplicationCustomizer",
@@ -15,7 +15,7 @@
       }
     },
     "nmrsNavigation": {
-      "pageUrl": "http://hub-dev.nmrs.com/bftest",
+      "pageUrl": "http://hub-dev.nmrs.com/",
       "customActions": {
         "6250f76e-4880-46ed-8184-3a71403ec7ea": {
           "location": "ClientSideExtension.ApplicationCustomizer",

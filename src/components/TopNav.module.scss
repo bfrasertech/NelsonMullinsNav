@@ -29,34 +29,18 @@
             color: #E7A91E;
         }
     }
-
-    .managementMenu{
+    .subMenu{
         .heading{
+            width: 100%;
             font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #E7A91E;
+            .headerText{
+                border-bottom: 2px solid #e7a91e;
+            }
         }
-        background-color: #fff;
-        color: #0A0A0A;
-        padding: 20px;
-        width: 100%;
-        min-width: 250px;
-        min-height: 200px;
-        z-index: 10;
-        min-height: 200px;
-        li{
-            display: block;
-            padding: 0 15px;
-        }
-    }
-    .teamsMenu{
-        .heading{
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #E7A91E;
-        }
+        
         display: flex;
-        background-color: #fff;
+        flex-wrap: wrap;
+        background-color: #f7f7f7;
         color: #0A0A0A;
         padding: 20px;
         width: 100%;
@@ -64,66 +48,18 @@
         min-height: 200px;
         z-index: 10;
         min-height: 200px;
-        li{
-            display: block;
-            padding: 0 15px;
+        ul{
+            li{
+                display: block;
+                padding: 6px 15px;
+                a, a:visited{
+                    color: #0A0A0A
+                };
+                a:hover{
+                    color: #E7A91E
+                }
+            }
         }
-    }
-    .committeesMenu{
-        .heading{
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #E7A91E;
-        }
-        background-color: #fff;
-        color: #0A0A0A;
-        padding: 20px;
-        width: 100%;
-        min-width: 250px;
-        min-height: 200px;
-        z-index: 10;
-        min-height: 200px;
-        li{
-            display: block;
-            padding: 0 15px;
-        }
-    }
-    .officesMenu{
-        .heading{
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #E7A91E;
-        }
-        background-color: #fff;
-        color: #0A0A0A;
-        padding: 20px;
-        width: 100%;
-        min-width: 250px;
-        min-height: 200px;
-        z-index: 10;
-        min-height: 200px;
-        li{
-            display: block;
-            padding: 0 15px;
-        }
-    }
-    .administrationMenu{
-        .heading{
-            font-weight: 700;
-            text-decoration: underline;
-            text-decoration-color: #E7A91E;
-        }
-        background-color: #fff;
-        color: #0A0A0A;
-        padding: 20px;
-        width: 100%;
-        min-width: 250px;
-        min-height: 200px;
-        z-index: 10;
-        min-height: 200px;
-        li{
-            display: block;
-            padding: 0 15px;
-        }
+        
     }
 }
