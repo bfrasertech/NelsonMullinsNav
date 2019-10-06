@@ -1,5 +1,7 @@
 .menuContainer{
     background-color: #475666;
+    // background-color: #fff;
+    // border: 1px solid black;
     color: #fff;
     display: flex;
     flex-direction: row;
@@ -40,7 +42,9 @@
         
         display: flex;
         flex-wrap: wrap;
-        background-color: #f7f7f7;
+        // background-color: #f7f7f7;
+        background-color: #fff;
+        border: 1px solid #e8edf1;
         color: #0A0A0A;
         padding: 20px;
         width: 100%;
