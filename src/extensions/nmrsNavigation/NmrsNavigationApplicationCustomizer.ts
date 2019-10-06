@@ -41,8 +41,12 @@ export default class NmrsNavigationApplicationCustomizer
 
     /* tslint:disable no-any */
 
+    const ctx = this.context;
+    const pctx = ctx.pageContext;
+
     if (topPlaceholder) {
       const element: React.ReactElement<IAppProps> = React.createElement(App);
+      element.props.context = this.context;
       ReactDOM.render(element, topPlaceholder.domElement);
     }
 

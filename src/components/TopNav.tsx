@@ -1,6 +1,9 @@
 import * as React from 'react';
+import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
 import classes from './TopNav.module.scss';
+
+import * as NavServices from '../services/Navigation.Service';
 
 export interface INavChildGroup {
   id: string;
@@ -17,6 +20,7 @@ export interface INavItem {
 
 export interface ITopNavProps {
   navItems: INavItem[] | any;
+  context: ApplicationCustomizerContext;
 }
 
 export interface ITopNavState {
@@ -33,7 +37,7 @@ export interface ITopNavState {
 export default class TopNav extends React.Component<
   ITopNavProps,
   ITopNavState
-> {
+  > {
   constructor(props: ITopNavProps) {
     super(props);
 
@@ -45,6 +49,12 @@ export default class TopNav extends React.Component<
       showAdministration: false,
       idToShow: null
     };
+  }
+
+  componentDidMount() {
+    NavServices.fetchTeams(this.props.context).then(res => {
+      console.log(res);
+    });
   }
 
   private showSubMenu = (idToShow: string) => {

@@ -10,7 +10,11 @@ import { PeopleData } from '../data/people';
 import { ClientData } from '../data/clients';
 import { MatterData } from '../data/matters';
 
-export interface IAppProps { }
+import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+
+export interface IAppProps {
+    context: ApplicationCustomizerContext;
+}
 export interface IAppState {
     showGuidedSearch: boolean;
 }
@@ -36,7 +40,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
         return (
             <div className={classes.appContainer}>
                 <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} />
-                <TopNav navItems={NavData.menuItems} />
+                <TopNav navItems={NavData.menuItems} context={this.props.context} />
                 {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={ClientData.clients} matterResults={MatterData.matters} />}
             </div>
         );
