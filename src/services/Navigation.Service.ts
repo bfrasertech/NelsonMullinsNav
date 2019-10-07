@@ -36,8 +36,8 @@ export const fetchTeams = (context: ApplicationCustomizerContext): Promise<ITeam
                     // reject (response.statusText);
                 }
             })
-            .then((teamItems: ITeamItem[]): void => {
-                resolve(teamItems.map((item: ITeamItem): ITeam => mapSPResultToTeam(item)));
+            .then((teamItems: any): void => {
+                resolve(teamItems.value.map((item: ITeamItem): ITeam => mapSPResultToTeam(item)));
             })
             .catch((error: any): void => {
                 console.log('Error in ');
