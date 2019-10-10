@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
 import classes from './LeftNav.module.scss';
@@ -32,13 +33,14 @@ export interface ILeftNavState {
   showOffices: boolean;
   showAdministration: boolean;
   idToShow: string | null;
+  subMenuTop: number;
 }
 
 /* tslint:disable no-any */
 
 export default class LeftNav extends React.Component<
-ILeftNavProps,
-ILeftNavState
+  ILeftNavProps,
+  ILeftNavState
   > {
   constructor(props: ILeftNavProps) {
     super(props);
@@ -49,7 +51,8 @@ ILeftNavState
       showCommittees: false,
       showOffices: false,
       showAdministration: false,
-      idToShow: null
+      idToShow: null,
+      subMenuTop: 0
     };
   }
 
@@ -59,8 +62,10 @@ ILeftNavState
     });
   }
 
+  private menuRefs: any[] = [];
+
   private showSubMenu = (idToShow: string) => {
-    this.setState({ idToShow: idToShow });
+    this.setState({ idToShow: idToShow, subMenuTop: this.menuRefs[idToShow].getBoundingClientRect().top });
   };
 
   private hideSubMenu = () => {
@@ -68,9 +73,56 @@ ILeftNavState
   };
 
   public render(): React.ReactElement<ILeftNavProps> {
-    if (this.props.show){
+    if (this.props.show) {
       return (
-        <div className={classes.leftNav} style={{ top: `${this.props.top.toString()}px`}}></div>
+        <div className={classes.leftNav} style={{ top: `${this.props.top.toString()}px` }}>
+
+          <div className={classes.menuContainer}>
+            <ul className={classes.leftMenu}>
+              {this.props.navItems.map((navItem: INavItem) => {
+                return (
+                  <li ref={(el) => this.menuRefs[navItem.id] = el}
+                    onMouseEnter={() => this.showSubMenu(navItem.id)}
+                    onMouseLeave={() => this.hideSubMenu()}
+                  >
+                    {navItem.title}
+                  </li>
+                );
+              })}
+            </ul>
+            {this.props.navItems
+              .filter(
+                (navItem: INavItem) =>
+                  navItem.childGroups && navItem.childGroups.length > 0
+              )
+              .map((navItem: INavItem) => {
+                if (this.state.idToShow === navItem.id) {
+                  return (
+                    <div
+                      className={classes.subMenu} style={{top: `${(this.state.subMenuTop - 180).toString()}px`}}
+                      onMouseEnter={() => this.showSubMenu(navItem.id)}
+                      onMouseLeave={() => this.hideSubMenu()}
+                    >
+                      <div className={classes.heading}>
+                        <span className={classes.headerText}>{navItem.title}</span>{' '}
+                      </div>
+                      {navItem.childGroups.map((childGroup: INavChildGroup) => {
+                        return (
+                          <ul>
+                            {childGroup.items.map((navItem: INavItem) => {
+                              return <li><a href="#">{navItem.title}</a> </li>;
+                            })}
+                          </ul>
+                        );
+                      })}
+                    </div>
+                  );
+                } else {
+                  return <div></div>;
+                }
+              })}
+          </div>
+        </div>
       );
     } else {
       return (<div></div>);
