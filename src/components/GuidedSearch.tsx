@@ -19,6 +19,7 @@ export interface IGuidedSearchProps {
   clientResults: clientSearchServices.IClient[];
   matterResults: matterSearchServices.IMatter[];
   searchTerm: string;
+  handleClose: () => void;
 }
 export interface IGuidedSearchState { }
 
@@ -33,9 +34,7 @@ export default class GuidedSearch extends React.Component<
     };
   }
 
-  componentDidMount() {
-
-  }
+  
 
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
@@ -136,6 +135,9 @@ export default class GuidedSearch extends React.Component<
               </li>
             </ul>
           </div>
+        </div>
+        <div className={classes.footer}>
+              <button type="button" onClick={this.props.handleClose}>Close Search</button>
         </div>
       </div>
     );

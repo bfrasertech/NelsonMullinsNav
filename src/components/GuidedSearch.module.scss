@@ -2,7 +2,7 @@
     position: absolute;
     left: 130px;
     top: 130px;
-    height: 90%;
+    height: 80%;
     width: 80%;
     z-index: 10;
     border: 1px solid #e8edf1;
@@ -113,7 +113,7 @@
         }
     }
     .selectASearchContainer{
-        width: 27%;
+        width: 25%;
         margin: 25px 10px;
         height: 190px;
         .inner{
@@ -145,6 +145,21 @@
                     height: 50px;
                 }
             }
+        }
+    }
+    .footer{
+        width: calc(100% + 40px);
+        margin: 20px 0 0 -20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        background-color: #e8edf1;
+        height: 50px;
+        button{
+            background-color: #3275AF;
+            color: #fff;
+            margin: 8px 20px;
         }
     }
 }

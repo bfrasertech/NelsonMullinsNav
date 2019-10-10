@@ -59,6 +59,10 @@ export default class App extends React.Component<IAppProps, IAppState> {
         }
     }
 
+    private handleGuidedSearchClose = () => {
+        this.setState({showGuidedSearch: false});
+    }
+
     private handleToggleLeftNav = () => {
         this.setState({ showLeftNav: !this.state.showLeftNav });
     }
@@ -68,7 +72,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
             <div className={classes.appContainer}>
                 <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} handleToggleLeftNav={this.handleToggleLeftNav} leftNavVisible={this.state.showLeftNav} />
                 <LeftNav navItems={NavData.menuItems} context={this.props.context} top={130} show={this.state.showLeftNav} />
-                {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} />}
+                {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
             </div>
         );
     }
