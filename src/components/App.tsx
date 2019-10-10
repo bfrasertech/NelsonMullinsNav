@@ -12,6 +12,8 @@ import { ClientData } from '../data/clients';
 import { MatterData } from '../data/matters';
 
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+import * as clientSearchServices from '../services/ClientSearch.Service';
+import * as matterSearchServices from '../services/MatterSearch.Service';
 
 export interface IAppProps {
     context: ApplicationCustomizerContext;
@@ -19,6 +21,9 @@ export interface IAppProps {
 export interface IAppState {
     showGuidedSearch: boolean;
     showLeftNav: boolean;
+    currentSearchTerm: string;
+    clientResults: clientSearchServices.IClient[];
+    matterResults: matterSearchServices.IMatter[];
 }
 
 /* tslint:disable no-any */
@@ -31,12 +36,25 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
         this.state = {
             showGuidedSearch: false,
-            showLeftNav: false
+            showLeftNav: false,
+            currentSearchTerm: '',
+            clientResults: [],
+            matterResults: []
         };
     }
 
-    private handleToggleGuidedSearch = () => {
-        this.setState({ showGuidedSearch: !this.state.showGuidedSearch });
+    componentDidMount(){
+
+    }
+
+    private handleToggleGuidedSearch = (searchTerm: string) => {
+        if (!this.state.showGuidedSearch){
+            clientSearchServices.searchClients(searchTerm).then(cResults => {
+                this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm, clientResults: cResults });
+            });
+        }else{
+            this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm });
+        }
     }
 
     private handleToggleLeftNav = () => {
@@ -48,7 +66,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
             <div className={classes.appContainer}>
                 <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} handleToggleLeftNav={this.handleToggleLeftNav} leftNavVisible={this.state.showLeftNav} />
                 <LeftNav navItems={NavData.menuItems} context={this.props.context} top={130} show={this.state.showLeftNav} />
-                {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={ClientData.clients} matterResults={MatterData.matters} />}
+                {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} />}
             </div>
         );
     }

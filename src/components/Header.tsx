@@ -6,7 +6,7 @@ import classes from './Header.module.scss';
 
 
 export interface IHeaderProps {
-    handleToggleGuidedSearch: () => void;
+    handleToggleGuidedSearch: (searchTerm: string) => void;
     handleToggleLeftNav: () => void;
     leftNavVisible: boolean;
 }
@@ -70,11 +70,10 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         <input
                             type='text'
                             className={classes.searchBox}
-                            onChange={() => this.setState({ searchTerm: '' })}
-                            value='Search for People, Clients, Matters and Internet Content here…'>
+                            onChange={(event: any) => this.setState({ searchTerm: event.target.value })}
+                            value={this.state.searchTerm}>
                         </input>
-                        <button type='button' className={classes.advancedSearchButton} onClick={this.props.handleToggleGuidedSearch}>Advanced Search</button>
-                        <button type='button' className={classes.searchButton}><FontAwesomeIcon icon={faSearch} /></button>
+                        <button type='button' className={classes.searchButton} onClick={() => this.props.handleToggleGuidedSearch(this.state.searchTerm)}><FontAwesomeIcon icon={faSearch} /></button>
                     </div>
                 </div>
             </div>

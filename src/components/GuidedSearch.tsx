@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+import * as clientSearchServices from '../services/ClientSearch.Service';
+import * as matterSearchServices from '../services/MatterSearch.Service';
+
 import classes from './GuidedSearch.module.scss';
 
 export interface IPerson {
@@ -11,20 +14,11 @@ export interface IPerson {
   assistant: string;
 }
 
-export interface IMatter {
-  name: string;
-  id: string;
-}
-
-export interface IMatter {
-  name: string;
-  id: string;
-}
-
 export interface IGuidedSearchProps {
   peopleResults: IPerson[];
-  clientResults: IMatter[];
-  matterResults: IMatter[];
+  clientResults: clientSearchServices.IClient[];
+  matterResults: matterSearchServices.IMatter[];
+  searchTerm: string;
 }
 export interface IGuidedSearchState {}
 
@@ -36,6 +30,10 @@ export default class GuidedSearch extends React.Component<
     super(props);
 
     this.state = {};
+  }
+
+  componentDidMount(){
+    
   }
 
   public render(): React.ReactElement<IGuidedSearchProps> {
@@ -70,7 +68,7 @@ export default class GuidedSearch extends React.Component<
           <div className={classes.header}>Client Directory</div>
           <div className={classes.inner}>
             <ul>
-              {this.props.clientResults.map((client: IMatter) => {
+              {this.props.clientResults.map((client: clientSearchServices.IClient) => {
                 return (
                   <li key={client.id}>
                     <a href={`/sitepages/client.aspx?CLIENT_UNO=${client.id}`} target="_blank">{client.name}</a>
@@ -84,7 +82,7 @@ export default class GuidedSearch extends React.Component<
           <div className={classes.header}>Matter Lookup</div>
           <div className={classes.inner}>
           <ul>
-              {this.props.matterResults.map((matter: IMatter) => {
+              {this.props.matterResults.map((matter: matterSearchServices.IMatter) => {
                 return (
                   <li key={matter.id}>
                     <a href={`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`} target="_blank">{matter.name}</a>
