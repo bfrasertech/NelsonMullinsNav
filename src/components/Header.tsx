@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faTimesCircle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faTimesCircle, faAlignJustify } from '@fortawesome/free-solid-svg-icons';
 
 import classes from './Header.module.scss';
 
 
-export interface IHeaderProps { 
+export interface IHeaderProps {
     handleToggleGuidedSearch: () => void;
+    handleToggleLeftNav: () => void;
+    leftNavVisible: boolean;
 }
 export interface IHeaderState {
     showAlert: boolean;
     searchTerm: string;
-    showLeftNav: boolean;
 }
 
 /* tslint:disable no-any */
@@ -24,8 +25,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
         this.state = {
             showAlert: true,
-            searchTerm: '',
-            showLeftNav: true
+            searchTerm: ''
         };
 
         document.addEventListener('keypress', this.handleKeyPress, false);
@@ -59,6 +59,12 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         </button>
                     </div>}
                 <div className={classes.headerContainer}>
+                    {!this.props.leftNavVisible && <button type='button' className={classes.menuOpenButton}
+                        onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faAlignJustify} size={"3x"} />
+                    </button>}
+                    {this.props.leftNavVisible && <button type='button' className={classes.menuCloseButton}
+                        onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faTimesCircle} size={"3x"} />
+                    </button>}
                     <img src={nmLogo} alt='Logo' className={classes.logoImage} />
                     <div className={classes.searchContainer}>
                         <input

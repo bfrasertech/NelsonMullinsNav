@@ -4,6 +4,7 @@ import classes from './App.module.scss';
 
 import Header from './Header';
 import TopNav from './TopNav';
+import LeftNav from './LeftNav';
 import GuidedSearch from './GuidedSearch';
 import { NavData } from '../data/topnav';
 import { PeopleData } from '../data/people';
@@ -17,6 +18,7 @@ export interface IAppProps {
 }
 export interface IAppState {
     showGuidedSearch: boolean;
+    showLeftNav: boolean;
 }
 
 /* tslint:disable no-any */
@@ -28,7 +30,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
         super(props);
 
         this.state = {
-            showGuidedSearch: false
+            showGuidedSearch: false,
+            showLeftNav: false
         };
     }
 
@@ -36,11 +39,15 @@ export default class App extends React.Component<IAppProps, IAppState> {
         this.setState({ showGuidedSearch: !this.state.showGuidedSearch });
     }
 
+    private handleToggleLeftNav = () => {
+        this.setState({ showLeftNav: !this.state.showLeftNav });
+    }
+
     public render(): React.ReactElement<IAppProps> {
         return (
             <div className={classes.appContainer}>
-                <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} />
-                <TopNav navItems={NavData.menuItems} context={this.props.context} />
+                <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} handleToggleLeftNav={this.handleToggleLeftNav} leftNavVisible={this.state.showLeftNav} />
+                <LeftNav navItems={NavData.menuItems} context={this.props.context} top={130} show={this.state.showLeftNav} />
                 {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={ClientData.clients} matterResults={MatterData.matters} />}
             </div>
         );
