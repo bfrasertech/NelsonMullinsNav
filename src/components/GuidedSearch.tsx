@@ -2,20 +2,12 @@ import * as React from 'react';
 
 import * as clientSearchServices from '../services/ClientSearch.Service';
 import * as matterSearchServices from '../services/MatterSearch.Service';
+import * as peopleSearchServices from '../services/PeopleSearch.Service';
 
 import classes from './GuidedSearch.module.scss';
 
-export interface IPerson {
-  name: string;
-  extension: string;
-  title: string;
-  department: string;
-  rate: string;
-  assistant: string;
-}
-
 export interface IGuidedSearchProps {
-  peopleResults: IPerson[];
+  peopleResults: peopleSearchServices.IPerson[];
   clientResults: clientSearchServices.IClient[];
   matterResults: matterSearchServices.IMatter[];
   searchTerm: string;
@@ -34,7 +26,7 @@ export default class GuidedSearch extends React.Component<
     };
   }
 
-  
+
 
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
@@ -42,23 +34,28 @@ export default class GuidedSearch extends React.Component<
         <div className={classes.peopleResultsContainer}>
           <div className={classes.header}>People Directory</div>
 
-          {this.props.peopleResults.map((person: IPerson) => {
+          {this.props.peopleResults.map((person: peopleSearchServices.IPerson) => {
             return (
               <div className={classes.peopleCard}>
-                <div className={classes.headerContainer}>
-                  <span className={classes.personName}>{person.name}</span>
-                  <span className={classes.personExtension}>Ext: x45286</span>
+                <div className={classes.photoContainer}>
+                  <img src={person.photoUrl} alt=""/>
                 </div>
-                <div className={classes.title}>Title</div>
-                <div className={classes.department}>Department</div>
-                <div className={classes.rate}>Standard Rate: $750</div>
-                <div className={classes.assistant}>
-                  Assistant: <a href="#">Tom Jones</a>
-                  <span>&nbsp;x34758</span>
-                </div>
-                <div className={classes.floorPlan}>
-                  {' '}
-                  <a href="#">Floor Plan</a>{' '}
+                <div className={classes.dataContainer}>
+                  <div className={classes.headerContainer}>
+                    <span className={classes.personName}>{person.name}</span>
+                    <span className={classes.personExtension}>Ext: x45286</span>
+                  </div>
+                  <div className={classes.title}>Title</div>
+                  <div className={classes.department}>Department</div>
+                  <div className={classes.rate}>Standard Rate: $750</div>
+                  <div className={classes.assistant}>
+                    Assistant: <a href="#">Tom Jones</a>
+                    <span>&nbsp;x34758</span>
+                  </div>
+                  <div className={classes.floorPlan}>
+                    {' '}
+                    <a href="#">Floor Plan</a>{' '}
+                  </div>
                 </div>
               </div>
             );
@@ -111,33 +108,33 @@ export default class GuidedSearch extends React.Component<
             <ul>
               <li>
                 <div>
-                  <a href="#">link</a>
+                  <a href="#">Jones file name from intranet</a>
                 </div>
-                <div>desc</div>
+                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
               </li>
               <li>
                 <div>
-                  <a href="#">link</a>
+                  <a href="#">Jones file name from intranet</a>
                 </div>
-                <div>desc</div>
+                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
               </li>
               <li>
                 <div>
-                  <a href="#">link</a>
+                  <a href="#">Jones file name from intranet</a>
                 </div>
-                <div>desc</div>
+                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
               </li>
               <li>
                 <div>
-                  <a href="#">link</a>
+                  <a href="#">Jones file name from intranet</a>
                 </div>
-                <div>desc</div>
+                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
               </li>
             </ul>
           </div>
         </div>
         <div className={classes.footer}>
-              <button type="button" onClick={this.props.handleClose}>Close Search</button>
+          <button type="button" onClick={this.props.handleClose}>Close Search</button>
         </div>
       </div>
     );

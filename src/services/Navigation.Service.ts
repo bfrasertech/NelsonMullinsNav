@@ -40,26 +40,10 @@ export const fetchTeams = (context: ApplicationCustomizerContext): Promise<ITeam
                 resolve(teamItems.value.map((item: ITeamItem): ITeam => mapSPResultToTeam(item)));
             })
             .catch((error: any): void => {
-                console.log('Error in ');
+                console.log('Error getting teams');
                 reject(error);
-                // return new Promise<ITeam[]>((resolve, reject) => {
-                //     reject(error);
-                // });
             });
 
     });
-
-    // return context.spHttpClient
-    //     .get(listUrl, SPHttpClient.configurations.v1)
-    //     .then((response: SPHttpClientResponse) => response.json())
-    //     .then((json: any) =>
-    //         json.value.map((item: any) => mapSPResultToTeam(item))
-    //     )
-    //     .catch((error: any) => {
-    //         console.log('Error in ');
-    //         return new Promise<ITeam[]>((resolve, reject) => {
-    //             reject(error);
-    //         });
-    //     });
 }
 

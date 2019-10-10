@@ -30,21 +30,34 @@
         height: 130px;
         width: 305px;
         padding: 15px;
-        .headerContainer{
-            font-family: 'OpenSans-SemiBold';
-            .personName{
-                font-size: 14px;
-                line-height: 24px;
-                letter-spacing: .16px;
-                color: #689ac5;
-                width: 80%;
-            };
-            .personExtension{
-                font-size: 12px;
-                line-height: 16px;
-                letter-spacing: 0;
-                color: #464646;
+        display: flex;
+        .photoContainer{
+            width: 60px;
+            height: 60px;
+            border: 1px solid #669ac5;
+            img{
+                height: 60px;
+                width: 60px;
             }
+        }
+        .dataContainer{
+            margin: 0 0 0 10px;
+            .headerContainer{
+                font-family: 'OpenSans-SemiBold';
+                .personName{
+                    font-size: 14px;
+                    line-height: 24px;
+                    letter-spacing: .16px;
+                    color: #689ac5;
+                    width: 80%;
+                };
+                .personExtension{
+                    font-size: 12px;
+                    line-height: 16px;
+                    letter-spacing: 0;
+                    color: #464646;
+                }
+            };
         };
     };
     .title{

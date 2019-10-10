@@ -14,6 +14,7 @@ import { MatterData } from '../data/matters';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import * as clientSearchServices from '../services/ClientSearch.Service';
 import * as matterSearchServices from '../services/MatterSearch.Service';
+import * as peopleSearchServices from '../services/PeopleSearch.Service';
 
 export interface IAppProps {
     context: ApplicationCustomizerContext;
@@ -24,6 +25,7 @@ export interface IAppState {
     currentSearchTerm: string;
     clientResults: clientSearchServices.IClient[];
     matterResults: matterSearchServices.IMatter[];
+    peopleResults: peopleSearchServices.IPerson[];
 }
 
 /* tslint:disable no-any */
@@ -39,19 +41,19 @@ export default class App extends React.Component<IAppProps, IAppState> {
             showLeftNav: false,
             currentSearchTerm: 'Search for People, Clients, Matters, and Internet Content here...',
             clientResults: [],
-            matterResults: []
+            matterResults: [],
+            peopleResults: []
         };
-    }
-
-    componentDidMount(){
-
     }
 
     private handleToggleGuidedSearch = (searchTerm: string) => {
         if (!this.state.showGuidedSearch){
             clientSearchServices.searchClients(searchTerm).then(cResults => {
                 matterSearchServices.searchMatters(searchTerm).then(mResults => {
-                    this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults });
+                    peopleSearchServices.searchPeople(searchTerm).then(pResults => {
+                        this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults });
+                    });
+                    
                 });
             });
         }else{
@@ -72,7 +74,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
             <div className={classes.appContainer}>
                 <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} handleToggleLeftNav={this.handleToggleLeftNav} leftNavVisible={this.state.showLeftNav} />
                 <LeftNav navItems={NavData.menuItems} context={this.props.context} top={130} show={this.state.showLeftNav} />
-                {this.state.showGuidedSearch && <GuidedSearch peopleResults={PeopleData.people} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
+                {this.state.showGuidedSearch && <GuidedSearch peopleResults={this.state.peopleResults} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
             </div>
         );
     }
