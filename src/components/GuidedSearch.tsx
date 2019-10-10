@@ -29,11 +29,12 @@ export default class GuidedSearch extends React.Component<
   constructor(props: IGuidedSearchProps) {
     super(props);
 
-    this.state = {};
+    this.state = {
+    };
   }
 
   componentDidMount(){
-    
+
   }
 
   public render(): React.ReactElement<IGuidedSearchProps> {

@@ -37,7 +37,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
         this.state = {
             showGuidedSearch: false,
             showLeftNav: false,
-            currentSearchTerm: '',
+            currentSearchTerm: 'Search for People, Clients, Matters, and Internet Content here...',
             clientResults: [],
             matterResults: []
         };
@@ -50,7 +50,9 @@ export default class App extends React.Component<IAppProps, IAppState> {
     private handleToggleGuidedSearch = (searchTerm: string) => {
         if (!this.state.showGuidedSearch){
             clientSearchServices.searchClients(searchTerm).then(cResults => {
-                this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm, clientResults: cResults });
+                matterSearchServices.searchMatters(searchTerm).then(mResults => {
+                    this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults });
+                });
             });
         }else{
             this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm });

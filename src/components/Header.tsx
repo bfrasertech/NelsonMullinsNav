@@ -71,6 +71,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                             type='text'
                             className={classes.searchBox}
                             onChange={(event: any) => this.setState({ searchTerm: event.target.value })}
+                            onFocus={() => this.setState({searchTerm: ''})}
                             value={this.state.searchTerm}>
                         </input>
                         <button type='button' className={classes.searchButton} onClick={() => this.props.handleToggleGuidedSearch(this.state.searchTerm)}><FontAwesomeIcon icon={faSearch} /></button>
