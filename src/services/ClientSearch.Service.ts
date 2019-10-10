@@ -12,7 +12,7 @@ export const searchClients = (searchTerm: string): Promise<IClient[]> => {
     
     return new Promise<IClient[]>((resolve: (clients: IClient[]) => void, reject: (error: any) => void): void => { 
 
-        fetch(`${baseUri}?$top=5&$orderby=client_name&$inlinecount=allpages&$format=json&$select=Client_uno,client_name&$filter=Startswith(client_name,'${searchTerm}')`, 
+        fetch(`${baseUri}?$top=5&$orderby=client_name&$inlinecount=allpages&$format=json&$select=Client_uno,client_name&$filter=substringof('${searchTerm}', client_name)`, 
     { 
         method: 'GET', credentials: "include" 
     })

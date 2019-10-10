@@ -12,7 +12,7 @@ export const searchMatters = (searchTerm: string): Promise<IMatter[]> => {
     
     return new Promise<IMatter[]>((resolve: (matters: IMatter[]) => void, reject: (error: any) => void): void => { 
 
-        fetch(`${baseUri}?$top=5&$orderby=long_matt_name&$inlinecount=allpages&$format=json&$select=matter_uno,long_matt_name&$filter=Startswith(long_matt_name,'${searchTerm}')`, 
+        fetch(`${baseUri}?$top=5&$orderby=long_matt_name&$inlinecount=allpages&$format=json&$select=matter_uno,long_matt_name&$filter=substringof('${searchTerm}', long_matt_name)`, 
     { 
         method: 'GET', credentials: "include" 
     })
