@@ -20,12 +20,12 @@ export interface IGuidedSearchProps {
   matterResults: matterSearchServices.IMatter[];
   searchTerm: string;
 }
-export interface IGuidedSearchState {}
+export interface IGuidedSearchState { }
 
 export default class GuidedSearch extends React.Component<
   IGuidedSearchProps,
   IGuidedSearchState
-> {
+  > {
   constructor(props: IGuidedSearchProps) {
     super(props);
 
@@ -33,7 +33,7 @@ export default class GuidedSearch extends React.Component<
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
 
   }
 
@@ -82,7 +82,7 @@ export default class GuidedSearch extends React.Component<
         <div className={classes.matterLookupContainer}>
           <div className={classes.header}>Matter Lookup</div>
           <div className={classes.inner}>
-          <ul>
+            <ul>
               {this.props.matterResults.map((matter: matterSearchServices.IMatter) => {
                 return (
                   <li key={matter.id}>
@@ -96,8 +96,45 @@ export default class GuidedSearch extends React.Component<
         <div className={classes.selectASearchContainer}>
           <div className={classes.header}>Select a Search</div>
           <div className={classes.inner}>
-            <div>test</div>
-            <div>test</div>
+            <ul className={classes.searchTypes}>
+              <li>People</li>
+              <li>Library Catalog</li>
+              <li>Clients</li>
+              <li>Matters</li>
+              <li>Intranet</li>
+              <li>Google</li>
+            </ul>
+          </div>
+        </div>
+        <div className={classes.intranetSearchContainer}>
+          <div className={classes.header}>Intranet Search Results</div>
+          <div className={classes.inner}>
+            <ul>
+              <li>
+                <div>
+                  <a href="#">link</a>
+                </div>
+                <div>desc</div>
+              </li>
+              <li>
+                <div>
+                  <a href="#">link</a>
+                </div>
+                <div>desc</div>
+              </li>
+              <li>
+                <div>
+                  <a href="#">link</a>
+                </div>
+                <div>desc</div>
+              </li>
+              <li>
+                <div>
+                  <a href="#">link</a>
+                </div>
+                <div>desc</div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>

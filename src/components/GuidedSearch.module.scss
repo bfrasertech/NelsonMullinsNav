@@ -77,7 +77,7 @@
         margin: 0 0 7px 0;
     };
     .clientDirectoryContainer{
-        width: 31%;
+        width: 35%;
         margin: 25px 10px;
         height: 190px;
         .inner{
@@ -92,7 +92,7 @@
         }
     }
     .matterLookupContainer{
-        width: 31%;
+        width: 35%;
         margin: 25px 10px;
         height: 190px;
         .inner{
@@ -106,11 +106,38 @@
         }
     }
     .selectASearchContainer{
-        width: 31%;
+        width: 27%;
         margin: 25px 10px;
         height: 190px;
         .inner{
             border: 1px solid #e8edf1;
+            :nth-child(even){
+                background-color: #f8f8f8;
+            }
+            :nth-child(odd){
+                background-color: #fff;
+            }
+            .searchTypes{
+                list-style: none;
+                li{
+                    height: 50px;
+                }
+            }
+        }
+    }
+    .intranetSearchContainer{
+        width: 70%;
+        margin: 25px 10px;
+        height: 190px;
+        .inner{
+            border: 1px solid #e8edf1;
+
+            ul{
+                list-style: none;
+                li{
+                    height: 50px;
+                }
+            }
         }
     }
 }
