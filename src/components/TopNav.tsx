@@ -52,9 +52,9 @@ export default class TopNav extends React.Component<
   }
 
   componentDidMount() {
-    NavServices.fetchTeams(this.props.context).then(res => {
-      console.log(res);
-    });
+    // NavServices.fetchTeams(this.props.context).then(res => {
+    //   console.log(res);
+    // });
   }
 
   private showSubMenu = (idToShow: string) => {

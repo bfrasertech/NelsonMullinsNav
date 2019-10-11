@@ -34,6 +34,9 @@ export interface ILeftNavState {
   showAdministration: boolean;
   idToShow: string | null;
   subMenuTop: number;
+  managementGroups: NavServices.IManagementGroup[];
+  teams: NavServices.ITeamEntry[];
+  offices: NavServices.IOffice[];
 }
 
 /* tslint:disable no-any */
@@ -52,17 +55,40 @@ export default class LeftNav extends React.Component<
       showOffices: false,
       showAdministration: false,
       idToShow: null,
-      subMenuTop: 0
+      subMenuTop: 0,
+      managementGroups: [],
+      teams: [],
+      offices: []
     };
   }
 
+  private chunkArray = (arr, size) => {
+    var index = 0;
+    var arrayLength = arr.length;
+    var tempArray = [];
+
+    for (index = 0; index < arrayLength; index += size) {
+      let chunk = arr.slice(index, index + size);
+
+      tempArray.push(chunk);
+    }
+
+    return tempArray;
+  }
+
   componentDidMount() {
-    NavServices.fetchTeams(this.props.context).then(res => {
-      console.log(res);
+
+    NavServices.fetchManagementGroups().then(mgmtGroups => {
+      NavServices.fetchTeams().then(teams => {
+        NavServices.fetchOffices().then(offices => {
+          this.setState({ managementGroups: mgmtGroups, teams: teams, offices: offices })
+        })
+      });
     });
   }
 
   private menuRefs: any[] = [];
+  private chunks: any[];
 
   private showSubMenu = (idToShow: string) => {
     this.setState({ idToShow: idToShow, subMenuTop: this.menuRefs[idToShow].getBoundingClientRect().top });
@@ -79,48 +105,72 @@ export default class LeftNav extends React.Component<
 
           <div className={classes.menuContainer}>
             <ul className={classes.leftMenu}>
-              {this.props.navItems.map((navItem: INavItem) => {
-                return (
-                  <li ref={(el) => this.menuRefs[navItem.id] = el}
-                    onMouseEnter={() => this.showSubMenu(navItem.id)}
-                    onMouseLeave={() => this.hideSubMenu()}
-                  >
-                    {navItem.title}
+              <li ref={(el) => this.menuRefs['home'] = el}
+                onMouseEnter={() => this.showSubMenu('home')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                Home
                   </li>
-                );
-              })}
+              <li ref={(el) => this.menuRefs['firm'] = el}
+                onMouseEnter={() => this.showSubMenu('firm')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                Firm
+                  </li>
+              <li ref={(el) => this.menuRefs['managementGroups'] = el}
+                onMouseEnter={() => this.showSubMenu('managementGroups')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                Management Groups
+                  </li>
+              <li ref={(el) => this.menuRefs['teams'] = el}
+                onMouseEnter={() => this.showSubMenu('teams')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                Teams
+                  </li>
             </ul>
-            {this.props.navItems
-              .filter(
-                (navItem: INavItem) =>
-                  navItem.childGroups && navItem.childGroups.length > 0
-              )
-              .map((navItem: INavItem) => {
-                if (this.state.idToShow === navItem.id) {
-                  return (
-                    <div
-                      className={classes.subMenu} style={{top: `${(this.state.subMenuTop - 180).toString()}px`}}
-                      onMouseEnter={() => this.showSubMenu(navItem.id)}
-                      onMouseLeave={() => this.hideSubMenu()}
-                    >
-                      <div className={classes.heading}>
-                        <span className={classes.headerText}>{navItem.title}</span>{' '}
-                      </div>
-                      {navItem.childGroups.map((childGroup: INavChildGroup) => {
-                        return (
-                          <ul>
-                            {childGroup.items.map((navItem: INavItem) => {
-                              return <li><a href="#">{navItem.title}</a> </li>;
-                            })}
-                          </ul>
-                        );
-                      })}
-                    </div>
-                  );
-                } else {
-                  return <div></div>;
+            {this.state.idToShow === 'managementGroups' &&
+              <div
+                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                onMouseEnter={() => this.showSubMenu('managementGroups')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                <div className={classes.heading}>
+                  <span className={classes.headerText}>Management Groups</span>{' '}
+                </div>
+                <ul>
+                  {this.state.managementGroups.map((navItem: NavServices.IManagementGroup) => {
+                    return <li key={navItem.id}><a href="#">{navItem.name}</a> </li>;
+                  })}
+                </ul>
+              </div>
+            }
+            {this.state.idToShow === 'teams' &&
+              <div
+                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                onMouseEnter={() => this.showSubMenu('teams')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                <div className={classes.heading}>
+                  <span className={classes.headerText}>Teams</span>{' '}
+                </div>
+                {
+                  this.chunkArray(this.state.teams, 10).map(group => {
+                    return (
+                      <ul>
+                        {group.map((navItem: NavServices.ITeamEntry) => {
+                          return <li><a href="#">{navItem.name}</a> </li>;
+                        })}
+                      </ul>
+                    );
+                  })
+
                 }
-              })}
+              </div>
+
+            }
+
           </div>
         </div>
       );
