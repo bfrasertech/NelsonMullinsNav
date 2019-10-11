@@ -36,7 +36,9 @@ export interface ILeftNavState {
   subMenuTop: number;
   managementGroups: NavServices.IManagementGroup[];
   teams: NavServices.ITeamEntry[];
+  committees: NavServices.ICommittee[];
   offices: NavServices.IOffice[];
+  administration: NavServices.IAdministration[];
 }
 
 /* tslint:disable no-any */
@@ -58,7 +60,9 @@ export default class LeftNav extends React.Component<
       subMenuTop: 0,
       managementGroups: [],
       teams: [],
-      offices: []
+      committees: [],
+      offices: [],
+      administration: []
     };
   }
 
@@ -80,9 +84,17 @@ export default class LeftNav extends React.Component<
 
     NavServices.fetchManagementGroups().then(mgmtGroups => {
       NavServices.fetchTeams().then(teams => {
-        NavServices.fetchOffices().then(offices => {
-          this.setState({ managementGroups: mgmtGroups, teams: teams, offices: offices })
-        })
+
+        NavServices.fetchCommittees().then(committees => {
+          NavServices.fetchOffices().then(offices => {
+            NavServices.fetchAdministration().then(admins => {
+              this.setState({ managementGroups: mgmtGroups, teams: teams, committees: committees, offices: offices, administration: admins })
+            });
+
+          })
+        });
+
+
       });
     });
   }
@@ -129,6 +141,24 @@ export default class LeftNav extends React.Component<
               >
                 Teams
                   </li>
+              <li ref={(el) => this.menuRefs['committees'] = el}
+                onMouseEnter={() => this.showSubMenu('committees')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                Committees
+                  </li>
+              <li ref={(el) => this.menuRefs['offices'] = el}
+                onMouseEnter={() => this.showSubMenu('offices')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                Offices
+                  </li>
+              <li ref={(el) => this.menuRefs['administration'] = el}
+                onMouseEnter={() => this.showSubMenu('administration')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                Administration
+                  </li>
             </ul>
             {this.state.idToShow === 'managementGroups' &&
               <div
@@ -168,7 +198,75 @@ export default class LeftNav extends React.Component<
 
                 }
               </div>
+            }
+            {this.state.idToShow === 'committees' &&
+              <div
+                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                onMouseEnter={() => this.showSubMenu('committees')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                <div className={classes.heading}>
+                  <span className={classes.headerText}>Committees</span>{' '}
+                </div>
+                {
+                  this.chunkArray(this.state.committees, 10).map(group => {
+                    return (
+                      <ul>
+                        {group.map((navItem: NavServices.ICommittee) => {
+                          return <li><a href="#">{navItem.name}</a> </li>;
+                        })}
+                      </ul>
+                    );
+                  })
 
+                }
+              </div>
+            }
+            {this.state.idToShow === 'offices' &&
+              <div
+                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                onMouseEnter={() => this.showSubMenu('offices')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                <div className={classes.heading}>
+                  <span className={classes.headerText}>Offices</span>{' '}
+                </div>
+                {
+                  this.chunkArray(this.state.offices, 10).map(group => {
+                    return (
+                      <ul>
+                        {group.map((navItem: NavServices.IOffice) => {
+                          return <li><a href="#">{navItem.name}</a> </li>;
+                        })}
+                      </ul>
+                    );
+                  })
+
+                }
+              </div>
+            }
+            {this.state.idToShow === 'administration' &&
+              <div
+                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                onMouseEnter={() => this.showSubMenu('administration')}
+                onMouseLeave={() => this.hideSubMenu()}
+              >
+                <div className={classes.heading}>
+                  <span className={classes.headerText}>Administration</span>{' '}
+                </div>
+                {
+                  this.chunkArray(this.state.administration, 10).map(group => {
+                    return (
+                      <ul>
+                        {group.map((navItem: NavServices.IAdministration) => {
+                          return <li><a href="#">{navItem.name}</a> </li>;
+                        })}
+                      </ul>
+                    );
+                  })
+
+                }
+              </div>
             }
 
           </div>

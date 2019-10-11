@@ -11,6 +11,8 @@ export interface ITeamItem{
     Title: string;
 }
 
+
+
 const teamsList = '176799b5-1e0b-42bc-9e11-778f85851935';
 const mapSPResultToTeam = (spResult: ITeamItem): ITeam => ({ id: spResult.Id, title: spResult.Title });
 
@@ -60,7 +62,15 @@ export interface ITeamEntry {
     name: string;
 }
 
-const mapResultToOffice = (result: any): IOffice => ({ id: result.spid, name: result.name });
+export interface ICommittee{
+    id: string;
+    name: string;
+}
+
+export interface IAdministration{
+    id: string;
+    name: string;
+}
 
 export const fetchManagementGroups = (): Promise<IManagementGroup[]> => {
 
@@ -180,6 +190,32 @@ export const fetchTeams = (): Promise<ITeamEntry[]> => {
     });
 }
 
+const mapResultToCommittee = (result: any): IOffice => ({ id: result.id, name: result.title });
+export const fetchCommittees = (): Promise<ICommittee[]> => {
+
+    return new Promise<IOffice[]>((resolve: (offices: ICommittee[]) => void, reject: (error: any) => void): void => {
+
+        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/nmrs_committees?&$orderby=title&$inlinecount=allpages&$format=json&$select=id,title`,            {
+                method: 'GET', credentials: "include"
+            })
+            .then((response: any): Promise<any[]> => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    reject(response.statusText);
+                }
+            })
+            .then((officeItems: any): void => {
+                resolve(officeItems.d.results.map((item: any): ICommittee => mapResultToCommittee(item)));
+            })
+            .catch((error: any): void => {
+                console.log('Error getting committees');
+                reject(error);
+            });
+    });
+}
+
+const mapResultToOffice = (result: any): IOffice => ({ id: result.spid, name: result.name });
 export const fetchOffices = (): Promise<IOffice[]> => {
 
     return new Promise<IOffice[]>((resolve: (offices: IOffice[]) => void, reject: (error: any) => void): void => {
@@ -202,5 +238,64 @@ export const fetchOffices = (): Promise<IOffice[]> => {
                 console.log('Error getting offices');
                 reject(error);
             });
+    });
+}
+
+export const fetchAdministration = (): Promise<IAdministration[]> => {
+
+    return new Promise<IAdministration[]>((resolve: (offices: IAdministration[]) => void, reject: (error: any) => void): void => {
+
+        resolve([{
+            "id": "1",
+            "name": "Accounting"
+        },
+        {
+            "id": "2",
+            "name": "Administrative Assistants"
+        },
+        {
+            "id": "3",
+            "name": "Business Development"
+        },
+        {
+            "id": "4",
+            "name": "Document Services"
+        },
+        {
+            "id": "5",
+            "name": "Facilities & Contract Services"
+        },
+        {
+            "id": "6",
+            "name": "Human Resources"
+        },
+        {
+            "id": "7",
+            "name": "Information Technology"
+        },
+        {
+            "id": "8",
+            "name": "Law Clerks"
+        },
+        {
+            "id": "9",
+            "name": "Legal & Conflicts"
+        },
+        {
+            "id": "10",
+            "name": "Library"
+        },
+        {
+            "id": "11",
+            "name": "Litigation Solutions"
+        },
+        {
+            "id": "12",
+            "name": "Marketing"
+        },
+        {
+            "id": "13",
+            "name": "Operations"
+        }]);
     });
 }
