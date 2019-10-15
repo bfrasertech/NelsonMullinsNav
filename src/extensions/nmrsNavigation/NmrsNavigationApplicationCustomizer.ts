@@ -25,11 +25,15 @@ export interface INmrsNavigationApplicationCustomizerProperties {
   testMessage: string;
 }
 
+const MAX_POLLING_ATTEMPTS: Number = 100;
+
 /** A Custom Action which can be run during execution of a Client Side Application */
 export default class NmrsNavigationApplicationCustomizer
   extends BaseApplicationCustomizer<INmrsNavigationApplicationCustomizerProperties> {
 
   private suiteBarHidden: boolean;
+  private footerLoaded: boolean;
+  private pollAttempts: number = 0;
 
   @override
   public onInit(): Promise<void> {
@@ -49,13 +53,9 @@ export default class NmrsNavigationApplicationCustomizer
       ReactDOM.render(element, topPlaceholder.domElement);
     }
 
-    if (footerPlaceholder) {
-      const element: React.ReactElement<IFooterProps> = React.createElement(Footer);
-      ReactDOM.render(element, footerPlaceholder.domElement);
-    }
-
     const pageModeInterval = setInterval(() => {
-      if (this.hideSuiteBar()) {
+      this.pollAttempts += 1;
+      if (this.pollAttempts >= MAX_POLLING_ATTEMPTS || (this.hideSuiteBar() && this.loadFooter())) {
         clearInterval(pageModeInterval);
       }
     }, 100);
@@ -70,6 +70,7 @@ export default class NmrsNavigationApplicationCustomizer
   // hide the SharePoint SuiteBar and only return true once it's rendered and we 
   // can find it. 
   private hideSuiteBar = (): boolean => {
+
     if (this.suiteBarHidden) return true; // short circuit if we've already hidden it.
 
     const suiteBar: HTMLElement = document.getElementById('SuiteNavPlaceHolder');
@@ -80,6 +81,21 @@ export default class NmrsNavigationApplicationCustomizer
 
     suiteBar.style.display = 'none';
     this.suiteBarHidden = true;
+    return true;
+  }
+
+  private loadFooter = (): boolean => {
+    if (this.footerLoaded) return true;
+
+    const footerSection: HTMLElement = document.getElementById('nmrsFooter');
+
+    if (!footerSection) {
+      return false;
+    }
+
+    const element: React.ReactElement<IFooterProps> = React.createElement(Footer);
+    ReactDOM.render(element, footerSection);
+    this.footerLoaded = true;
     return true;
   }
 }
