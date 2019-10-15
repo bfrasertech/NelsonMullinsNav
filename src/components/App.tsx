@@ -3,13 +3,8 @@ import * as React from 'react';
 import classes from './App.module.scss';
 
 import Header from './Header';
-import TopNav from './TopNav';
 import LeftNav from './LeftNav';
 import GuidedSearch from './GuidedSearch';
-import { NavData } from '../data/topnav';
-import { PeopleData } from '../data/people';
-import { ClientData } from '../data/clients';
-import { MatterData } from '../data/matters';
 
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import * as clientSearchServices from '../services/ClientSearch.Service';
@@ -73,7 +68,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
         return (
             <div className={classes.appContainer}>
                 <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} handleToggleLeftNav={this.handleToggleLeftNav} leftNavVisible={this.state.showLeftNav} />
-                <LeftNav navItems={NavData.menuItems} context={this.props.context} top={130} show={this.state.showLeftNav} />
+                <LeftNav context={this.props.context} top={130} show={this.state.showLeftNav} />
                 {this.state.showGuidedSearch && <GuidedSearch peopleResults={this.state.peopleResults} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
             </div>
         );

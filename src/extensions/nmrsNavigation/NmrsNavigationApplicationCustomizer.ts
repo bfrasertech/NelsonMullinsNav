@@ -42,9 +42,6 @@ export default class NmrsNavigationApplicationCustomizer
     const topPlaceholder: PlaceholderContent | undefined =
       this.context.placeholderProvider.tryCreateContent(PlaceholderName.Top, { onDispose: this.handleDispose });
 
-    const footerPlaceholder: PlaceholderContent | undefined =
-      this.context.placeholderProvider.tryCreateContent(PlaceholderName.Bottom, { onDispose: this.handleDispose });
-
     /* tslint:disable no-any */
 
     if (topPlaceholder) {

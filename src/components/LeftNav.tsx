@@ -20,7 +20,6 @@ export interface INavItem {
 }
 
 export interface ILeftNavProps {
-  navItems: INavItem[] | any;
   context: ApplicationCustomizerContext;
   top: number;
   show: boolean;
@@ -80,7 +79,7 @@ export default class LeftNav extends React.Component<
     return tempArray;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
 
     NavServices.fetchManagementGroups().then(mgmtGroups => {
       NavServices.fetchTeams().then(teams => {
