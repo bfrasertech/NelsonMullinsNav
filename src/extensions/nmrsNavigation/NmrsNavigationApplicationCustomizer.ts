@@ -11,7 +11,7 @@ import {
 
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
 import App, { IAppProps } from '../../components/App';
-import Footer, {IFooterProps } from '../../components/Footer';
+import Footer, { IFooterProps } from '../../components/Footer';
 
 const LOG_SOURCE: string = 'NmrsNavigationApplicationCustomizer';
 
@@ -29,6 +29,8 @@ export interface INmrsNavigationApplicationCustomizerProperties {
 export default class NmrsNavigationApplicationCustomizer
   extends BaseApplicationCustomizer<INmrsNavigationApplicationCustomizerProperties> {
 
+  private suiteBarHidden: boolean;
+
   @override
   public onInit(): Promise<void> {
     Log.info(LOG_SOURCE, `Initialized ${strings.Title}`);
@@ -41,9 +43,6 @@ export default class NmrsNavigationApplicationCustomizer
 
     /* tslint:disable no-any */
 
-    const ctx = this.context;
-    const pctx = ctx.pageContext;
-
     if (topPlaceholder) {
       const element: React.ReactElement<IAppProps> = React.createElement(App);
       element.props.context = this.context;
@@ -55,15 +54,11 @@ export default class NmrsNavigationApplicationCustomizer
       ReactDOM.render(element, footerPlaceholder.domElement);
     }
 
-    document.addEventListener('DOMContentLoaded', () => this.modifyPage);
-    const modPage = setInterval(() => {
-      if (this.modifyPage()) {
-        clearInterval(modPage);
+    const pageModeInterval = setInterval(() => {
+      if (this.hideSuiteBar()) {
+        clearInterval(pageModeInterval);
       }
-
     }, 100);
-
-    setTimeout(this.modifyPage, 1000);
 
     return Promise.resolve();
   }
@@ -72,12 +67,11 @@ export default class NmrsNavigationApplicationCustomizer
     console.log('dispose');
   }
 
-  private modifyPage = (): boolean => {
-    return this.hideSuiteBar();
-  }
+  // hide the SharePoint SuiteBar and only return true once it's rendered and we 
+  // can find it. 
+  private hideSuiteBar = (): boolean => {
+    if (this.suiteBarHidden) return true; // short circuit if we've already hidden it.
 
-
-  private hideSuiteBar = () => {
     const suiteBar: HTMLElement = document.getElementById('SuiteNavPlaceHolder');
 
     if (!suiteBar) {
@@ -85,6 +79,7 @@ export default class NmrsNavigationApplicationCustomizer
     }
 
     suiteBar.style.display = 'none';
+    this.suiteBarHidden = true;
     return true;
   }
 }
