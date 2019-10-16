@@ -208,61 +208,28 @@ export const fetchOffices = (): Promise<IOffice[]> => {
     });
 }
 
+const mapResultToAdmin = (result: any): IAdministration => ({id: result.spid, name: result.title});
 export const fetchAdministration = (): Promise<IAdministration[]> => {
 
     return new Promise<IAdministration[]>((resolve: (offices: IAdministration[]) => void, reject: (error: any) => void): void => {
 
-        resolve([{
-            "id": "1",
-            "name": "Accounting"
-        },
-        {
-            "id": "2",
-            "name": "Administrative Assistants"
-        },
-        {
-            "id": "3",
-            "name": "Business Development"
-        },
-        {
-            "id": "4",
-            "name": "Document Services"
-        },
-        {
-            "id": "5",
-            "name": "Facilities & Contract Services"
-        },
-        {
-            "id": "6",
-            "name": "Human Resources"
-        },
-        {
-            "id": "7",
-            "name": "Information Technology"
-        },
-        {
-            "id": "8",
-            "name": "Law Clerks"
-        },
-        {
-            "id": "9",
-            "name": "Legal & Conflicts"
-        },
-        {
-            "id": "10",
-            "name": "Library"
-        },
-        {
-            "id": "11",
-            "name": "Litigation Solutions"
-        },
-        {
-            "id": "12",
-            "name": "Marketing"
-        },
-        {
-            "id": "13",
-            "name": "Operations"
-        }]);
+        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_admingroups?&$orderby=title&$inlinecount=allpages&$format=json&$select=spid,title`,
+            {
+                method: 'GET', credentials: "include"
+            })
+            .then((response: any): Promise<any[]> => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    reject(response.statusText);
+                }
+            })
+            .then((officeItems: any): void => {
+                resolve(officeItems.d.results.map((item: any): IOffice => mapResultToAdmin(item)));
+            })
+            .catch((error: any): void => {
+                console.log('Error getting admin groups');
+                reject(error);
+            });
     });
 }
