@@ -44,6 +44,10 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         }
     }
 
+    private navigate = (url: string): void => {
+        window.location.href = url;
+    }
+
     public render(): React.ReactElement<IHeaderProps> {
         return (
             <div>
@@ -65,7 +69,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                     {this.props.leftNavVisible && <button type='button' className={classes.menuCloseButton}
                         onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faTimesCircle} size={"3x"} />
                     </button>}
-                    <img src={nmLogo} alt='Logo' className={classes.logoImage} />
+                     <img src={nmLogo} alt='Logo' className={classes.logoImage} onClick={() => this.navigate('/')} />
                     <div className={classes.searchContainer}>
                         <input
                             type='text'
