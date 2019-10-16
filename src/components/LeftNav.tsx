@@ -109,6 +109,10 @@ export default class LeftNav extends React.Component<
     this.setState({ idToShow: idToShow, subMenuTop: this.menuRefs[idToShow].getBoundingClientRect().top });
   }
 
+  private navigate = (url: string): void => {
+    window.location.href = url;
+}
+
   private hideSubMenu = () => {
     this.setState({ idToShow: undefined });
   }
@@ -124,7 +128,7 @@ export default class LeftNav extends React.Component<
                 onMouseEnter={() => this.showSubMenu('home')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                Home
+                <a href="javascript: (0)" onClick={() => this.navigate('/')}>Home</a>
                   </li>
               <li ref={(el) => this.menuRefs['firm'] = el}
                 onMouseEnter={() => this.showSubMenu('firm')}
