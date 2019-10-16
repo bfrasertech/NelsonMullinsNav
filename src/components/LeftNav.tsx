@@ -65,14 +65,13 @@ export default class LeftNav extends React.Component<
     };
   }
 
-  private chunkArray = (arr, size) => {
-    var index = 0;
-    var arrayLength = arr.length;
-    var tempArray = [];
+  private chunkArray = (arr: any[], size: number): any[] => {
+    let index: number = 0;
+    let arrayLength: number = arr.length;
+    const tempArray: any[] = [];
 
     for (index = 0; index < arrayLength; index += size) {
-      let chunk = arr.slice(index, index + size);
-
+      let chunk: any[] = arr.slice(index, index + size);
       tempArray.push(chunk);
     }
 
@@ -87,10 +86,15 @@ export default class LeftNav extends React.Component<
         NavServices.fetchCommittees().then(committees => {
           NavServices.fetchOffices().then(offices => {
             NavServices.fetchAdministration().then(admins => {
-              this.setState({ managementGroups: mgmtGroups, teams: teams, committees: committees, offices: offices, administration: admins })
+              this.setState({
+                managementGroups: mgmtGroups,
+                teams: teams,
+                committees: committees,
+                offices: offices,
+                administration: admins
+              });
             });
-
-          })
+          });
         });
 
 
@@ -103,11 +107,11 @@ export default class LeftNav extends React.Component<
 
   private showSubMenu = (idToShow: string) => {
     this.setState({ idToShow: idToShow, subMenuTop: this.menuRefs[idToShow].getBoundingClientRect().top });
-  };
+  }
 
   private hideSubMenu = () => {
-    this.setState({ idToShow: null });
-  };
+    this.setState({ idToShow: undefined });
+  }
 
   public render(): React.ReactElement<ILeftNavProps> {
     if (this.props.show) {
@@ -272,7 +276,7 @@ export default class LeftNav extends React.Component<
         </div>
       );
     } else {
-      return (<div></div>);
+      return null;
     }
   }
 }
