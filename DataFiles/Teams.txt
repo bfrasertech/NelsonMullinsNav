@@ -1,0 +1,182 @@
+DisplayField           grpImage  grpKey  ID   resourceContentSummary  Team_Name  Team_Name_Guid  Title                                                              
+---------------------- --------- ------- ---- ----------------------- ---------- --------------- ------------------------------------------------------------------ 
+No expression defined            2       1                                                       ABA                                                                
+No expression defined            4       2                                                       Other Admin                                                        
+No expression defined            9       3                                                       Business and Distribution Litigation Team                          
+No expression defined            15      4                                                       SC Commercial, Appellate, Consumer and Employment Litigation Team  
+No expression defined            21      5                                                       Capital Markets Group                                              
+No expression defined            27      6                                                       DEDukes Team                                                       
+No expression defined            30      7                                                       Diversity and Inclusion Committee                                  
+No expression defined            35      8                                                       Education Counsel                                                  
+No expression defined            38      9                                                       Executive Committee                                                
+No expression defined            43      10                                                      Federal / State Policy Team                                        
+No expression defined            51      11                                                      HMB International / Immigration BP Activities                      
+No expression defined            54      12                                                      HHempel Team                                                       
+No expression defined            62      13                                                      JERemillard Team                                                   
+No expression defined            75      14                                                      Lahive Inactive Timekeeper                                         
+No expression defined            76      15                                                      Litigation Solutions                                               
+No expression defined            80      16                                                      Marketing - Atlanta Office Budget                                  
+No expression defined            82      17                                                      Marketing - Nashville Office Budget                                
+No expression defined            83      18                                                      Marketing - Boston Office Budget                                   
+No expression defined            84      19                                                      Marketing - Columbia Office Budget                                 
+No expression defined            85      20                                                      MCDukes Team                                                       
+No expression defined            87      21                                                      Marketing - Charleston Office Budget                               
+No expression defined            88      22                                                      Marketing - Charlotte Office Budget                                
+No expression defined            89      23                                                      Marketing - Contribution Committee (ConCom) Budget                 
+No expression defined            90      24                                                      Marketing - Washington, DC Office Budget                           
+No expression defined            91      25                                                      Marketing - Crowe Marketing and DC Rent                            
+No expression defined            92      26                                                      Marketing - Greenville Office Budget                               
+No expression defined            93      27                                                      Marketing - Huntington Office Budget                               
+No expression defined            94      28                                                      Marketing - Industry Group 1                                       
+No expression defined            95      29                                                      Marketing - Industry Group 2                                       
+No expression defined            96      30                                                      Marketing - Industry Group 3                                       
+No expression defined            97      31                                                      Marketing - Industry Group 4                                       
+No expression defined            98      32                                                      Marketing - Industry Group 5                                       
+No expression defined            99      33                                                      Marketing - Winston-Salem Office Budget                            
+No expression defined            100     34                                                      Marketing - Jacksonville Office Budget                             
+No expression defined            101     35                                                      Marketing - Myrtle Beach Office Budget                             
+No expression defined            102     36                                                      Marketing - Raleigh Office Budget                                  
+No expression defined            103     37                                                      Marketing - Special Funds 10                                       
+No expression defined            104     38                                                      Marketing - Special Funds 11                                       
+No expression defined            105     39                                                      Marketing - Special Funds 12                                       
+No expression defined            106     40                                                      Marketing - Special Funds 13                                       
+No expression defined            107     41                                                      Marketing - Special Funds 14                                       
+No expression defined            108     42                                                      Marketing - Special Funds 15                                       
+No expression defined            109     43                                                      Marketing - Special Funds 16                                       
+No expression defined            110     44                                                      Marketing - Special Funds 1                                        
+No expression defined            111     45                                                      Marketing - Special Funds 2                                        
+No expression defined            112     46                                                      Marketing - Special Funds 3                                        
+No expression defined            113     47                                                      Marketing - Special Funds 4                                        
+No expression defined            114     48                                                      Marketing - Special Funds 5                                        
+No expression defined            115     49                                                      Policy Advisors Fund                                               
+No expression defined            116     50                                                      Special Initiatives                                                
+No expression defined            117     51                                                      Marketing - Special Funds 8                                        
+No expression defined            118     52                                                      Marketing - Special Funds 9                                        
+No expression defined            119     53                                                      MTCole Team                                                        
+No expression defined            120     54                                                      Marketing - Tallahassee Office Budget                              
+No expression defined            121     55                                                      MWilliams Team                                                     
+No expression defined            125     56                                                      Other - HealthCare                                                 
+No expression defined            128     57                                                      Other - Corporate Department                                       
+No expression defined            130     58                                                      Other - Litigation Group                                           
+No expression defined            132     59                                                      Other - Intellectual Property                                      
+No expression defined            133     60                                                      Other Timekeepers                                                  
+No expression defined            135     61                                                      Pilot Industry Groups                                              
+No expression defined            140     62                                                      RBNorth Team                                                       
+No expression defined            161     63                                                      SWMalone Team                                                      
+No expression defined            163     64                                                      TETomlin Team                                                      
+No expression defined            167     65                                                      WTHogan Team                                                       
+No expression defined            168     66                                                      Cross Marketing                                                    
+No expression defined            171     67                                                      Washington Lit Team                                                
+No expression defined            175     68                                                      Marketing - Industry Group 6                                       
+No expression defined            176     69                                                      Marketing - Special Funds 17                                       
+No expression defined            177     70                                                      Marketing - Special Funds 18                                       
+No expression defined            178     71                                                      Marketing - Special Funds 19                                       
+No expression defined            179     72                                                      Marketing - Special Funds 20                                       
+No expression defined            181     73                                                      Marketing - New York Office Budget                                 
+No expression defined            184     74                                                      Tax and Benefits Team                                              
+No expression defined            185     75                                                      Venture Capital and Technology                                     
+No expression defined            186     76                                                      Securities Team                                                    
+No expression defined            187     77                                                      HealthCare Team                                                    
+No expression defined            188     78                                                      Marketing - Industry Group 7                                       
+No expression defined            189     79                                                      Marketing - Industry Group 8                                       
+No expression defined            190     80                                                      Marketing - Industry Group 9                                       
+No expression defined            191     81                                                      Marketing - Special Funds 21                                       
+No expression defined            192     82                                                      Greenville Litigation Team                                         
+No expression defined            193     83                                                      Marketing - Special Funds 22                                       
+No expression defined            194     84                                                      Marketing - Special Funds 23                                       
+No expression defined            195     85                                                      Marketing - Special Funds 24                                       
+No expression defined            196     86                                                      Marketing - Special Funds 25                                       
+No expression defined            197     87                                                      Marketing - Special Funds 26                                       
+No expression defined            199     88                                                      Marketing - Special Funds 28                                       
+No expression defined            200     89                                                      Marketing - Special Funds 29                                       
+No expression defined            201     90                                                      Marketing - Special Funds 30                                       
+No expression defined            203     91                                                      Marketing - Special Funds 32                                       
+No expression defined            204     92                                                      Marketing - Special Funds 33                                       
+No expression defined            206     93                                                      School & College Law Practice                                      
+No expression defined            207     94                                                      Marketing - Industry Group 10                                      
+No expression defined            208     95                                                      Marketing - Industry Group 11                                      
+No expression defined            209     96                                                      Marketing - Industry Group 12                                      
+No expression defined            210     97                                                      Marketing - Denver Office Budget                                   
+No expression defined            211     98                                                      Marketing - Los Angeles (Gardena) Office Budget                    
+No expression defined            213     99                                                      Other B&C                                                          
+No expression defined            215     100                                                     Corporate and Private Equity                                       
+No expression defined            216     101                                                     Corporate and Real Estate                                          
+No expression defined            217     102                                                     Financial Institutions, Bankruptcy and Creditors Rights            
+No expression defined            218     103                                                     International and Immigration                                      
+No expression defined            219     104                                                     Real Estate                                                        
+No expression defined            221     105                                                     Marketing - Special Funds 34                                       
+No expression defined            222     106                                                     Marketing - Special Funds 35                                       
+No expression defined            223     107                                                     Marketing - Special Funds 36                                       
+No expression defined            224     108                                                     Real Estate Investment, Finance and Restructuring                  
+No expression defined            225     109                                                     EnCAP                                                              
+No expression defined            226     110                                                     MABrown Team                                                       
+No expression defined            227     111                                                     Marketing - Baltimore Office Budget                                
+No expression defined            228     112                                                     CJDaniels Team                                                     
+No expression defined            229     113                                                     Affordable Housing and Tax Credits                                 
+No expression defined            231     114                                                     Construction Law & Litigation                                      
+No expression defined            232     115                                                     Eminent Domain                                                     
+No expression defined            234     116                                                     HealthCare - Compliance and Litigation                             
+No expression defined            235     117                                                     Commercial Litigation - Central / North Florida                    
+No expression defined            236     118                                                     Commercial Litigation - South Florida                              
+No expression defined            237     119                                                     Public Finance & Capital Projects                                  
+No expression defined            239     120                                                     Marketing - Boca Raton Office Budget                               
+No expression defined            240     121                                                     Marketing - Fort Lauderdale Office Budget                          
+No expression defined            241     122                                                     Marketing - Orlando Office Budget                                  
+No expression defined            242     123                                                     Marketing - Miami Office Budget                                    
+No expression defined            243     124                                                     Marketing - Palm Beach Office Budget                               
+No expression defined            244     125                                                     Marketing - Tampa Office Budget                                    
+No expression defined            245     126                                                     Marketing - West Palm Beach Office Budget                          
+No expression defined            246     127                                                     Corporate and Finance                                              
+No expression defined            247     128                                                     Estate Planning & Trusts                                           
+No expression defined            248     129                                                     Mergers and Acquisitions                                           
+No expression defined            249     130                                                     Financial Regulatory and Corporate                                 
+No expression defined            251     131                                                     Energy Team                                                        
+No expression defined            252     132                                                     Consumer and Business Litigation Team - NC TN                      
+No expression defined            253     133                                                     Marketing - Industry Group 13                                      
+No expression defined            254     134                                                     Marketing - Special Funds 37                                       
+No expression defined            255     135                                                     Marketing - Special Funds 38                                       
+No expression defined            256     136                                                     Florida Real Estate Team - Central, North                          
+No expression defined            257     137                                                     Florida Real Estate Team - South                                   
+----------------------------------------------------------------------------------------
+Name: DisplayField
+Type: adVarChar
+Defined size: 21
+Actual size: 21
+----------------------
+Name: grpImage
+Type: adVarWChar
+Defined size: 255
+Actual size: 0
+----------------------
+Name: grpKey
+Type: adVarWChar
+Defined size: 255
+Actual size: 2
+----------------------
+Name: ID
+Type: adInteger
+Defined size: 4
+Actual size: 4
+----------------------
+Name: resourceContentSummary
+Type: adLongVarWChar
+Defined size: -1
+Actual size: 0
+----------------------
+Name: Team_Name
+Type: adVarWChar
+Defined size: 250
+Actual size: 0
+----------------------
+Name: Team_Name_Guid
+Type: adGUID
+Defined size: 16
+Actual size: 0
+----------------------
+Name: Title
+Type: adVarWChar
+Defined size: 255
+Actual size: 6
+----------------------
+
+Statement executed in 31 ms 137 row(s) retrieved
