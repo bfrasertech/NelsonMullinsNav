@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 .leftNav{
     height: 100%;
     width: 220px;
@@ -5,6 +8,9 @@
     left: 0;
     z-index: 10;
     background-color: #475666;
+    opacity: .9;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 }
 .menuContainer{
     background-color: #475666;
@@ -22,8 +28,11 @@
         margin: 0;
         height: 100%;
         width: 100%;
+        padding-inline-start: 0;
         li{
             line-height: 60px;
+            color: #fff;
+            padding-left: 20px;
             a{
                 line-height: 60px;
                 display: inline-block;
@@ -36,16 +45,27 @@
             }
             padding: 0 15px;
             font-size: 14px;
-            font-weight: 600;
+            
             cursor: pointer;
         }
         li:hover{
             background-color: #FFF;
             color: #E7A91E;
+            a{
+                line-height: 60px;
+                display: inline-block;
+                color: #E7A91E;
+                text-decoration: none;
+            }
+            a:hover{
+                color: #E7A91E;
+                text-decoration: none;
+            }
         }
     }
     .subMenu{
-        
+        font-family: 'Open Sans', sans-serif;
+        font-size: 12px;
         position: absolute;
         left: 220px;
         width: 900px;
@@ -70,7 +90,9 @@
         z-index: 10;
         min-height: 200px;
         ul{
+            padding: 0;
             li{
+                color: #0A0A0A;
                 display: block;
                 padding: 6px 15px;
                 a, a:visited{
@@ -79,6 +101,9 @@
                 a:hover{
                     color: #E7A91E
                 }
+            }
+            li:hover{
+                color: #E7A91E
             }
         }
         
