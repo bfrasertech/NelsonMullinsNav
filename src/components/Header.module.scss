@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans&display=swap');
+
 .headerContainer{
     height: 80px;
     background-color: #fff;
@@ -50,7 +52,8 @@
     cursor: pointer;
 }
 .titleText{
-    font-size: 14px;
+    font-size: 28px;
+    font-family: 'Quattrocento Sans', sans-serif;
 }
 .searchButton{
     max-height: 3em;
