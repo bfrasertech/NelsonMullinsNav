@@ -37,8 +37,7 @@ export default class GuidedSearch extends React.Component<
           {this.props.peopleResults.map((person: peopleSearchServices.IPerson) => {
             return (
               <div className={classes.peopleCard}>
-                <div className={classes.photoContainer}>
-                  <img src={person.photoUrl} alt=""/>
+                <div className={classes.photoContainer} style={{backgroundImage: `url(${person.photoUrl})`}}>
                 </div>
                 <div className={classes.dataContainer}>
                   <div className={classes.headerContainer}>
