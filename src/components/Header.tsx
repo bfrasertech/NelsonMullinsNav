@@ -70,6 +70,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faTimesCircle} size={"3x"} />
                     </button>}
                      <img src={nmLogo} alt='Logo' className={classes.logoImage} onClick={() => this.navigate('/')} />
+                     <span className={classes.titleText}>NM-Connect</span>
                     <div className={classes.searchContainer}>
                         <input
                             type='text'

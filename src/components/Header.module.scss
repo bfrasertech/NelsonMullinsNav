@@ -45,9 +45,12 @@
     padding: 30% 0 0 30%;
 }
 .logoImage{
-    margin-left: 20px;
+    margin: 22px 30px;
     height: 30px;
     cursor: pointer;
+}
+.titleText{
+    font-size: 14px;
 }
 .searchButton{
     max-height: 3em;
@@ -85,13 +88,11 @@
 }
 .menuOpenButton{
     color: #689ac5;
-    height: 100%;
-    width: 80px;
     background-color: #fff;
     border: none;
     height: 30px;
     width: 30px;
-    margin: 28px 30px;
+    margin: 28px 22px;
     cursor: pointer;
     svg{
         height: 30px;
