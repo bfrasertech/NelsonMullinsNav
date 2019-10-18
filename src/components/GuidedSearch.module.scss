@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 .guidedSearchContainer{
     position: absolute;
     left: 130px;
@@ -31,6 +34,7 @@
         width: 305px;
         padding: 15px;
         display: flex;
+        justify-content: space-between;
         .photoContainer{
             width: 60px;
             height: 60px;
@@ -44,19 +48,28 @@
             }
         }
         .dataContainer{
+            flex-grow: 1;
             margin: 0 0 0 10px;
             .headerContainer{
-                font-family: 'OpenSans-SemiBold';
+                display: flex;
+                font-family: 'Open Sans', sans-serif;
                 .personName{
                     font-size: 14px;
                     line-height: 24px;
                     letter-spacing: .16px;
                     color: #689ac5;
+                    text-decoration: none;
                     width: 80%;
+                    font-weight: 600;
+                    a, a:hover, a:visited{
+                        color: #689ac5;
+                    text-decoration: none;
+                    }
                 };
                 .personExtension{
                     font-size: 12px;
-                    line-height: 16px;
+                    width: 70px;
+                    line-height: 24px;
                     letter-spacing: 0;
                     color: #464646;
                 }
@@ -66,6 +79,8 @@
     .title{
         font-size: 12px;
         line-height: 16px;
+        font-weight: 600;
+        font-style: italic;
         color: #464646;
     };
     .department{
@@ -74,26 +89,45 @@
         color: #464646;
     };
     .rate{
-        font-family: 'OpenSans-SemiBold';
+        font-weight: 600;
         font-size: 12px;
         line-height: 16px;
         color: #464646;
     };
     .assistant{
-        font-family: 'OpenSans-SemiBold';
+        .assistantPrefix{
+            color: #464646;
+            padding: 0 4px;
+        }
+        .assistantName{
+            color: #689ac5;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0 4px;
+            a, a:hover, a:visited{
+                color: #689ac5;
+                text-decoration: none;
+            }
+        }
+        .assistantExtension{
+            color: #464646;
+        }
         font-size: 12px;
         line-height: 16px;
         color: #689ac5;
     };
     .floorPlan{
-        font-family: 'OpenSans-SemiBold';
         font-size: 12px;
         line-height: 16px;
         color: #689ac5;
+        a, a:hover, a:visited{
+            color: #689ac5;
+            text-decoration: none;
+        }
     };
     .header{
         width: 100%;
-        font-family: 'QuattrocentoSans';
+        font-family: 'Quattrocento Sans', sans-serif;
         font-size: 20px;
         color: #000;
         line-height: 17px;

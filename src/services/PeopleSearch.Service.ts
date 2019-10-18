@@ -5,21 +5,33 @@ export interface IPerson {
     title: string;
     department: string;
     rate: string;
-    assistant: string;
     photoUrl: string;
     networkid: string;
+    assistantName: string;
+    assistantExtension: string;
 }
 
 const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_userdetails';
 //
-const mapResultToPerson = (result: any): IPerson => ({ id: result.empluno, name: result.displayname, extension: '1234', title: result.jobtitle, department: result.department, rate: '750', assistant: '', photoUrl: result.userpicl, networkid: result.networkid });
+const mapResultToPerson = (result: any): IPerson => ({ 
+    id: result.empluno,
+     name: result.displayname, 
+     extension: result.extension, 
+     title: result.jobtitle, 
+     department: result.department, 
+     rate: '750', 
+     assistantName: undefined, 
+     assistantExtension: result.secretary,
+     photoUrl: result.userpicl, 
+     networkid: result.networkid 
+    });
 
 export const searchPeople = (searchTerm: string): Promise<IPerson[]> => {
 
 
     return new Promise<IPerson[]>((resolve: (people: IPerson[]) => void, reject: (error: any) => void): void => {
 
-        fetch(`${baseUri}?$top=10&$orderby=displayname&$inlinecount=allpages&$format=json&$select=employeeid,networkid,empluno,displayname,userpicl,jobtitle,department&$filter=substringof('${searchTerm}', displayname)`,
+        fetch(`${baseUri}?$top=10&$orderby=displayname&$inlinecount=allpages&$format=json&$filter=substringof('${searchTerm}', displayname)`,
             {
                 method: 'GET', credentials: "include"
             })

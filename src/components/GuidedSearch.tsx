@@ -46,12 +46,13 @@ export default class GuidedSearch extends React.Component<
                     <span className={classes.personName}><a href={`https://people.nmrs.com/${person.networkid}`} target="_blank">{person.name}</a></span>
                     <span className={classes.personExtension}>Ext: x45286</span>
                   </div>
-                  <div className={classes.title}>Title</div>
-                  <div className={classes.department}>Department</div>
-                  <div className={classes.rate}>Standard Rate: $750</div>
+                  <div className={classes.title}>{person.title}</div>
+                  <div className={classes.department}>{person.department}</div>
+                  <div className={classes.rate}>Standard Rate: $000</div>
                   <div className={classes.assistant}>
-                    Assistant: <a href="#">Tom Jones</a>
-                    <span>&nbsp;x34758</span>
+                    <span className={classes.assistantPrefix}>Assistant:</span>
+                    <span className={classes.assistantName}><a href="#">{person.assistantName ? person.assistantName : 'N/A'}</a></span> 
+                    <span>{`x${person.assistantExtension ? person.assistantExtension : '0000'}`}</span>
                   </div>
                   <div className={classes.floorPlan}>
                     {' '}
