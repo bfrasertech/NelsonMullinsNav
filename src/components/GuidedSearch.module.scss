@@ -223,8 +223,10 @@
         }
     }
     .footer{
-        width: calc(100% + 40px);
-        margin: 20px -20px 0 -20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        left: 0;
         display: flex;
         flex-direction: row;
         flex-wrap: nowrap;
