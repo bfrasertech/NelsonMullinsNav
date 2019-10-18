@@ -26,7 +26,9 @@ export default class GuidedSearch extends React.Component<
     };
   }
 
-
+  private navigate = (url: string): void => {
+    window.location.href = url;
+  }
 
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
@@ -37,7 +39,7 @@ export default class GuidedSearch extends React.Component<
           {this.props.peopleResults.map((person: peopleSearchServices.IPerson) => {
             return (
               <div className={classes.peopleCard}>
-                <div className={classes.photoContainer} style={{backgroundImage: `url(${person.photoUrl})`}}>
+                <div className={classes.photoContainer} style={{ backgroundImage: `url(${person.photoUrl})` }}>
                 </div>
                 <div className={classes.dataContainer}>
                   <div className={classes.headerContainer}>
@@ -67,7 +69,7 @@ export default class GuidedSearch extends React.Component<
               {this.props.clientResults.map((client: clientSearchServices.IClient) => {
                 return (
                   <li key={client.id}>
-                    <a href={`/sitepages/client.aspx?CLIENT_UNO=${client.id}`}>{client.name}</a>
+                    <a onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)} href="javascript: (0)">{client.name}</a>
                   </li>
                 );
               })}
@@ -81,7 +83,7 @@ export default class GuidedSearch extends React.Component<
               {this.props.matterResults.map((matter: matterSearchServices.IMatter) => {
                 return (
                   <li key={matter.id}>
-                    <a href={`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`}>{matter.name}</a>
+                    <a onClick={() => this.navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)} href="javascript: (0)">{matter.name}</a>
                   </li>
                 );
               })}
