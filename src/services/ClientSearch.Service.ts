@@ -1,11 +1,12 @@
 export interface IClient {
     id: string;
     name: string;
+    clientNumber: string;
 }
 
 const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/cmsclients';
 
-const mapResultToClient = (result: any): IClient => ({ id: result.client_uno, name: result.client_name });
+const mapResultToClient = (result: any): IClient => ({ id: result.client_uno, name: result.client_name, clientNumber: result.client_uno });
 
 export const searchClients = (searchTerm: string): Promise<IClient[]> => {
 

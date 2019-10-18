@@ -1,11 +1,12 @@
 export interface IMatter {
     id: string;
     name: string;
+    matterNumber: string;
 }
 
 const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/cmsmatters';
 
-const mapResultToMatter = (result: any): IMatter => ({ id: result.matter_uno, name: result.long_matt_name });
+const mapResultToMatter = (result: any): IMatter => ({ id: result.matter_uno, name: result.long_matt_name, matterNumber: result.matter_uno });
 
 export const searchMatters = (searchTerm: string): Promise<IMatter[]> => {
 

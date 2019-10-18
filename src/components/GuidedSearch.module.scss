@@ -144,6 +144,12 @@
                 list-style: none;
                 li{
                     padding: 5px 0;
+                    a, a:hover, a:visited{
+                        font-weight: 600;
+                        font-size: 14px;
+                        color: #689ac5;
+                        text-decoration: none;
+                    }
                 }
             }
         }
@@ -155,9 +161,16 @@
         .inner{
             border: 1px solid #e8edf1;
             ul{
+                line-height: 16px;
                 list-style: none;
                 li{
                     padding: 5px 0;
+                    a, a:hover, a:visited{
+                        font-weight: 600;
+                        font-size: 14px;
+                        color: #689ac5;
+                        text-decoration: none;
+                    }
                 }
             }
         }
@@ -193,6 +206,12 @@
                 list-style: none;
                 li{
                     height: 50px;
+                    a, a:hover, a:visited{
+                        font-weight: 600;
+                        font-size: 14px;
+                        color: #689ac5;
+                        text-decoration: none;
+                    }
                 }
             }
         }

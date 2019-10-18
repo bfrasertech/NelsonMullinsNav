@@ -70,7 +70,7 @@ export default class GuidedSearch extends React.Component<
               {this.props.clientResults.map((client: clientSearchServices.IClient) => {
                 return (
                   <li key={client.id}>
-                    <a onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)} href="javascript: (0)">{client.name}</a>
+                    <a onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)} href="javascript: (0)">{`${client.name} (${client.clientNumber})`}</a>
                   </li>
                 );
               })}
@@ -84,7 +84,7 @@ export default class GuidedSearch extends React.Component<
               {this.props.matterResults.map((matter: matterSearchServices.IMatter) => {
                 return (
                   <li key={matter.id}>
-                    <a onClick={() => this.navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)} href="javascript: (0)">{matter.name}</a>
+                    <a onClick={() => this.navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)} href="javascript: (0)">{`${matter.name} (${matter.matterNumber})`}</a>
                   </li>
                 );
               })}
