@@ -66,6 +66,7 @@ export default class GuidedSearch extends React.Component<
         <div className={classes.clientDirectoryContainer}>
           <div className={classes.header}>Client Directory</div>
           <div className={classes.inner}>
+            { this.props.clientResults && this.props.clientResults.length > 0 &&
             <ul>
               {this.props.clientResults.map((client: clientSearchServices.IClient) => {
                 return (
@@ -75,6 +76,10 @@ export default class GuidedSearch extends React.Component<
                 );
               })}
             </ul>
+            }
+            {
+              !this.props.clientResults || this.props.clientResults.length <= 0 && <span className={classes.noResults}>No results to display...</span>
+            }
           </div>
         </div>
         <div className={classes.matterLookupContainer}>
