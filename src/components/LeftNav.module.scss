@@ -8,7 +8,6 @@
     left: 0;
     z-index: 10;
     background-color: #475666;
-    opacity: .9;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
 }
@@ -68,7 +67,8 @@
         font-size: 12px;
         position: absolute;
         left: 220px;
-        width: 900px;
+        width: 1200px;
+        //box-shadow: 5px 10px #475666;
         .heading{
             width: 100%;
             font-weight: 700;
@@ -81,7 +81,9 @@
         flex-wrap: wrap;
         // background-color: #f7f7f7;
         background-color: #fff;
-        border: 1px solid #e8edf1;
+        border-top: 2px solid #475666;
+        border-right: 2px solid #475666;
+        border-bottom: 2px solid #475666;
         color: #0A0A0A;
         padding: 20px;
         

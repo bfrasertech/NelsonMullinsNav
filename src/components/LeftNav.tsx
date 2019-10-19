@@ -96,8 +96,6 @@ export default class LeftNav extends React.Component<
             });
           });
         });
-
-
       });
     });
   }
@@ -193,7 +191,7 @@ export default class LeftNav extends React.Component<
                   <span className={classes.headerText}>Teams</span>{' '}
                 </div>
                 {
-                  this.chunkArray(this.state.teams, 10).map(group => {
+                  this.chunkArray(this.state.teams, 21).map(group => {
                     return (
                       <ul>
                         {group.map((navItem: NavServices.ITeamEntry) => {
