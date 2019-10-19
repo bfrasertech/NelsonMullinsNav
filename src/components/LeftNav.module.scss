@@ -29,6 +29,10 @@
         width: 100%;
         padding-inline-start: 0;
         li{
+            .leftMenuText{
+                margin-left: 10px;
+            }
+
             line-height: 60px;
             color: #fff;
             padding-left: 20px;

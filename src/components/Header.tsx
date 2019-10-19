@@ -59,7 +59,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                             </span>
                         </div>
                         <button type='button' className={classes.alertCloseButton}
-                            onClick={() => this.setState({ showAlert: false })}><FontAwesomeIcon icon={faTimes} size={"3x"} />
+                            onClick={() => this.setState({ showAlert: false })}><FontAwesomeIcon icon={faTimes} size={"2x"} />
                         </button>
                     </div>}
                 <div className={classes.headerContainer}>

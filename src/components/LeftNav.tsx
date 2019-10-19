@@ -2,6 +2,9 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faClipboardListCheck, faHome, faQuestionSquare, faTachometerAlt, faGavel, faUsers, faBalanceScale, faBuilding} from '@fortawesome/pro-solid-svg-icons';
+
 import classes from './LeftNav.module.scss';
 
 import * as NavServices from '../services/Navigation.Service';
@@ -109,7 +112,7 @@ export default class LeftNav extends React.Component<
 
   private navigate = (url: string): void => {
     window.location.href = url;
-}
+  }
 
   private hideSubMenu = () => {
     this.setState({ idToShow: undefined });
@@ -126,43 +129,47 @@ export default class LeftNav extends React.Component<
                 onMouseEnter={() => this.showSubMenu('home')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                <a href="javascript: (0)" onClick={() => this.navigate('/')}>Home</a>
-                  </li>
+                <FontAwesomeIcon icon={faTachometerAlt} /> <span className={classes.leftMenuText}><a href="javascript: (0)" onClick={() => this.navigate('/')}>Home</a></span>
+              </li>
               <li ref={(el) => this.menuRefs['firm'] = el}
                 onMouseEnter={() => this.showSubMenu('firm')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                Firm
+                <FontAwesomeIcon icon={faHome} /><span className={classes.leftMenuText}>Firm</span>
                   </li>
               <li ref={(el) => this.menuRefs['managementGroups'] = el}
                 onMouseEnter={() => this.showSubMenu('managementGroups')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                Management Groups
+                <FontAwesomeIcon icon={faGavel} /><span className={classes.leftMenuText}>Management Groups</span>
                   </li>
               <li ref={(el) => this.menuRefs['teams'] = el}
                 onMouseEnter={() => this.showSubMenu('teams')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                Teams
+                <FontAwesomeIcon icon={faUsers} /><span className={classes.leftMenuText}>Teams</span>
                   </li>
               <li ref={(el) => this.menuRefs['committees'] = el}
                 onMouseEnter={() => this.showSubMenu('committees')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                Committees
+                <FontAwesomeIcon icon={faBalanceScale} /><span className={classes.leftMenuText}>Committees</span>
                   </li>
               <li ref={(el) => this.menuRefs['offices'] = el}
                 onMouseEnter={() => this.showSubMenu('offices')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                Offices
+                <FontAwesomeIcon icon={faBuilding} /><span className={classes.leftMenuText}>Offices</span>
                   </li>
               <li ref={(el) => this.menuRefs['administration'] = el}
                 onMouseEnter={() => this.showSubMenu('administration')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                Administration
+                <FontAwesomeIcon icon={faClipboardListCheck} /><span className={classes.leftMenuText}>Administration</span>
+                  </li>
+                  <li 
+              >
+                <FontAwesomeIcon icon={faQuestionSquare} /><span className={classes.leftMenuText}>How Do I?</span>
                   </li>
             </ul>
             {this.state.idToShow === 'managementGroups' &&
