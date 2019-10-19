@@ -42,22 +42,22 @@ export default class App extends React.Component<IAppProps, IAppState> {
     }
 
     private handleToggleGuidedSearch = (searchTerm: string) => {
-       // if (!this.state.showGuidedSearch){
-            clientSearchServices.searchClients(searchTerm).then(cResults => {
-                matterSearchServices.searchMatters(searchTerm).then(mResults => {
-                    peopleSearchServices.searchPeople(searchTerm).then(pResults => {
-                        this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults });
-                    });
-                    
+        // if (!this.state.showGuidedSearch){
+        clientSearchServices.searchClients(searchTerm).then(cResults => {
+            matterSearchServices.searchMatters(searchTerm).then(mResults => {
+                peopleSearchServices.searchPeople(searchTerm).then(pResults => {
+                    this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults });
                 });
+
             });
+        });
         // }else{
         //     this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm });
         // }
     }
 
     private handleGuidedSearchClose = () => {
-        this.setState({showGuidedSearch: false});
+        this.setState({ showGuidedSearch: false });
     }
 
     private handleToggleLeftNav = () => {
