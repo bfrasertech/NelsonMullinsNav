@@ -27,7 +27,15 @@ export default class GuidedSearch extends React.Component<
   }
 
   private navigate = (url: string): void => {
-    window.location.href = url;
+    let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
+
+    if (url.indexOf('http') === 0){
+      window.location.href = url;
+    } else if (url.indexOf('/') === 0){
+      window.location.href = `${baseUrl}${url}`;
+    } else{
+      window.location.href = `${baseUrl}/${url}`;
+    }
   }
 
   public render(): React.ReactElement<IGuidedSearchProps> {
@@ -71,7 +79,7 @@ export default class GuidedSearch extends React.Component<
               {this.props.clientResults.map((client: clientSearchServices.IClient) => {
                 return (
                   <li key={client.id}>
-                    <a onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)} href="javascript: (0)">{`${client.name} (${client.clientNumber})`}</a>
+                    <button type='button' className={classes.linkButton} onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)}>{`${client.name} (${client.clientNumber})`}</button>
                   </li>
                 );
               })}
@@ -89,7 +97,7 @@ export default class GuidedSearch extends React.Component<
               {this.props.matterResults.map((matter: matterSearchServices.IMatter) => {
                 return (
                   <li key={matter.id}>
-                    <a onClick={() => this.navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)} href="javascript: (0)">{`${matter.name} (${matter.matterNumber})`}</a>
+                    <button type='button' className={classes.linkButton} onClick={() => this.navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)}>{`${matter.name} (${matter.matterNumber})`}</button>
                   </li>
                 );
               })}

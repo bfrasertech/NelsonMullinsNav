@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import {faTimesCircle, faBars, faSearch, faTimes} from '@fortawesome/pro-regular-svg-icons';
+import { faTimesCircle, faBars, faSearch, faTimes } from '@fortawesome/pro-regular-svg-icons';
 
 import classes from './Header.module.scss';
 
@@ -45,7 +45,15 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
     }
 
     private navigate = (url: string): void => {
-        window.location.href = url;
+        let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
+
+        if (url.indexOf('http') === 0) {
+            window.location.href = url;
+        } else if (url.indexOf('/') === 0) {
+            window.location.href = `${baseUrl}${url}`;
+        } else {
+            window.location.href = `${baseUrl}/${url}`;
+        }
     }
 
     public render(): React.ReactElement<IHeaderProps> {
@@ -69,15 +77,15 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                     {this.props.leftNavVisible && <button type='button' className={classes.menuCloseButton}
                         onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faTimesCircle} size={"3x"} />
                     </button>}
-                     <img src={nmLogo} alt='Logo' className={classes.logoImage} onClick={() => this.navigate('/')} />
-                     <span className={classes.titleText}>NM-Connect</span>
+                    <img src={nmLogo} alt='Logo' className={classes.logoImage} onClick={() => this.navigate('/')} />
+                    <span className={classes.titleText}>NM-Connect</span>
                     <div className={classes.searchContainer}>
                         <input
                             type='text'
                             className={classes.searchBox}
                             onChange={(event: any) => this.setState({ searchTerm: event.target.value })}
-                            onFocus={() => this.setState({searchTerm: ''})}
-                            onKeyDown={(e) => {if (e.key === 'Enter') this.props.handleToggleGuidedSearch(this.state.searchTerm)}}
+                            onFocus={() => this.setState({ searchTerm: '' })}
+                            onKeyDown={(e) => { if (e.key === 'Enter') this.props.handleToggleGuidedSearch(this.state.searchTerm) }}
                             value={this.state.searchTerm}>
                         </input>
                         <button type='button' className={classes.searchButton} onClick={() => this.props.handleToggleGuidedSearch(this.state.searchTerm)}><FontAwesomeIcon icon={faSearch} /></button>

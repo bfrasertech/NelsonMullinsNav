@@ -111,7 +111,15 @@ export default class LeftNav extends React.Component<
   }
 
   private navigate = (url: string): void => {
-    window.location.href = url;
+    let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
+
+    if (url.indexOf('http') === 0){
+      window.location.href = url;
+    } else if (url.indexOf('/') === 0){
+      window.location.href = `${baseUrl}${url}`;
+    } else{
+      window.location.href = `${baseUrl}/${url}`;
+    }
   }
 
   private hideSubMenu = () => {
@@ -129,7 +137,8 @@ export default class LeftNav extends React.Component<
                 onMouseEnter={() => this.showSubMenu('home')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                <FontAwesomeIcon icon={faTachometerAlt} /> <span className={classes.leftMenuText}><a href="javascript: (0)" onClick={() => this.navigate('/')}>Home</a></span>
+                <FontAwesomeIcon icon={faTachometerAlt} /> <span className={classes.leftMenuText}>
+                  <button type='button' className={classes.linkButton} onClick={() => this.navigate('/')}>Home</button></span>
               </li>
               <li ref={(el) => this.menuRefs['firm'] = el}
                 onMouseEnter={() => this.showSubMenu('firm')}
