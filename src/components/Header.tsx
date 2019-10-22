@@ -1,6 +1,8 @@
 import * as React from 'react';
 
 import { AlertBanner } from './AlertBanner';
+import { NavToggleButton } from './NavToggleButton';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faTimesCircle, faBars, faSearch } from '@fortawesome/pro-regular-svg-icons';
@@ -61,18 +63,13 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
     public render(): React.ReactElement<IHeaderProps> {
         return (
             <div>
-                <AlertBanner 
-                    show={this.state.showAlert} 
-                    message={`Alert: System will be down for maintenance Saturday 3/14/19 from 7 PM to 9 PM EST`} 
+                <AlertBanner
+                    show={this.state.showAlert}
+                    message={`Alert: System will be down for maintenance Saturday 3/14/19 from 7 PM to 9 PM EST`}
                     onClose={() => this.setState({ showAlert: false })} />
-                    
+
                 <div className={classes.headerContainer}>
-                    {!this.props.leftNavVisible && <button type='button' className={classes.menuOpenButton}
-                        onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faBars} size={"3x"} />
-                    </button>}
-                    {this.props.leftNavVisible && <button type='button' className={classes.menuCloseButton}
-                        onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faTimesCircle} size={"3x"} />
-                    </button>}
+                    <NavToggleButton onClick={this.props.handleToggleLeftNav} navVisible={this.props.leftNavVisible} />
                     <img src={nmLogo} alt='Logo' className={classes.logoImage} onClick={() => this.navigate('/')} />
                     <span className={classes.titleText}>NM-Connect</span>
                     <div className={classes.searchContainer}>

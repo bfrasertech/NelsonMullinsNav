@@ -34,18 +34,8 @@
     margin: 0 auto;
     width: 50%;
 }
-.menuControl{
-    height: 100%;
-    background-color: #475666;
-    width: 80px;
-    color: #fff;
-}
-.menuControlButton{
-    background-color: #475666;
-    border: none;
-    cursor: pointer;
-    padding: 30% 0 0 30%;
-}
+
+
 .logoImage{
     margin: 22px 30px;
     height: 30px;
@@ -73,24 +63,3 @@
     cursor: pointer;
 }
 
-.menuOpenButton{
-    color: #689ac5;
-    background-color: #fff;
-    border: none;
-    height: 30px;
-    width: 30px;
-    margin: 28px 22px;
-    cursor: pointer;
-    svg{
-        height: 30px;
-        width: 30px;
-    }
-}
-.menuCloseButton{
-    height: 100%;
-    background-color: #475666;
-    width: 80px;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}

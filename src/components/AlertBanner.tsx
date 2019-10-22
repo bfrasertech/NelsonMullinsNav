@@ -13,7 +13,7 @@ export interface IAlertBannerProps {
 
 export const AlertBanner = (props: IAlertBannerProps): React.ReactElement<IAlertBannerProps> => {
     if (props.show) {
-        return (props.show &&
+        return (
             <div className={classes.alertContainer}>
                 <div className={classes.alertMessage}>
                     <span>{props.message}</span>

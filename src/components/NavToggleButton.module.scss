@@ -1,0 +1,21 @@
+.navOpenButton{
+    color: #689ac5;
+    background-color: #fff;
+    border: none;
+    height: 30px;
+    width: 30px;
+    margin: 28px 22px;
+    cursor: pointer;
+    svg{
+        height: 30px;
+        width: 30px;
+    }
+}
+.navCloseButton{
+    height: 100%;
+    background-color: #475666;
+    width: 80px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
