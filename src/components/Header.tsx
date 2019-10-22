@@ -1,7 +1,9 @@
 import * as React from 'react';
+
+import { AlertBanner } from './AlertBanner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faTimesCircle, faBars, faSearch, faTimes } from '@fortawesome/pro-regular-svg-icons';
+import { faTimesCircle, faBars, faSearch } from '@fortawesome/pro-regular-svg-icons';
 
 import classes from './Header.module.scss';
 
@@ -59,17 +61,11 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
     public render(): React.ReactElement<IHeaderProps> {
         return (
             <div>
-                {this.state.showAlert &&
-                    <div className={classes.alertContainer}>
-                        <div className={classes.alertMessage}>
-                            <span>
-                                Alert: System will be down for maintenance Saturday 3/14/19 from 7 PM to 9 PM EST
-                            </span>
-                        </div>
-                        <button type='button' className={classes.alertCloseButton}
-                            onClick={() => this.setState({ showAlert: false })}><FontAwesomeIcon icon={faTimes} size={"2x"} />
-                        </button>
-                    </div>}
+                <AlertBanner 
+                    show={this.state.showAlert} 
+                    message={`Alert: System will be down for maintenance Saturday 3/14/19 from 7 PM to 9 PM EST`} 
+                    onClose={() => this.setState({ showAlert: false })} />
+                    
                 <div className={classes.headerContainer}>
                     {!this.props.leftNavVisible && <button type='button' className={classes.menuOpenButton}
                         onClick={this.props.handleToggleLeftNav}><FontAwesomeIcon icon={faBars} size={"3x"} />

@@ -1,0 +1,18 @@
+.alertContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    background-color: #af1422;
+    color: #fff;
+    font-weight: 600;
+    font-size: 14px;
+}
+.alertMessage{
+    width: 90%;
+}
+.alertCloseButton{
+    background-color: #af1422;
+    border: none;
+    cursor: pointer;
+}
