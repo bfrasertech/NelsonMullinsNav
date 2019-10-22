@@ -2,25 +2,24 @@ import * as React from 'react';
 
 import { AlertBanner } from './AlertBanner';
 import { NavToggleButton } from './NavToggleButton';
+import { Logo } from './Logo';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { faTimesCircle, faBars, faSearch } from '@fortawesome/pro-regular-svg-icons';
+import { faSearch } from '@fortawesome/pro-regular-svg-icons';
 
 import classes from './Header.module.scss';
 
 export interface IHeaderProps {
     handleToggleGuidedSearch: (searchTerm: string) => void;
     onNavButtonClicked: () => void;
+    onLogoClicked: () => void;
     leftNavVisible: boolean;
 }
 export interface IHeaderState {
     showAlert: boolean;
     searchTerm: string;
 }
-
-/* tslint:disable no-any */
-const nmLogo: any = require('../images/nmconnect_logo_1.jpg');
 
 export default class Header extends React.Component<IHeaderProps, IHeaderState> {
     constructor(props: IHeaderProps) {
@@ -31,33 +30,6 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             showAlert: true,
             searchTerm: ''
         };
-
-        document.addEventListener('keypress', this.handleKeyPress, false);
-    }
-
-    private handleKeyPress = (event: any): void => {
-        if (event.keyCode === 49) {
-            console.log('f1');
-            this.setState({
-                showAlert: !this.state.showAlert
-            });
-        }
-
-        if (event.keyCode === 50) {
-            console.log('f2');
-        }
-    }
-
-    private navigate = (url: string): void => {
-        let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
-
-        if (url.indexOf('http') === 0) {
-            window.location.href = url;
-        } else if (url.indexOf('/') === 0) {
-            window.location.href = `${baseUrl}${url}`;
-        } else {
-            window.location.href = `${baseUrl}/${url}`;
-        }
     }
 
     public render(): React.ReactElement<IHeaderProps> {
@@ -70,8 +42,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
                 <div className={classes.headerContainer}>
                     <NavToggleButton onClick={this.props.onNavButtonClicked} navVisible={this.props.leftNavVisible} />
-                    <img src={nmLogo} alt='Logo' className={classes.logoImage} onClick={() => this.navigate('/')} />
-                    <span className={classes.titleText}>NM-Connect</span>
+                    <Logo onClick={this.props.onLogoClicked} />
                     <div className={classes.searchContainer}>
                         <input
                             type='text'

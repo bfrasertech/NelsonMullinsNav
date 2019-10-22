@@ -64,10 +64,26 @@ export default class App extends React.Component<IAppProps, IAppState> {
         this.setState({ showLeftNav: !this.state.showLeftNav });
     }
 
+    private handleLogoClick = () => {
+        this.navigate('/');
+    }
+
+    private navigate = (url: string): void => {
+        let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
+
+        if (url.indexOf('http') === 0) {
+            window.location.href = url;
+        } else if (url.indexOf('/') === 0) {
+            window.location.href = `${baseUrl}${url}`;
+        } else {
+            window.location.href = `${baseUrl}/${url}`;
+        }
+    }
+
     public render(): React.ReactElement<IAppProps> {
         return (
             <div className={classes.appContainer}>
-                <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} onNavButtonClicked={this.handleToggleLeftNav} leftNavVisible={this.state.showLeftNav} />
+                <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} onNavButtonClicked={this.handleToggleLeftNav} onLogoClicked={this.handleLogoClick} leftNavVisible={this.state.showLeftNav} />
                 <LeftNav context={this.props.context} top={130} show={this.state.showLeftNav} />
                 {this.state.showGuidedSearch && <GuidedSearch peopleResults={this.state.peopleResults} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
             </div>
