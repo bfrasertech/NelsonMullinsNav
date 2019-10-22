@@ -21,10 +21,8 @@ export interface IAppState {
     clientResults: clientSearchServices.IClient[];
     matterResults: matterSearchServices.IMatter[];
     peopleResults: peopleSearchServices.IPerson[];
+    showAlert: boolean;
 }
-
-/* tslint:disable no-any */
-const nmLogo: any = require('../images/nm_logo.png');
 
 export default class App extends React.Component<IAppProps, IAppState> {
     constructor(props: IAppProps) {
@@ -37,12 +35,13 @@ export default class App extends React.Component<IAppProps, IAppState> {
             currentSearchTerm: 'Search for People, Clients, Matters, and Internet Content here...',
             clientResults: [],
             matterResults: [],
-            peopleResults: []
+            peopleResults: [],
+            showAlert: true
         };
     }
 
     private handleToggleGuidedSearch = (searchTerm: string) => {
-        // if (!this.state.showGuidedSearch){
+
         clientSearchServices.searchClients(searchTerm).then(cResults => {
             matterSearchServices.searchMatters(searchTerm).then(mResults => {
                 peopleSearchServices.searchPeople(searchTerm).then(pResults => {
@@ -51,9 +50,6 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
             });
         });
-        // }else{
-        //     this.setState({ showGuidedSearch: !this.state.showGuidedSearch, currentSearchTerm: searchTerm });
-        // }
     }
 
     private handleGuidedSearchClose = () => {
@@ -66,6 +62,11 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
     private handleLogoClick = () => {
         this.navigate('/');
+    }
+
+    private handleCloseAlert = () => {
+        this.setState({ showAlert: false });
+
     }
 
     private navigate = (url: string): void => {
@@ -83,7 +84,13 @@ export default class App extends React.Component<IAppProps, IAppState> {
     public render(): React.ReactElement<IAppProps> {
         return (
             <div className={classes.appContainer}>
-                <Header handleToggleGuidedSearch={this.handleToggleGuidedSearch} onNavButtonClicked={this.handleToggleLeftNav} onLogoClicked={this.handleLogoClick} leftNavVisible={this.state.showLeftNav} />
+                <Header
+                    showAlert={this.state.showAlert}
+                    handleToggleGuidedSearch={this.handleToggleGuidedSearch}
+                    onNavButtonClicked={this.handleToggleLeftNav}
+                    onLogoClicked={this.handleLogoClick}
+                    onCloseAlert={this.handleCloseAlert}
+                    leftNavVisible={this.state.showLeftNav} />
                 <LeftNav context={this.props.context} top={130} show={this.state.showLeftNav} />
                 {this.state.showGuidedSearch && <GuidedSearch peopleResults={this.state.peopleResults} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
             </div>

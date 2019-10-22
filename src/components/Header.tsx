@@ -14,10 +14,11 @@ export interface IHeaderProps {
     handleToggleGuidedSearch: (searchTerm: string) => void;
     onNavButtonClicked: () => void;
     onLogoClicked: () => void;
+    onCloseAlert: () => void;
     leftNavVisible: boolean;
+    showAlert: boolean;
 }
 export interface IHeaderState {
-    showAlert: boolean;
     searchTerm: string;
 }
 
@@ -27,7 +28,6 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         super(props);
 
         this.state = {
-            showAlert: true,
             searchTerm: ''
         };
     }
@@ -36,9 +36,9 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         return (
             <div>
                 <AlertBanner
-                    show={this.state.showAlert}
+                    show={this.props.showAlert}
                     message={`Alert: System will be down for maintenance Saturday 3/14/19 from 7 PM to 9 PM EST`}
-                    onClose={() => this.setState({ showAlert: false })} />
+                    onClose={this.props.onCloseAlert} />
 
                 <div className={classes.headerContainer}>
                     <NavToggleButton onClick={this.props.onNavButtonClicked} navVisible={this.props.leftNavVisible} />
