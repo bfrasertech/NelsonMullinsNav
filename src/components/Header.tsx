@@ -11,7 +11,7 @@ import classes from './Header.module.scss';
 
 export interface IHeaderProps {
     handleToggleGuidedSearch: (searchTerm: string) => void;
-    handleToggleLeftNav: () => void;
+    onNavButtonClicked: () => void;
     leftNavVisible: boolean;
 }
 export interface IHeaderState {
@@ -69,7 +69,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                     onClose={() => this.setState({ showAlert: false })} />
 
                 <div className={classes.headerContainer}>
-                    <NavToggleButton onClick={this.props.handleToggleLeftNav} navVisible={this.props.leftNavVisible} />
+                    <NavToggleButton onClick={this.props.onNavButtonClicked} navVisible={this.props.leftNavVisible} />
                     <img src={nmLogo} alt='Logo' className={classes.logoImage} onClick={() => this.navigate('/')} />
                     <span className={classes.titleText}>NM-Connect</span>
                     <div className={classes.searchContainer}>
