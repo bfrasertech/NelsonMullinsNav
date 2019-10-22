@@ -29,11 +29,11 @@ export default class GuidedSearch extends React.Component<
   private navigate = (url: string): void => {
     let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
 
-    if (url.indexOf('http') === 0){
+    if (url.indexOf('http') === 0) {
       window.location.href = url;
-    } else if (url.indexOf('/') === 0){
+    } else if (url.indexOf('/') === 0) {
       window.location.href = `${baseUrl}${url}`;
-    } else{
+    } else {
       window.location.href = `${baseUrl}/${url}`;
     }
   }
@@ -59,12 +59,12 @@ export default class GuidedSearch extends React.Component<
                   <div className={classes.rate}>Standard Rate: $000</div>
                   <div className={classes.assistant}>
                     <span className={classes.assistantPrefix}>Assistant:</span>
-                    <span className={classes.assistantName}><a href="#">{person.assistantName ? person.assistantName : 'N/A'}</a></span> 
+                    <span className={classes.assistantName}><a href="#">{person.assistantName ? person.assistantName : 'N/A'}</a></span>
                     <span>{`x${person.assistantExtension ? person.assistantExtension : '0000'}`}</span>
                   </div>
                   <div className={classes.floorPlan}>
                     {' '}
-                    <a href="#">Floor Plan</a>{' '}
+                    <button type='button' className={classes.linkButton} onClick={() => this.navigate(person.floorPlanUrl)}>Floor Plan</button>
                   </div>
                 </div>
               </div>
@@ -74,16 +74,16 @@ export default class GuidedSearch extends React.Component<
         <div className={classes.clientDirectoryContainer}>
           <div className={classes.header}>Client Directory</div>
           <div className={classes.inner}>
-            { this.props.clientResults && this.props.clientResults.length > 0 &&
-            <ul>
-              {this.props.clientResults.map((client: clientSearchServices.IClient) => {
-                return (
-                  <li key={client.id}>
-                    <button type='button' className={classes.linkButton} onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)}>{`${client.name} (${client.clientNumber})`}</button>
-                  </li>
-                );
-              })}
-            </ul>
+            {this.props.clientResults && this.props.clientResults.length > 0 &&
+              <ul>
+                {this.props.clientResults.map((client: clientSearchServices.IClient) => {
+                  return (
+                    <li key={client.id}>
+                      <button type='button' className={classes.linkButton} onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)}>{`${client.name} (${client.clientNumber})`}</button>
+                    </li>
+                  );
+                })}
+              </ul>
             }
             {
               !this.props.clientResults || this.props.clientResults.length <= 0 && <span className={classes.noResults}>No results to display...</span>
