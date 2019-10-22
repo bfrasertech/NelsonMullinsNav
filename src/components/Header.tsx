@@ -16,7 +16,7 @@ export interface IHeaderState {
 }
 
 /* tslint:disable no-any */
-const nmLogo: any = require('../images/nm_logo.png');
+const nmLogo: any = require('../images/nmconnect_logo_1.jpg');
 
 export default class Header extends React.Component<IHeaderProps, IHeaderState> {
     constructor(props: IHeaderProps) {
