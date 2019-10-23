@@ -10,6 +10,7 @@ import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import * as clientSearchServices from '../services/ClientSearch.Service';
 import * as matterSearchServices from '../services/MatterSearch.Service';
 import * as peopleSearchServices from '../services/PeopleSearch.Service';
+import * as spdataservices from '../services/spdata.service';
 
 export interface IAppProps {
     context: ApplicationCustomizerContext;
@@ -22,6 +23,8 @@ export interface IAppState {
     matterResults: matterSearchServices.IMatter[];
     peopleResults: peopleSearchServices.IPerson[];
     showAlert: boolean;
+    alertMessage: string;
+    alertTitle: string;
 }
 
 export default class App extends React.Component<IAppProps, IAppState> {
@@ -36,8 +39,18 @@ export default class App extends React.Component<IAppProps, IAppState> {
             clientResults: [],
             matterResults: [],
             peopleResults: [],
-            showAlert: true
+            showAlert: true,
+            alertTitle: undefined,
+            alertMessage: undefined
         };
+    }
+
+    componentDidMount() {
+        spdataservices.fetchActiveAlert(this.props.context).then((alert: spdataservices.IAlert) => {
+            if (alert) {
+                this.setState({ alertTitle: alert.title, alertMessage: alert.body })
+            }
+        });
     }
 
     private handleToggleGuidedSearch = (searchTerm: string) => {
@@ -86,6 +99,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
             <div className={classes.appContainer}>
                 <Header
                     showAlert={this.state.showAlert}
+                    alertTitle={this.state.alertTitle}
+                    alertMessage={this.state.alertMessage}
                     handleToggleGuidedSearch={this.handleToggleGuidedSearch}
                     onNavButtonClicked={this.handleToggleLeftNav}
                     onLogoClicked={this.handleLogoClick}

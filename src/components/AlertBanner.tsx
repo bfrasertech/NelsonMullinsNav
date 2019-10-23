@@ -7,16 +7,17 @@ import classes from './AlertBanner.module.scss';
 
 export interface IAlertBannerProps {
     show: boolean;
+    title: string;
     message: string;
     onClose: () => void;
 }
 
 export const AlertBanner = (props: IAlertBannerProps): React.ReactElement<IAlertBannerProps> => {
-    if (props.show) {
+    if (props.show && props.title) {
         return (
             <div className={classes.alertContainer}>
                 <div className={classes.alertMessage}>
-                    <span>{props.message}</span>
+                    <span>{props.title}</span>
                 </div>
                 <button type='button' className={classes.alertCloseButton}
                     onClick={props.onClose}><FontAwesomeIcon icon={faTimes} size={"2x"} />

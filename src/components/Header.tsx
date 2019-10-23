@@ -14,6 +14,8 @@ export interface IHeaderProps {
     onCloseAlert: () => void;
     leftNavVisible: boolean;
     showAlert: boolean;
+    alertMessage: string;
+    alertTitle: string;
 }
 export interface IHeaderState {}
 
@@ -29,7 +31,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             <div>
                 <AlertBanner
                     show={this.props.showAlert}
-                    message={`Alert: System will be down for maintenance Saturday 3/14/19 from 7 PM to 9 PM EST`}
+                    title={this.props.alertTitle}
+                    message={this.props.alertMessage}
                     onClose={this.props.onCloseAlert} />
 
                 <div className={classes.headerContainer}>
