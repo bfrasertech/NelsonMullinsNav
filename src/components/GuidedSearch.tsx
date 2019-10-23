@@ -15,7 +15,7 @@ export interface IGuidedSearchProps {
 }
 export interface IGuidedSearchState { }
 
-export default class GuidedSearch extends React.Component<
+export class GuidedSearch extends React.Component<
   IGuidedSearchProps,
   IGuidedSearchState
   > {

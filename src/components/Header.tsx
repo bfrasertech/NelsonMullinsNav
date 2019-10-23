@@ -4,11 +4,15 @@ import { AlertBanner } from './AlertBanner';
 import { NavToggleButton } from './NavToggleButton';
 import { Logo } from './Logo';
 import { SearchBox } from './SearchBox';
+import { GuidedSearch } from './GuidedSearch';
+
+import * as clientSearchServices from '../services/ClientSearch.Service';
+import * as matterSearchServices from '../services/MatterSearch.Service';
+import * as peopleSearchServices from '../services/PeopleSearch.Service';
 
 import classes from './Header.module.scss';
 
 export interface IHeaderProps {
-    handleToggleGuidedSearch: (searchTerm: string) => void;
     onNavButtonClicked: () => void;
     onLogoClicked: () => void;
     leftNavVisible: boolean;
@@ -18,6 +22,11 @@ export interface IHeaderProps {
 export interface IHeaderState {
     showAlert: boolean;
     showAlertPopup: boolean;
+    showGuidedSearch: boolean;
+    currentSearchTerm: string;
+    clientResults: clientSearchServices.IClient[];
+    matterResults: matterSearchServices.IMatter[];
+    peopleResults: peopleSearchServices.IPerson[];
 }
 
 export default class Header extends React.Component<IHeaderProps, IHeaderState> {
@@ -26,7 +35,12 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
         this.state = {
             showAlert: true,
-            showAlertPopup: false
+            showAlertPopup: false,
+            showGuidedSearch: false,
+            currentSearchTerm: 'Search for People, Clients, Matters, and Internet Content here...',
+            clientResults: [],
+            matterResults: [],
+            peopleResults: []
         }
     }
 
@@ -40,6 +54,22 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
     private handleCloseAlertPopup = () => {
         this.setState({ showAlertPopup: false });
+    }
+
+    private handleToggleGuidedSearch = (searchTerm: string) => {
+
+        clientSearchServices.searchClients(searchTerm).then(cResults => {
+            matterSearchServices.searchMatters(searchTerm).then(mResults => {
+                peopleSearchServices.searchPeople(searchTerm).then(pResults => {
+                    this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults });
+                });
+
+            });
+        });
+    }
+
+    private handleGuidedSearchClose = () => {
+        this.setState({ showGuidedSearch: false });
     }
 
     public render(): React.ReactElement<IHeaderProps> {
@@ -56,8 +86,17 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                 <div className={classes.headerContainer}>
                     <NavToggleButton onClick={this.props.onNavButtonClicked} navVisible={this.props.leftNavVisible} />
                     <Logo onClick={this.props.onLogoClicked} />
-                    <SearchBox onSearch={this.props.handleToggleGuidedSearch} />
+                    <SearchBox onSearch={this.handleToggleGuidedSearch} />
                 </div>
+                {
+                    this.state.showGuidedSearch &&
+                    <GuidedSearch
+                        peopleResults={this.state.peopleResults}
+                        clientResults={this.state.clientResults}
+                        matterResults={this.state.matterResults}
+                        searchTerm={this.state.currentSearchTerm}
+                        handleClose={this.handleGuidedSearchClose} />
+                }
             </div>
         );
     }

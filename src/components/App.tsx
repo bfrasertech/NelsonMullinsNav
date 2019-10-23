@@ -4,25 +4,16 @@ import classes from './App.module.scss';
 
 import Header from './Header';
 import LeftNav from './LeftNav';
-import GuidedSearch from './GuidedSearch';
 
-
-import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
-import * as clientSearchServices from '../services/ClientSearch.Service';
-import * as matterSearchServices from '../services/MatterSearch.Service';
-import * as peopleSearchServices from '../services/PeopleSearch.Service';
 import * as spdataservices from '../services/spdata.service';
+import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
 export interface IAppProps {
     context: ApplicationCustomizerContext;
 }
 export interface IAppState {
-    showGuidedSearch: boolean;
+    
     showLeftNav: boolean;
-    currentSearchTerm: string;
-    clientResults: clientSearchServices.IClient[];
-    matterResults: matterSearchServices.IMatter[];
-    peopleResults: peopleSearchServices.IPerson[];
     alertMessage: string;
     alertTitle: string;
 }
@@ -33,12 +24,9 @@ export default class App extends React.Component<IAppProps, IAppState> {
         super(props);
 
         this.state = {
-            showGuidedSearch: false,
+            
             showLeftNav: false,
-            currentSearchTerm: 'Search for People, Clients, Matters, and Internet Content here...',
-            clientResults: [],
-            matterResults: [],
-            peopleResults: [],
+           
             alertTitle: undefined,
             alertMessage: undefined
         };
@@ -50,22 +38,6 @@ export default class App extends React.Component<IAppProps, IAppState> {
                 this.setState({ alertTitle: alert.title, alertMessage: alert.body })
             }
         });
-    }
-
-    private handleToggleGuidedSearch = (searchTerm: string) => {
-
-        clientSearchServices.searchClients(searchTerm).then(cResults => {
-            matterSearchServices.searchMatters(searchTerm).then(mResults => {
-                peopleSearchServices.searchPeople(searchTerm).then(pResults => {
-                    this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults });
-                });
-
-            });
-        });
-    }
-
-    private handleGuidedSearchClose = () => {
-        this.setState({ showGuidedSearch: false });
     }
 
     private handleToggleLeftNav = () => {
@@ -94,13 +66,10 @@ export default class App extends React.Component<IAppProps, IAppState> {
                 <Header
                     alertTitle={this.state.alertTitle}
                     alertMessage={this.state.alertMessage}
-                    handleToggleGuidedSearch={this.handleToggleGuidedSearch}
                     onNavButtonClicked={this.handleToggleLeftNav}
                     onLogoClicked={this.handleLogoClick}
                     leftNavVisible={this.state.showLeftNav} />
                 <LeftNav context={this.props.context} top={130} show={this.state.showLeftNav} />
-                {this.state.showGuidedSearch && <GuidedSearch peopleResults={this.state.peopleResults} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
-                
             </div>
         );
     }
