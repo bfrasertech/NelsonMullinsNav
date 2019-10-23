@@ -5,7 +5,7 @@ import classes from './App.module.scss';
 import Header from './Header';
 import LeftNav from './LeftNav';
 import GuidedSearch from './GuidedSearch';
-import { AlertPopup } from './AlertPopup';
+
 
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import * as clientSearchServices from '../services/ClientSearch.Service';
@@ -23,10 +23,8 @@ export interface IAppState {
     clientResults: clientSearchServices.IClient[];
     matterResults: matterSearchServices.IMatter[];
     peopleResults: peopleSearchServices.IPerson[];
-    showAlert: boolean;
     alertMessage: string;
     alertTitle: string;
-    showAlertPopup: boolean;
 }
 
 export default class App extends React.Component<IAppProps, IAppState> {
@@ -41,10 +39,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
             clientResults: [],
             matterResults: [],
             peopleResults: [],
-            showAlert: true,
             alertTitle: undefined,
-            alertMessage: undefined,
-            showAlertPopup: false
+            alertMessage: undefined
         };
     }
 
@@ -80,18 +76,6 @@ export default class App extends React.Component<IAppProps, IAppState> {
         this.navigate('/');
     }
 
-    private handleCloseAlert = () => {
-        this.setState({ showAlert: false });
-    }
-
-    private handleShowAlertPopup = () => {
-        this.setState({ showAlertPopup: true });
-    }
-
-    private handleCloseAlertPopup = () => {
-        this.setState({ showAlertPopup: false });
-    }
-
     private navigate = (url: string): void => {
         let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
 
@@ -108,18 +92,15 @@ export default class App extends React.Component<IAppProps, IAppState> {
         return (
             <div className={classes.appContainer}>
                 <Header
-                    showAlert={this.state.showAlert}
                     alertTitle={this.state.alertTitle}
                     alertMessage={this.state.alertMessage}
                     handleToggleGuidedSearch={this.handleToggleGuidedSearch}
                     onNavButtonClicked={this.handleToggleLeftNav}
                     onLogoClicked={this.handleLogoClick}
-                    onCloseAlert={this.handleCloseAlert}
-                    leftNavVisible={this.state.showLeftNav}
-                    onShowAlertPopup={this.handleShowAlertPopup} />
+                    leftNavVisible={this.state.showLeftNav} />
                 <LeftNav context={this.props.context} top={130} show={this.state.showLeftNav} />
                 {this.state.showGuidedSearch && <GuidedSearch peopleResults={this.state.peopleResults} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
-                <AlertPopup title={this.state.alertTitle} message={this.state.alertMessage} show={this.state.showAlertPopup} onClose={this.handleCloseAlertPopup} />
+                
             </div>
         );
     }
