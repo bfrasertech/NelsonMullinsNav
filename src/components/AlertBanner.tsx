@@ -10,6 +10,7 @@ export interface IAlertBannerProps {
     title: string;
     message: string;
     onClose: () => void;
+    onShowPopup: () => void;
 }
 
 export const AlertBanner = (props: IAlertBannerProps): React.ReactElement<IAlertBannerProps> => {
@@ -17,7 +18,10 @@ export const AlertBanner = (props: IAlertBannerProps): React.ReactElement<IAlert
         return (
             <div className={classes.alertContainer}>
                 <div className={classes.alertMessage}>
-                    <span>{props.title}</span>
+                    <button type='button' className={classes.alertCloseButton}
+                        onClick={props.onShowPopup}><span>{props.title}</span>
+                    </button>
+
                 </div>
                 <button type='button' className={classes.alertCloseButton}
                     onClick={props.onClose}><FontAwesomeIcon icon={faTimes} size={"2x"} />

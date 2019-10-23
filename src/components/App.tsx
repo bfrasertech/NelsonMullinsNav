@@ -5,6 +5,7 @@ import classes from './App.module.scss';
 import Header from './Header';
 import LeftNav from './LeftNav';
 import GuidedSearch from './GuidedSearch';
+import { AlertPopup } from './AlertPopup';
 
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import * as clientSearchServices from '../services/ClientSearch.Service';
@@ -25,6 +26,7 @@ export interface IAppState {
     showAlert: boolean;
     alertMessage: string;
     alertTitle: string;
+    showAlertPopup: boolean;
 }
 
 export default class App extends React.Component<IAppProps, IAppState> {
@@ -41,7 +43,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
             peopleResults: [],
             showAlert: true,
             alertTitle: undefined,
-            alertMessage: undefined
+            alertMessage: undefined,
+            showAlertPopup: false
         };
     }
 
@@ -79,7 +82,14 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
     private handleCloseAlert = () => {
         this.setState({ showAlert: false });
+    }
 
+    private handleShowAlertPopup = () => {
+        this.setState({ showAlertPopup: true });
+    }
+
+    private handleCloseAlertPopup = () => {
+        this.setState({ showAlertPopup: false });
     }
 
     private navigate = (url: string): void => {
@@ -105,9 +115,11 @@ export default class App extends React.Component<IAppProps, IAppState> {
                     onNavButtonClicked={this.handleToggleLeftNav}
                     onLogoClicked={this.handleLogoClick}
                     onCloseAlert={this.handleCloseAlert}
-                    leftNavVisible={this.state.showLeftNav} />
+                    leftNavVisible={this.state.showLeftNav}
+                    onShowAlertPopup={this.handleShowAlertPopup} />
                 <LeftNav context={this.props.context} top={130} show={this.state.showLeftNav} />
                 {this.state.showGuidedSearch && <GuidedSearch peopleResults={this.state.peopleResults} clientResults={this.state.clientResults} matterResults={this.state.matterResults} searchTerm={this.state.currentSearchTerm} handleClose={this.handleGuidedSearchClose} />}
+                <AlertPopup title={this.state.alertTitle} message={this.state.alertMessage} show={this.state.showAlertPopup} onClose={this.handleCloseAlertPopup} />
             </div>
         );
     }

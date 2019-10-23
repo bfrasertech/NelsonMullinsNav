@@ -12,6 +12,7 @@ export interface IHeaderProps {
     onNavButtonClicked: () => void;
     onLogoClicked: () => void;
     onCloseAlert: () => void;
+    onShowAlertPopup: () => void; 
     leftNavVisible: boolean;
     showAlert: boolean;
     alertMessage: string;
@@ -21,9 +22,7 @@ export interface IHeaderState {}
 
 export default class Header extends React.Component<IHeaderProps, IHeaderState> {
     constructor(props: IHeaderProps) {
-
         super(props);
-
     }
 
     public render(): React.ReactElement<IHeaderProps> {
@@ -33,8 +32,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                     show={this.props.showAlert}
                     title={this.props.alertTitle}
                     message={this.props.alertMessage}
+                    onShowPopup={this.props.onShowAlertPopup}
                     onClose={this.props.onCloseAlert} />
-
                 <div className={classes.headerContainer}>
                     <NavToggleButton onClick={this.props.onNavButtonClicked} navVisible={this.props.leftNavVisible} />
                     <Logo onClick={this.props.onLogoClicked} />
