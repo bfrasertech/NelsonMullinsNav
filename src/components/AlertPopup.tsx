@@ -24,7 +24,7 @@ export const AlertPopup = (props: IAlertPopupProps): React.ReactElement<IAlertPo
                         onClick={props.onClose}><FontAwesomeIcon icon={faTimes} size={"2x"} />
                     </button>
                 </div>
-                <div className={classes.alertPopupBody}>{props.message}</div>
+                <div className={classes.alertPopupBody}><span className={classes.messageText}>{props.message}</span></div>
             </div>);
     } else {
         return null;

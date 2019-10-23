@@ -29,9 +29,11 @@
         border: none;
         cursor: pointer;
     }
+    .messageText{
+        margin: 25px 20px;
+    }
 }
 .alertPopupBody{
-    padding: 25px 15px;
     width: 100%;
     height: 75%;
     flex-grow: 1;
