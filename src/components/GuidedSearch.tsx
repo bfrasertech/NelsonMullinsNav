@@ -52,7 +52,7 @@ export default class GuidedSearch extends React.Component<
                 <div className={classes.dataContainer}>
                   <div className={classes.headerContainer}>
                     <span className={classes.personName}><a href={`https://people.nmrs.com/${person.networkid}`} target="_blank">{person.name}</a></span>
-                    <span className={classes.personExtension}>Ext: x45286</span>
+                    <span className={classes.personExtension}>Ext: x{person.extension}</span>
                   </div>
                   <div className={classes.title}>{person.title}</div>
                   <div className={classes.department}>{person.department}</div>
