@@ -4,11 +4,12 @@ import * as clientSearchServices from '../services/ClientSearch.Service';
 import * as matterSearchServices from '../services/MatterSearch.Service';
 import * as peopleSearchServices from '../services/PeopleSearch.Service';
 
-import { PersonCard } from './PersonCard';
+
 import { ClientResultSummary } from './ClientResultSummary';
 import { MatterResultSummary } from './MatterResultSummary';
 import { SearchTypeList } from './SearchTypeList';
 import { IntranetResultSummary } from './IntranetResultSummary';
+import { PeopleResultsSummary } from './PeopleResultSummary';
 
 import classes from './GuidedSearch.module.scss';
 
@@ -34,15 +35,8 @@ export class GuidedSearch extends React.Component<
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
       <div className={classes.guidedSearchContainer}>
-        <div className={classes.peopleResultsContainer}>
-          <div className={classes.header}>People Directory</div>
 
-          {this.props.peopleResults.map((person: peopleSearchServices.IPerson) => {
-            return (
-              <PersonCard person={person} />
-            );
-          })}
-        </div>
+        <PeopleResultsSummary peopleResults={this.props.peopleResults} />
         <ClientResultSummary clientResults={this.props.clientResults} />
         <MatterResultSummary matterResults={this.props.matterResults} />
         <SearchTypeList />
