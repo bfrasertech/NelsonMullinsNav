@@ -5,6 +5,8 @@ import * as matterSearchServices from '../services/MatterSearch.Service';
 import * as peopleSearchServices from '../services/PeopleSearch.Service';
 
 import { PersonCard } from './PersonCard';
+import { ClientResultSummary } from './ClientResultSummary';
+import { MatterResultSummary } from './MatterResultSummary';
 
 import classes from './GuidedSearch.module.scss';
 
@@ -52,39 +54,9 @@ export class GuidedSearch extends React.Component<
             );
           })}
         </div>
-        <div className={classes.clientDirectoryContainer}>
-          <div className={classes.header}>Client Directory</div>
-          <div className={classes.inner}>
-            {this.props.clientResults && this.props.clientResults.length > 0 &&
-              <ul>
-                {this.props.clientResults.map((client: clientSearchServices.IClient) => {
-                  return (
-                    <li key={client.id}>
-                      <button type='button' className={classes.linkButton} onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)}>{`${client.name} (${client.clientNumber})`}</button>
-                    </li>
-                  );
-                })}
-              </ul>
-            }
-            {
-              !this.props.clientResults || this.props.clientResults.length <= 0 && <span className={classes.noResults}>No results to display...</span>
-            }
-          </div>
-        </div>
-        <div className={classes.matterLookupContainer}>
-          <div className={classes.header}>Matter Lookup</div>
-          <div className={classes.inner}>
-            <ul>
-              {this.props.matterResults.map((matter: matterSearchServices.IMatter) => {
-                return (
-                  <li key={matter.id}>
-                    <button type='button' className={classes.linkButton} onClick={() => this.navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)}>{`${matter.name} (${matter.matterNumber})`}</button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        </div>
+        <ClientResultSummary clientResults={this.props.clientResults} />
+        <MatterResultSummary matterResults={this.props.matterResults} />
+
         <div className={classes.selectASearchContainer}>
           <div className={classes.header}>Select a Search</div>
           <div className={classes.inner}>

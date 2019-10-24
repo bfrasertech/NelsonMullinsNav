@@ -38,71 +38,8 @@
         line-height: 17px;
         margin: 0 0 7px 0;
     };
-    .clientDirectoryContainer{
-        width: 35%;
-        margin: 25px 10px;
-        height: 190px;
-        .inner{
-            height: 100%;
-            border: 1px solid #e8edf1;
-            ul{
-                list-style: none;
-                li{
-                    padding: 5px 0;
-                    a, a:hover, a:visited{
-                        font-weight: 600;
-                        font-size: 14px;
-                        color: #689ac5;
-                        text-decoration: none;
-                    }
-                    .linkButton{
-                        background: none;
-                        border: none;
-                        font-weight: 600;
-                        font-size: 14px;
-                        color: #689ac5;
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-        .noResults{
-            line-height: 16px;
-            font-size: 16px;
-        }
-    }
-    .matterLookupContainer{
-        width: 35%;
-        margin: 25px 10px;
-        height: 190px;
-        .inner{
-            height: 100%;
-            border: 1px solid #e8edf1;
-            ul{
-                line-height: 16px;
-                list-style: none;
-                li{
-                    padding: 5px 0;
-                    a, a:hover, a:visited{
-                        font-weight: 600;
-                        font-size: 14px;
-                        color: #689ac5;
-                        text-decoration: none;
-                    }
-                    .linkButton{
-                        background: none;
-                        border: none;
-                        font-weight: 600;
-                        font-size: 14px;
-                        color: #689ac5;
-                        text-decoration: none;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-    }
+    
+    
     .selectASearchContainer{
         width: 25%;
         margin: 25px 10px;
