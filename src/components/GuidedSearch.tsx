@@ -34,7 +34,7 @@ export class GuidedSearch extends React.Component<
 
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
-      <div className={classes.guidedSearchContainer}>
+      <div className={classes.container}>
 
         <PeopleResultsSummary peopleResults={this.props.peopleResults} />
         <ClientResultSummary clientResults={this.props.clientResults} />
