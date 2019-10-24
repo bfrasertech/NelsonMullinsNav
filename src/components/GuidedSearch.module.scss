@@ -41,27 +41,7 @@
     
     
     
-    .intranetSearchContainer{
-        width: 70%;
-        margin: 25px 10px;
-        height: 190px;
-        .inner{
-            border: 1px solid #e8edf1;
-
-            ul{
-                list-style: none;
-                li{
-                    height: 50px;
-                    a, a:hover, a:visited{
-                        font-weight: 600;
-                        font-size: 14px;
-                        color: #689ac5;
-                        text-decoration: none;
-                    }
-                }
-            }
-        }
-    }
+    
     .footer{
         position: absolute;
         bottom: 0;

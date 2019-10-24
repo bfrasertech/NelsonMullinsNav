@@ -1,0 +1,29 @@
+.container{
+    width: 70%;
+    margin: 25px 10px;
+    height: 190px;
+    .header{
+        width: 100%;
+        font-family: 'Quattrocento Sans', sans-serif;
+        font-size: 20px;
+        color: #000;
+        line-height: 17px;
+        margin: 0 0 7px 0;
+    };
+    .inner{
+        border: 1px solid #e8edf1;
+
+        ul{
+            list-style: none;
+            li{
+                height: 50px;
+                a, a:hover, a:visited{
+                    font-weight: 600;
+                    font-size: 14px;
+                    color: #689ac5;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}

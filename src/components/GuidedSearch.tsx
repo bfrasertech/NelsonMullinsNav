@@ -8,6 +8,7 @@ import { PersonCard } from './PersonCard';
 import { ClientResultSummary } from './ClientResultSummary';
 import { MatterResultSummary } from './MatterResultSummary';
 import { SearchTypeList } from './SearchTypeList';
+import { IntranetResultSummary } from './IntranetResultSummary';
 
 import classes from './GuidedSearch.module.scss';
 
@@ -27,20 +28,7 @@ export class GuidedSearch extends React.Component<
   constructor(props: IGuidedSearchProps) {
     super(props);
 
-    this.state = {
-    };
-  }
-
-  private navigate = (url: string): void => {
-    let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
-
-    if (url.indexOf('http') === 0) {
-      window.location.href = url;
-    } else if (url.indexOf('/') === 0) {
-      window.location.href = `${baseUrl}${url}`;
-    } else {
-      window.location.href = `${baseUrl}/${url}`;
-    }
+    this.state = {};
   }
 
   public render(): React.ReactElement<IGuidedSearchProps> {
@@ -58,38 +46,8 @@ export class GuidedSearch extends React.Component<
         <ClientResultSummary clientResults={this.props.clientResults} />
         <MatterResultSummary matterResults={this.props.matterResults} />
         <SearchTypeList />
+        <IntranetResultSummary />
 
-        <div className={classes.intranetSearchContainer}>
-          <div className={classes.header}>Intranet Search Results</div>
-          <div className={classes.inner}>
-            <ul>
-              <li>
-                <div>
-                  <a href="#">Jones file name from intranet</a>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-              </li>
-              <li>
-                <div>
-                  <a href="#">Jones file name from intranet</a>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-              </li>
-              <li>
-                <div>
-                  <a href="#">Jones file name from intranet</a>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-              </li>
-              <li>
-                <div>
-                  <a href="#">Jones file name from intranet</a>
-                </div>
-                <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-              </li>
-            </ul>
-          </div>
-        </div>
         <div className={classes.footer}>
           <button type="button" onClick={this.props.handleClose}>Close Search</button>
         </div>
