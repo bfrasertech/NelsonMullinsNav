@@ -4,6 +4,8 @@ import * as clientSearchServices from '../services/ClientSearch.Service';
 import * as matterSearchServices from '../services/MatterSearch.Service';
 import * as peopleSearchServices from '../services/PeopleSearch.Service';
 
+import { PersonCard } from './PersonCard';
+
 import classes from './GuidedSearch.module.scss';
 
 export interface IGuidedSearchProps {
@@ -46,28 +48,7 @@ export class GuidedSearch extends React.Component<
 
           {this.props.peopleResults.map((person: peopleSearchServices.IPerson) => {
             return (
-              <div className={classes.peopleCard}>
-                <div className={classes.photoContainer} style={{ backgroundImage: `url(${person.photoUrl})` }}>
-                </div>
-                <div className={classes.dataContainer}>
-                  <div className={classes.headerContainer}>
-                    <span className={classes.personName}><a href={`https://people.nmrs.com/${person.networkid}`} target="_blank">{person.name}</a></span>
-                    <span className={classes.personExtension}>Ext: x{person.extension}</span>
-                  </div>
-                  <div className={classes.title}>{person.title}</div>
-                  <div className={classes.department}>{person.department}</div>
-                  <div className={classes.rate}>Standard Rate: $000</div>
-                  <div className={classes.assistant}>
-                    <span className={classes.assistantPrefix}>Assistant:</span>
-                    <span className={classes.assistantName}><a href="#">{person.assistantName ? person.assistantName : 'N/A'}</a></span>
-                    <span>{`x${person.assistantExtension ? person.assistantExtension : '0000'}`}</span>
-                  </div>
-                  <div className={classes.floorPlan}>
-                    {' '}
-                    <button type='button' className={classes.linkButton} onClick={() => this.navigate(person.floorPlanUrl)}>Floor Plan</button>
-                  </div>
-                </div>
-              </div>
+              <PersonCard person={person} />
             );
           })}
         </div>
