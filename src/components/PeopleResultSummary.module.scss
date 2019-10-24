@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 .container {
   width: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  margin: 5px 28px;
+  box-sizing: border-box;
   .header {
     display: flex;
     justify-content: space-between;
@@ -12,5 +15,16 @@
     color: #000;
     line-height: 17px;
     margin: 0 0 7px 0;
+    .moreText{
+      font-family: 'Open Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #689ac5;
+    }
+    .moreIcon{
+      color: #689ac5;
+      width: 17px;
+      height: 13px;
+    }
   }
 }
