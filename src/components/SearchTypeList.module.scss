@@ -1,0 +1,34 @@
+.container{
+    width: 25%;
+    margin: 25px 10px;
+    height: 190px;
+    .header{
+        width: 100%;
+        font-family: 'Quattrocento Sans', sans-serif;
+        font-size: 20px;
+        color: #000;
+        line-height: 17px;
+        margin: 0 0 7px 0;
+    };
+    .inner{
+        border: 1px solid #e8edf1;
+        :nth-child(even){
+            background-color: #f8f8f8;
+        }
+        :nth-child(odd){
+            background-color: #fff;
+        }
+        .searchTypes{
+            list-style: none;
+            li{
+                padding: 0 20px;
+                line-height: 50px;
+                height: 50px;
+                font-weight: 600;
+                    font-size: 14px;
+                    color: #689ac5;
+                    text-decoration: none;
+            }
+        }
+    }
+}

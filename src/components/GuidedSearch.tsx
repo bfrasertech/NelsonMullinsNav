@@ -7,6 +7,7 @@ import * as peopleSearchServices from '../services/PeopleSearch.Service';
 import { PersonCard } from './PersonCard';
 import { ClientResultSummary } from './ClientResultSummary';
 import { MatterResultSummary } from './MatterResultSummary';
+import { SearchTypeList } from './SearchTypeList';
 
 import classes from './GuidedSearch.module.scss';
 
@@ -56,20 +57,8 @@ export class GuidedSearch extends React.Component<
         </div>
         <ClientResultSummary clientResults={this.props.clientResults} />
         <MatterResultSummary matterResults={this.props.matterResults} />
+        <SearchTypeList />
 
-        <div className={classes.selectASearchContainer}>
-          <div className={classes.header}>Select a Search</div>
-          <div className={classes.inner}>
-            <ul className={classes.searchTypes}>
-              <li>People</li>
-              <li>Library Catalog</li>
-              <li>Clients</li>
-              <li>Matters</li>
-              <li>Intranet</li>
-              <li>Google</li>
-            </ul>
-          </div>
-        </div>
         <div className={classes.intranetSearchContainer}>
           <div className={classes.header}>Intranet Search Results</div>
           <div className={classes.inner}>
