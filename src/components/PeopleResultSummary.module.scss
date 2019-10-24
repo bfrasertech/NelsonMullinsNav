@@ -4,6 +4,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   .header {
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     font-family: "Quattrocento Sans", sans-serif;
     font-size: 20px;
