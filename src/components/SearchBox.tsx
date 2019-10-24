@@ -29,12 +29,17 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
                 <input
                     type='text'
                     className={classes.searchBox}
-                    onChange={(event: any) => this.setState({ searchTerm: event.target.value })}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({ searchTerm: event.target.value })}
                     onFocus={() => this.setState({ searchTerm: '' })}
-                    onKeyDown={(e) => { if (e.key === 'Enter') this.props.onSearch(this.state.searchTerm) }}
+                    onKeyDown={(e) => { if (e.key === 'Enter') {this.props.onSearch(this.state.searchTerm);} }}
                     value={this.state.searchTerm}>
                 </input>
-                <button type='button' className={classes.searchButton} onClick={() => this.props.onSearch(this.state.searchTerm)}><FontAwesomeIcon icon={faSearch} /></button>
+                <button 
+                    type='button' 
+                    className={classes.searchButton} 
+                    onClick={() => this.props.onSearch(this.state.searchTerm)}>
+                        <FontAwesomeIcon icon={faSearch} />
+                </button>
             </div>
         );
     }
