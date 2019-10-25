@@ -16,14 +16,19 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
   return (
     <div className={classes.card}>
       <div className={classes.photo} style={{ backgroundImage: `url(${props.person.photoUrl}), url('../images//person.png')` }}>
-        
+
       </div>
       <div className={classes.dataContainer}>
         <div className={classes.header}>
-          <span className={classes.name}>
-            <a href={`${PERSON_PROFILE_PREFIX}${props.person.networkid}`} target="_blank" title={props.person.name}>{trimWithEllipsis(props.person.name, 16)}</a>
-          </span>
-          <span className={classes.extension}>Ext: x{props.person.extension}</span>
+          <div className={classes.name}>
+            <a href={`${PERSON_PROFILE_PREFIX}${props.person.networkid}`} target="_blank" title={props.person.name}>
+              {trimWithEllipsis(props.person.name, 26)}
+            </a>
+          </div>
+          <div className={classes.phoneContainer}>
+            <span className={classes.phonePrefix}>Phone:</span>
+            <span>{props.person.extension}</span>
+          </div>
         </div>
         <div className={classes.title}>{props.person.title}</div>
         <div className={classes.department}>{props.person.department}</div>
