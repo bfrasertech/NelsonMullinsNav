@@ -1,0 +1,38 @@
+{
+  "d": {
+    "odata.metadata": "https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/$metadata#CMSMatters\u0026$select=matter_uno,long_matt_name,inactive",
+    "__count": 376,
+    "results": [
+      {
+        "matter_uno": 165233,
+        "long_matt_name": " GAL for Citeiria Smith and Frandaisia Smith-Dendy",
+        "inactive": "N"
+      },
+      {
+        "matter_uno": 399013,
+        "long_matt_name": "(SC) Smith, Ronald D, et al. v. American General Life Insurance Company",
+        "inactive": "N"
+      },
+      {
+        "matter_uno": 398836,
+        "long_matt_name": "106 Weenee Road - Smith (SC)",
+        "inactive": "N"
+      },
+      {
+        "matter_uno": 392946,
+        "long_matt_name": "431 Goldsmith Road - Lewis",
+        "inactive": "N"
+      },
+      {
+        "matter_uno": 494759,
+        "long_matt_name": "4980 Dan Smith Road",
+        "inactive": "N"
+      }
+    ],
+    "requestedfields": [
+      { "name": "matter_uno", "path": "matter_uno", "type": "Int32" },
+      { "name": "long_matt_name", "path": "long_matt_name", "type": "String" },
+      { "name": "inactive", "path": "inactive", "type": "String" }
+    ]
+  }
+}

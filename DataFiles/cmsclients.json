@@ -1,0 +1,34 @@
+{
+  "d": {
+    "odata.metadata": "https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/$metadata#CMSClients\u0026$select=Client_uno,client_name,inactive",
+    "__count": 499,
+    "results": [
+      {
+        "client_uno": 56821,
+        "client_name": "A. Todd Smith DDS, PA",
+        "inactive": "N"
+      },
+      { "client_uno": 108388, "client_name": "Alex Smith", "inactive": "N" },
+      {
+        "client_uno": 69442,
+        "client_name": "Allan \u0026 Harriett Smith",
+        "inactive": "N"
+      },
+      {
+        "client_uno": 76200,
+        "client_name": "Allen and Lee Smith",
+        "inactive": "N"
+      },
+      {
+        "client_uno": 101356,
+        "client_name": "Amelia Jane Smith",
+        "inactive": "N"
+      }
+    ],
+    "requestedfields": [
+      { "name": "client_uno", "path": "client_uno", "type": "Int32" },
+      { "name": "client_name", "path": "client_name", "type": "String" },
+      { "name": "inactive", "path": "inactive", "type": "String" }
+    ]
+  }
+}
