@@ -58,6 +58,9 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
     private handleSearch = (searchTerm: string) => {
 
+        if (searchTerm.length < 3){
+            return;
+        }
         clientSearchServices.searchClients(searchTerm).then(cResults => {
             matterSearchServices.searchMatters(searchTerm).then(mResults => {
                 peopleSearchServices.searchPeople(searchTerm).then(pResults => {

@@ -42,7 +42,10 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
     }
 
     private handleSearch = (): void => {
-        this.debounce(this.props.onSearch(this.state.searchTerm), 3000);
+        let fn = this.debounce(() => {
+            this.props.onSearch(this.state.searchTerm);
+        }, 2000);
+        fn();
     }
 
     public render(): React.ReactElement<ISearchBoxProps> {
