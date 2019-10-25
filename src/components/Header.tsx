@@ -56,7 +56,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         this.setState({ showAlertPopup: false });
     }
 
-    private handleToggleGuidedSearch = (searchTerm: string) => {
+    private handleSearch = (searchTerm: string) => {
 
         clientSearchServices.searchClients(searchTerm).then(cResults => {
             matterSearchServices.searchMatters(searchTerm).then(mResults => {
@@ -68,7 +68,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         });
     }
 
-    private handleGuidedSearchClose = () => {
+    private handleCloseGuidedSearch = () => {
         this.setState({ showGuidedSearch: false });
     }
 
@@ -86,7 +86,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                 <div className={classes.headerContainer}>
                     <NavToggleButton onClick={this.props.onNavButtonClicked} navVisible={this.props.leftNavVisible} />
                     <Logo onClick={this.props.onLogoClicked} />
-                    <SearchBox onSearch={this.handleToggleGuidedSearch} />
+                    <SearchBox onSearch={this.handleSearch} />
                 </div>
                 {
                     this.state.showGuidedSearch &&
@@ -95,7 +95,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         clientResults={this.state.clientResults}
                         matterResults={this.state.matterResults}
                         searchTerm={this.state.currentSearchTerm}
-                        handleClose={this.handleGuidedSearchClose} />
+                        handleClose={this.handleCloseGuidedSearch} />
                 }
             </div>
         );

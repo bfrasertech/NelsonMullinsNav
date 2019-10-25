@@ -23,22 +23,44 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
         };
     }
 
+    private debounce = (fn, delay) => {
+        var timer = null;
+        return function () {
+            var context = this,
+                args = arguments;
+            clearTimeout(timer);
+            timer = setTimeout(function () {
+                fn.apply(context, args);
+            }, delay);
+        };
+    }
+
+    private handleTermChange = (newTerm: string) => {
+        this.setState({ searchTerm: newTerm }, () => {
+            this.handleSearch();
+        })
+    }
+
+    private handleSearch = (): void => {
+        this.debounce(this.props.onSearch(this.state.searchTerm), 3000);
+    }
+
     public render(): React.ReactElement<ISearchBoxProps> {
         return (
             <div className={classes.searchContainer}>
                 <input
                     type='text'
                     className={classes.searchBox}
-                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => this.setState({ searchTerm: event.target.value })}
+                    onChange={(event: React.ChangeEvent<HTMLInputElement>) => (this.handleTermChange(event.target.value))}
                     onFocus={() => this.setState({ searchTerm: '' })}
-                    onKeyDown={(e) => { if (e.key === 'Enter') {this.props.onSearch(this.state.searchTerm);} }}
+                    onKeyDown={(e) => { if (e.key === 'Enter') { this.handleSearch(); } }}
                     value={this.state.searchTerm}>
                 </input>
-                <button 
-                    type='button' 
-                    className={classes.searchButton} 
+                <button
+                    type='button'
+                    className={classes.searchButton}
                     onClick={() => this.props.onSearch(this.state.searchTerm)}>
-                        <FontAwesomeIcon icon={faSearch} />
+                    <FontAwesomeIcon icon={faSearch} />
                 </button>
             </div>
         );

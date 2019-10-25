@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactDom from 'react-dom';
 
 import * as clientSearchServices from '../services/ClientSearch.Service';
 import * as matterSearchServices from '../services/MatterSearch.Service';
@@ -30,11 +31,34 @@ export class GuidedSearch extends React.Component<
     super(props);
 
     this.state = {};
+
+    this.setWrapperRef.bind(this);
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  public wrapperRef: any;
+
+  componentDidMount() {
+    document.addEventListener('mousedown', this.handleClickOutside);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('mousedown', this.handleClickOutside);
+  }
+
+  public setWrapperRef = (node) => {
+    this.wrapperRef = node;
+  }
+
+  public handleClickOutside = (event) => {
+    if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+      this.props.handleClose();
+    }
   }
 
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
-      <div className={classes.container}>
+      <div ref={this.setWrapperRef} className={classes.container}>
 
         <PeopleResultsSummary peopleResults={this.props.peopleResults} />
         <ClientResultSummary clientResults={this.props.clientResults} />
