@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import * as peopleSearchServices from '../services/PeopleSearch.Service';
+import { trimWithEllipsis } from '../services/Utilities';
 
 import classes from './PersonCard.module.scss';
 
@@ -18,7 +19,7 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
       <div className={classes.dataContainer}>
         <div className={classes.header}>
           <span className={classes.name}>
-            <a href={`${PERSON_PROFILE_PREFIX}${props.person.networkid}`} target="_blank">{props.person.name}</a>
+            <a href={`${PERSON_PROFILE_PREFIX}${props.person.networkid}`} target="_blank" title={props.person.name}>{trimWithEllipsis(props.person.name, 16)}</a>
           </span>
           <span className={classes.extension}>Ext: x{props.person.extension}</span>
         </div>
