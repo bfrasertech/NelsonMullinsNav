@@ -2,7 +2,7 @@
   border: 1px solid #e8edf1;
   height: 130px;
   width: 305px;
-  padding: 15px;
+  padding: 15px 6px;
   display: flex;
   justify-content: space-between;
   line-height: normal;
@@ -43,7 +43,7 @@
       }
       .extension {
         font-size: 12px;
-        width: 70px;
+        width: 80px;
         line-height: 24px;
         letter-spacing: 0;
         color: #464646;

@@ -17,7 +17,10 @@ export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.Re
   return (
     <div className={classes.container}>
       <div className={classes.header}>
-        <div>People Directory<FontAwesomeIcon icon={faInfoCircle} /></div>
+        <div>
+          <span className={classes.headerText}>People Directory</span>
+          <FontAwesomeIcon className={classes.infoIcon} icon={faInfoCircle} />
+        </div>
         <div>
           <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
         </div>
