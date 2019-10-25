@@ -5,7 +5,8 @@ import classes from './App.module.scss';
 import Header from './Header';
 import LeftNav from './LeftNav';
 
-import * as spdataservices from '../services/spdata.service';
+import {fetchActiveAlert, IAlert} from '../services/spdata.service';
+import { navigate } from '../services/Utilities';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
 export interface IAppProps {
@@ -33,7 +34,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
     }
 
     componentDidMount() {
-        spdataservices.fetchActiveAlert(this.props.context).then((alert: spdataservices.IAlert) => {
+        fetchActiveAlert(this.props.context).then((alert: IAlert) => {
             if (alert) {
                 this.setState({ alertTitle: alert.title, alertMessage: alert.body })
             }
@@ -45,19 +46,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
     }
 
     private handleLogoClick = () => {
-        this.navigate('/');
-    }
-
-    private navigate = (url: string): void => {
-        let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
-
-        if (url.indexOf('http') === 0) {
-            window.location.href = url;
-        } else if (url.indexOf('/') === 0) {
-            window.location.href = `${baseUrl}${url}`;
-        } else {
-            window.location.href = `${baseUrl}/${url}`;
-        }
+        navigate('/');
     }
 
     public render(): React.ReactElement<IAppProps> {

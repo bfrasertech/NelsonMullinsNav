@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import * as clientSearchServices from '../services/ClientSearch.Service';
+import { IClient } from '../services/ClientSearch.Service';
+import { navigate } from '../services/Utilities';
 
 import classes from './ClientResultSummary.module.scss';
 
 export interface IClientResultSumaryProps {
-    clientResults: clientSearchServices.IClient[];
+    clientResults: IClient[];
 }
 
 export const ClientResultSummary = (props: IClientResultSumaryProps): React.ReactElement<IClientResultSumaryProps> => {
@@ -15,13 +16,13 @@ export const ClientResultSummary = (props: IClientResultSumaryProps): React.Reac
             <div className={classes.inner}>
                 {props.clientResults && props.clientResults.length > 0 &&
                     <ul>
-                        {props.clientResults.map((client: clientSearchServices.IClient) => {
+                        {props.clientResults.map((client: IClient) => {
                             return (
                                 <li key={client.id}>
-                                    <button 
-                                        type='button' 
-                                        className={classes.linkButton} 
-                                        onClick={() => this.navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)}>
+                                    <button
+                                        type='button'
+                                        className={classes.linkButton}
+                                        onClick={() => navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)}>
                                         {`${client.name} (${client.clientNumber})`}</button>
                                 </li>
                             );

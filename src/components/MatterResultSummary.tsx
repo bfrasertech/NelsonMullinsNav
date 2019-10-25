@@ -1,12 +1,13 @@
 
 import * as React from 'react';
 
-import * as matterSearchServices from '../services/MatterSearch.Service';
+import { IMatter } from '../services/MatterSearch.Service';
+import { navigate } from '../services/Utilities';
 
 import classes from './MatterResultSummary.module.scss';
 
 export interface IMatterResultSumaryProps {
-    matterResults: matterSearchServices.IMatter[];
+    matterResults: IMatter[];
 }
 
 export const MatterResultSummary = (props: IMatterResultSumaryProps): React.ReactElement<IMatterResultSumaryProps> => {
@@ -15,12 +16,12 @@ export const MatterResultSummary = (props: IMatterResultSumaryProps): React.Reac
             <div className={classes.header}>Matter Lookup</div>
             <div className={classes.inner}>
                 <ul>
-                    {props.matterResults.map((matter: matterSearchServices.IMatter) => {
+                    {props.matterResults.map((matter: IMatter) => {
                         return (
                             <li key={matter.id}>
                                 <button type='button'
                                     className={classes.linkButton}
-                                    onClick={() => this.navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)}>
+                                    onClick={() => navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)}>
                                     {`${matter.name} (${matter.matterNumber})`}</button>
                             </li>
                         );

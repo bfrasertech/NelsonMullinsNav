@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import * as peopleSearchServices from '../services/PeopleSearch.Service';
 import { trimWithEllipsis } from '../services/Utilities';
+import { navigate } from '../services/Utilities';
 
 import classes from './PersonCard.module.scss';
 
@@ -39,7 +40,7 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
           <button
             type='button'
             className={classes.linkButton}
-            onClick={() => this.navigate(props.person.floorPlanUrl)}>Floor Plan</button>
+            onClick={() => navigate(props.person.floorPlanUrl)}>Floor Plan</button>
         </div>
       </div>
     </div>);

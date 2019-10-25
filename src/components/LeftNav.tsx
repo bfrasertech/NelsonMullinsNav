@@ -8,6 +8,7 @@ import {faClipboardListCheck, faHome, faQuestionSquare, faTachometerAlt, faGavel
 import classes from './LeftNav.module.scss';
 
 import * as NavServices from '../services/Navigation.Service';
+import { navigate } from '../services/Utilities';
 
 export interface INavChildGroup {
   id: string;
@@ -110,18 +111,6 @@ export default class LeftNav extends React.Component<
     this.setState({ idToShow: idToShow, subMenuTop: this.menuRefs[idToShow].getBoundingClientRect().top });
   }
 
-  private navigate = (url: string): void => {
-    let baseUrl: string = `${window.location.protocol}//${window.location.host}`;
-
-    if (url.indexOf('http') === 0){
-      window.location.href = url;
-    } else if (url.indexOf('/') === 0){
-      window.location.href = `${baseUrl}${url}`;
-    } else{
-      window.location.href = `${baseUrl}/${url}`;
-    }
-  }
-
   private hideSubMenu = () => {
     this.setState({ idToShow: undefined });
   }
@@ -138,7 +127,7 @@ export default class LeftNav extends React.Component<
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <FontAwesomeIcon icon={faTachometerAlt} /> <span className={classes.leftMenuText}>
-                  <button type='button' className={classes.linkButton} onClick={() => this.navigate('/')}>Home</button></span>
+                  <button type='button' className={classes.linkButton} onClick={() => navigate('/')}>Home</button></span>
               </li>
               <li ref={(el) => this.menuRefs['firm'] = el}
                 onMouseEnter={() => this.showSubMenu('firm')}
