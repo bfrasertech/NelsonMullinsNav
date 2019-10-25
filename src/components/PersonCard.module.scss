@@ -15,9 +15,13 @@
     background-size: cover;
     background-position: center;
     border: 1px solid #669ac5;
-    img {
-      height: 60px;
+    .fallback {
+      background-image: url('../images//person.png');
       width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center;
     }
   }
   .dataContainer {

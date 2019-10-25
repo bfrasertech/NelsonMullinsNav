@@ -14,7 +14,8 @@ const PERSON_PROFILE_PREFIX: string = 'https://people.nmrs.com/';
 export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonCardProps> => {
   return (
     <div className={classes.card}>
-      <div className={classes.photo} style={{ backgroundImage: `url(${props.person.photoUrl})` }}>
+      <div className={classes.photo} style={{ backgroundImage: `url(${props.person.photoUrl}), url('../images//person.png')` }}>
+        
       </div>
       <div className={classes.dataContainer}>
         <div className={classes.header}>
