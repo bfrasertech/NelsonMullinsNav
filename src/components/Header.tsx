@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
 import { AlertBanner } from './AlertBanner';
 import { NavToggleButton } from './NavToggleButton';
@@ -6,13 +7,15 @@ import { Logo } from './Logo';
 import { SearchBox } from './SearchBox';
 import { GuidedSearch } from './GuidedSearch';
 
-import * as clientSearchServices from '../services/ClientSearch.Service';
-import * as matterSearchServices from '../services/MatterSearch.Service';
-import * as peopleSearchServices from '../services/PeopleSearch.Service';
+import { searchClients, IClient } from '../services/ClientSearch.Service';
+import { searchMatters, IMatter } from '../services/MatterSearch.Service';
+import { searchPeople, IPerson } from '../services/PeopleSearch.Service';
+import { searchSite, IIntranetSearchResult } from '../services/spdata.service';
 
 import classes from './Header.module.scss';
 
 export interface IHeaderProps {
+    context: ApplicationCustomizerContext;
     onNavButtonClicked: () => void;
     onLogoClicked: () => void;
     leftNavVisible: boolean;
@@ -24,9 +27,10 @@ export interface IHeaderState {
     showAlertPopup: boolean;
     showGuidedSearch: boolean;
     currentSearchTerm: string;
-    clientResults: clientSearchServices.IClient[];
-    matterResults: matterSearchServices.IMatter[];
-    peopleResults: peopleSearchServices.IPerson[];
+    clientResults: IClient[];
+    matterResults: IMatter[];
+    peopleResults: IPerson[];
+    intranetSearchResults: IIntranetSearchResult[];
 }
 
 export default class Header extends React.Component<IHeaderProps, IHeaderState> {
@@ -40,7 +44,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             currentSearchTerm: 'Search for People, Clients, Matters, and Internet Content here...',
             clientResults: [],
             matterResults: [],
-            peopleResults: []
+            peopleResults: [],
+            intranetSearchResults: []
         }
     }
 
@@ -58,13 +63,16 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
     private handleSearch = (searchTerm: string) => {
 
-        if (searchTerm.length < 3){
+        if (searchTerm.length < 3) {
             return;
         }
-        clientSearchServices.searchClients(searchTerm).then(cResults => {
-            matterSearchServices.searchMatters(searchTerm).then(mResults => {
-                peopleSearchServices.searchPeople(searchTerm).then(pResults => {
-                    this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults });
+        searchSite(this.props.context, searchTerm).then((searchResults: any) => {
+            searchClients(searchTerm).then(cResults => {
+                searchMatters(searchTerm).then(mResults => {
+                    searchPeople(searchTerm).then(pResults => {
+
+                        this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults, intranetSearchResults: searchResults });
+                    });
                 });
 
             });
@@ -97,6 +105,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         peopleResults={this.state.peopleResults}
                         clientResults={this.state.clientResults}
                         matterResults={this.state.matterResults}
+                        intranetSearchResults={this.state.intranetSearchResults}
                         searchTerm={this.state.currentSearchTerm}
                         handleClose={this.handleCloseGuidedSearch} />
                 }

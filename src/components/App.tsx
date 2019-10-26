@@ -5,7 +5,7 @@ import classes from './App.module.scss';
 import Header from './Header';
 import LeftNav from './LeftNav';
 
-import {fetchActiveAlert, IAlert} from '../services/spdata.service';
+import { fetchActiveAlert, IAlert } from '../services/spdata.service';
 import { navigate } from '../services/Utilities';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
@@ -13,7 +13,7 @@ export interface IAppProps {
     context: ApplicationCustomizerContext;
 }
 export interface IAppState {
-    
+
     showLeftNav: boolean;
     alertMessage: string;
     alertTitle: string;
@@ -25,9 +25,9 @@ export default class App extends React.Component<IAppProps, IAppState> {
         super(props);
 
         this.state = {
-            
+
             showLeftNav: false,
-           
+
             alertTitle: undefined,
             alertMessage: undefined
         };
@@ -53,6 +53,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
         return (
             <div className={classes.appContainer}>
                 <Header
+                    context={this.props.context}
                     alertTitle={this.state.alertTitle}
                     alertMessage={this.state.alertMessage}
                     onNavButtonClicked={this.handleToggleLeftNav}

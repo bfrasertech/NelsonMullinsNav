@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 
-import * as clientSearchServices from '../services/ClientSearch.Service';
-import * as matterSearchServices from '../services/MatterSearch.Service';
-import * as peopleSearchServices from '../services/PeopleSearch.Service';
-
+import { IClient } from '../services/ClientSearch.Service';
+import { IMatter } from '../services/MatterSearch.Service';
+import { IPerson } from '../services/PeopleSearch.Service';
+import { IIntranetSearchResult } from '../services/spdata.service';
 
 import { ClientResultSummary } from './ClientResultSummary';
 import { MatterResultSummary } from './MatterResultSummary';
@@ -15,9 +15,10 @@ import { PeopleResultsSummary } from './PeopleResultSummary';
 import classes from './GuidedSearch.module.scss';
 
 export interface IGuidedSearchProps {
-  peopleResults: peopleSearchServices.IPerson[];
-  clientResults: clientSearchServices.IClient[];
-  matterResults: matterSearchServices.IMatter[];
+  peopleResults: IPerson[];
+  clientResults: IClient[];
+  matterResults: IMatter[];
+  intranetSearchResults: IIntranetSearchResult[];
   searchTerm: string;
   handleClose: () => void;
 }
@@ -64,7 +65,7 @@ export class GuidedSearch extends React.Component<
         <ClientResultSummary clientResults={this.props.clientResults} />
         <MatterResultSummary matterResults={this.props.matterResults} />
         <SearchTypeList />
-        <IntranetResultSummary />
+        <IntranetResultSummary intranetSearchResults={this.props.intranetSearchResults} />
 
         <div className={classes.footer}>
           <button type="button" onClick={this.props.handleClose}>Close Search</button>

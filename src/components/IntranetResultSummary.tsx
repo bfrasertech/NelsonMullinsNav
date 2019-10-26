@@ -1,8 +1,12 @@
 import * as React from 'react';
 
+import { IIntranetSearchResult } from '../services/spdata.service';
+
 import classes from './IntranetResultSummary.module.scss';
 
-export interface IIntranetResultSummaryProps {}
+export interface IIntranetResultSummaryProps {
+    intranetSearchResults: IIntranetSearchResult[]
+}
 
 export const IntranetResultSummary = (props: IIntranetResultSummaryProps): React.ReactElement<IIntranetResultSummaryProps> => {
     return (
@@ -10,30 +14,17 @@ export const IntranetResultSummary = (props: IIntranetResultSummaryProps): React
             <div className={classes.header}>Intranet Search Results</div>
             <div className={classes.inner}>
                 <ul>
-                    <li>
-                        <div>
-                            <a href="#">Jones file name from intranet</a>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="#">Jones file name from intranet</a>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="#">Jones file name from intranet</a>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-                    </li>
-                    <li>
-                        <div>
-                            <a href="#">Jones file name from intranet</a>
-                        </div>
-                        <div>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. </div>
-                    </li>
+                    {
+                        props.intranetSearchResults.map((result: IIntranetSearchResult) => (
+                            <li key={result.id}>
+                                <div>
+                                    <a href="#">{result.title}</a>
+                                </div>
+                                <div>{result.description}</div>
+                            </li>
+
+                        ))
+                    }
                 </ul>
             </div>
         </div>);
