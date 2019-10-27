@@ -3,12 +3,25 @@
     margin: 25px 10px;
     height: 190px;
     .header{
+        display: flex;
+        justify-content: space-between;
         width: 100%;
         font-family: 'Quattrocento Sans', sans-serif;
         font-size: 20px;
         color: #000;
         line-height: 17px;
         margin: 0 0 7px 0;
+        .moreText{
+            font-family: 'Open Sans', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            color: #689ac5;
+          }
+          .moreIcon{
+            color: #689ac5;
+            width: 17px;
+            height: 13px;
+          }
     };
     .inner{
         border: 1px solid #e8edf1;
