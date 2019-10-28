@@ -2,7 +2,9 @@ import * as React from 'react';
 
 import classes from './SearchTypeList.module.scss';
 
-export interface ISearchTypeListProps { }
+export interface ISearchTypeListProps { 
+    onIntranetClick: () => void;
+}
 
 export const SearchTypeList = (props: ISearchTypeListProps): React.ReactElement<ISearchTypeListProps> => {
     return (
@@ -14,7 +16,7 @@ export const SearchTypeList = (props: ISearchTypeListProps): React.ReactElement<
                     <li>Library Catalog</li>
                     <li>Clients</li>
                     <li>Matters</li>
-                    <li>Intranet</li>
+                    <li><button className={classes.linkButton} type="button" onClick={() => props.onIntranetClick()}>Intranet</button></li>
                     <li>Google</li>
                 </ul>
             </div>

@@ -66,6 +66,10 @@ export class GuidedSearch extends React.Component<
     navigate(url);
   }
 
+  public handleIntranetSearchTypeClick = () => {
+    navigate(`/_layouts/15/osssearchresults.aspx?k=*`);
+  }
+
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
       <div ref={this.setWrapperRef} className={classes.container}>
@@ -73,7 +77,7 @@ export class GuidedSearch extends React.Component<
         <PeopleResultsSummary peopleResults={this.props.peopleResults} />
         <ClientResultSummary clientResults={this.props.clientResults} />
         <MatterResultSummary matterResults={this.props.matterResults} />
-        <SearchTypeList />
+        <SearchTypeList onIntranetClick={this.handleIntranetSearchTypeClick} />
         <IntranetResultSummary 
           intranetSearchResults={this.props.intranetSearchResults} 
           onMoreClick={this.handleIntranetMoreClick}
