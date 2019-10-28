@@ -11,7 +11,7 @@ import {
 
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
 import App, { IAppProps } from '../../components/App';
-import Footer, { IFooterProps } from '../../components/Footer';
+import {Footer, IFooterProps } from '../../components/Footer';
 
 const LOG_SOURCE: string = 'NmrsNavigationApplicationCustomizer';
 

@@ -25,6 +25,7 @@
     "@microsoft/sp-dialog": "~1.4.0",
     "@types/es6-promise": "0.0.33",
     "@types/webpack-env": "1.13.1",
+    "moment-timezone": "^0.5.27",
     "react": "^15.6.2",
     "react-dom": "^15.6.2"
   },

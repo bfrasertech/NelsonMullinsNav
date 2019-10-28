@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans&display=swap');
 
+.outerContainer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .container{
     box-sizing: border-box;
     width: 1100px;
@@ -12,13 +17,15 @@
     height: 60px;
     font-family: 'Open Sans', sans-serif;
     .leftPanel{
-        background-color: #f7f7f7;
+        background-color: #E9EEF2;
         min-width: 400px;
         flex-basis: auto;
         flex-grow: 1;
         flex-shrink: 1;
         display: flex;
         justify-content: space-around;
+        height: 100%;
+        align-items: center;
         .timeZoneContainer{
             line-height: 8px;
             .header{
@@ -46,9 +53,11 @@
         flex-wrap: nowrap;
         flex-direction: row;
         justify-content: space-around;
+        height: 100%;
+        align-items: center;
         .timeZoneContainer{
             line-height: 8px;
-            width: 90px;
+            width: 110px;
             padding: 0 15px;
             .header{
                 font-weight: 600;
@@ -68,6 +77,10 @@
     }
     .helpPanel{
         color: #c68900;
+        background-color: #fff;
+        margin-left: 10px;
+        height: 60px;
+        padding: 10px;
         button{
             background: none;
             border: none;
