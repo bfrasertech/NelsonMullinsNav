@@ -1,46 +1,79 @@
-.footerContainer{
-    width: 100%;
+@import url('https://fonts.googleapis.com/css?family=Quattrocento+Sans&display=swap');
+
+.container{
+    box-sizing: border-box;
+    width: 1100px;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     background-color: #E9EEF2;
+    justify-content: space-between;
+    align-items: center;
     height: 60px;
-    .footerLeftPanel{
-        background-color: #C1CDD3;
-        width: 40%;
+    font-family: 'Open Sans', sans-serif;
+    .leftPanel{
+        background-color: #f7f7f7;
+        min-width: 400px;
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
         display: flex;
         justify-content: space-around;
         .timeZoneContainer{
             line-height: 8px;
             .header{
                 font-weight: 600;
+                font-size: 14px;
             }
             .time{
                 font-weight: 500;
+                font-size: 12px;
             }
             .location{
+                font-size: 12px;
                 margin-left: 6px;
-                font-weight: 200;
+                font-weight: 500;
+                color: #c1cdd3;
             }
         }
     }
-    .footerRightPanel{
+    .rightPanel{
         background-color: #fff;
-        width: 60%;
+        flex-basis: auto;
+        flex-grow: 1;
+        flex-shrink: 1;
         display: flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
         justify-content: space-around;
         .timeZoneContainer{
             line-height: 8px;
+            width: 90px;
             padding: 0 15px;
             .header{
                 font-weight: 600;
+                font-size: 14px;
             }
             .time{
                 font-weight: 500;
+                font-size: 12px;
             }
         }
         .location{
+            font-size: 12px;
             line-height: 8px;
             margin-left: 6px;
             padding: 0 15px;
+        }
+    }
+    .helpPanel{
+        color: #c68900;
+        button{
+            background: none;
+            border: none;
+            color: #c68900;
+            text-decoration: none;
+            cursor: pointer;
         }
     }
 }
