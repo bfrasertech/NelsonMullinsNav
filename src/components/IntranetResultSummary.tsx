@@ -8,6 +8,8 @@ import classes from './IntranetResultSummary.module.scss';
 
 export interface IIntranetResultSummaryProps {
   intranetSearchResults: IIntranetSearchResult[];
+  onMoreClick: () => void;
+  onResultClick: (url: string) => void;
 }
 
 export const IntranetResultSummary = (
@@ -18,18 +20,22 @@ export const IntranetResultSummary = (
       <div className={classes.header}>
         <div>Intranet Search Results</div>
         <div>
-          <span className={classes.moreText}>More</span>{' '}
-          <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+          <button type="button" className={classes.moreLink} onClick={props.onMoreClick}>
+            <span className={classes.moreText}>More</span>{' '}
+            <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+          </button>
         </div>
       </div>
       <div className={classes.inner}>
         <ul>
           {props.intranetSearchResults.map((result: IIntranetSearchResult) => (
             <li key={result.id}>
-              <div>
-                <a href="#">{result.title}</a>
-              </div>
-              <div>{result.description}</div>
+              <button className={classes.linkButton} type="button" onClick={() => props.onResultClick(result.url)}>
+                <div>
+                  <a href="#">{result.title}</a>
+                </div>
+                <div>{result.description}</div>
+              </button>
             </li>
           ))}
         </ul>

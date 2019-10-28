@@ -11,6 +11,12 @@
         color: #000;
         line-height: 17px;
         margin: 0 0 7px 0;
+        .moreLink{
+            cursor: pointer;
+            background: none;
+            border: none;
+            text-decoration: none;
+        }
         .moreText{
             font-family: 'Open Sans', sans-serif;
             font-size: 12px;
@@ -23,6 +29,15 @@
             height: 13px;
           }
     };
+    .linkButton{
+        background: none;
+        border: none;
+        font-weight: 600;
+        font-size: 14px;
+        color: #689ac5;
+        text-decoration: none;
+        cursor: pointer;
+    }
     .inner{
         border: 1px solid #e8edf1;
 

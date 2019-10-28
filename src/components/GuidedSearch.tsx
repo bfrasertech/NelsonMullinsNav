@@ -11,6 +11,7 @@ import { MatterResultSummary } from './MatterResultSummary';
 import { SearchTypeList } from './SearchTypeList';
 import { IntranetResultSummary } from './IntranetResultSummary';
 import { PeopleResultsSummary } from './PeopleResultSummary';
+import { navigate } from '../services/Utilities';
 
 import classes from './GuidedSearch.module.scss';
 
@@ -57,6 +58,14 @@ export class GuidedSearch extends React.Component<
     }
   }
 
+  public handleIntranetMoreClick = () => {
+    navigate(`/_layouts/15/osssearchresults.aspx?k=${this.props.searchTerm}`);
+  }
+
+  public handleIntranetResultClick = (url: string) => {
+    navigate(url);
+  }
+
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
       <div ref={this.setWrapperRef} className={classes.container}>
@@ -65,7 +74,10 @@ export class GuidedSearch extends React.Component<
         <ClientResultSummary clientResults={this.props.clientResults} />
         <MatterResultSummary matterResults={this.props.matterResults} />
         <SearchTypeList />
-        <IntranetResultSummary intranetSearchResults={this.props.intranetSearchResults} />
+        <IntranetResultSummary 
+          intranetSearchResults={this.props.intranetSearchResults} 
+          onMoreClick={this.handleIntranetMoreClick}
+          onResultClick={this.handleIntranetResultClick} />
 
         <div className={classes.footer}>
           <button type="button" onClick={this.props.handleClose}>Close Search</button>

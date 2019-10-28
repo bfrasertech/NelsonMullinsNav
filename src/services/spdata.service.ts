@@ -56,7 +56,7 @@ export const searchSite = (context: ApplicationCustomizerContext, searchTerm: st
     const today: Date = new Date();
 
     let searchUrl = `${context.pageContext.site.absoluteUrl}`;
-    searchUrl += `/_api/search/query?querytext='${searchTerm}'&rowLimit=5&selectproperties='Title'`;
+    searchUrl += `/_api/search/query?querytext='${searchTerm} (contentclass:STS_ListItem)'&rowLimit=5&selectproperties='Id,Title,Path,Description'`;
 
     return new Promise<IIntranetSearchResult>((resolve: (activeAlert: IIntranetSearchResult) => void, reject: (error: any) => void): void => {
 
@@ -112,9 +112,13 @@ const mapSPResultToIntranetSearchResult = (spResult: any): IIntranetSearchResult
             result.id = cell.Value;
         }
 
-        // if (cell.Key === 'Title'){
-        //     result.title = cell.Value;
-        // }
+        if (cell.Key === 'Path'){
+            result.url = cell.Value;
+        }
+
+        if (cell.Key === 'Description'){
+            result.description = cell.Value;
+        }
     });
 
     return result;
