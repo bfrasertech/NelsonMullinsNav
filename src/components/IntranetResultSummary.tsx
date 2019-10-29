@@ -28,8 +28,8 @@ export const IntranetResultSummary = (
       </div>
       <div className={classes.inner}>
         <ul>
-          {props.intranetSearchResults.map((result: IIntranetSearchResult) => (
-            <li key={result.id}>
+          {props.intranetSearchResults.map((result: IIntranetSearchResult, index: number) => (
+            <li key={index}>
               <button className={classes.linkButton} type="button" onClick={() => props.onResultClick(result.url)}>
                 <div>
                   <a href="#">{result.title}</a>

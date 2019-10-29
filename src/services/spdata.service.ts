@@ -51,14 +51,14 @@ export const fetchActiveAlert = (context: ApplicationCustomizerContext): Promise
     });
 }
 
-export const searchSite = (context: ApplicationCustomizerContext, searchTerm: string): Promise<IIntranetSearchResult> => {
+export const searchSite = (context: ApplicationCustomizerContext, searchTerm: string): Promise<IIntranetSearchResult[]> => {
 
     const today: Date = new Date();
 
     let searchUrl = `${context.pageContext.site.absoluteUrl}`;
     searchUrl += `/_api/search/query?querytext='${searchTerm} (contentclass:STS_ListItem)'&rowLimit=5&selectproperties='Id,Title,Path,Description'`;
 
-    return new Promise<IIntranetSearchResult>((resolve: (activeAlert: IIntranetSearchResult) => void, reject: (error: any) => void): void => {
+    return new Promise<IIntranetSearchResult[]>((resolve: (activeAlert: IIntranetSearchResult[]) => void, reject: (error: any) => void): void => {
 
         const headers: Headers = new Headers(); 
         headers.append('Accept', 'application/json; odata=verbose');
@@ -71,7 +71,7 @@ export const searchSite = (context: ApplicationCustomizerContext, searchTerm: st
 
         context.spHttpClient
             .get(searchUrl, SPHttpClient.configurations.v1)
-            .then((clientResponse: SPHttpClientResponse): Promise<IIntranetSearchResult> => {
+            .then((clientResponse: SPHttpClientResponse): Promise<IIntranetSearchResult[]> => {
                 if (clientResponse.ok) {
                     return clientResponse.json();
                 } else {
@@ -85,9 +85,9 @@ export const searchSite = (context: ApplicationCustomizerContext, searchTerm: st
                     && spResponse.PrimaryQueryResult.RelevantResults.Table 
                     && spResponse.PrimaryQueryResult.RelevantResults.Table.Rows 
                     && spResponse.PrimaryQueryResult.RelevantResults.Table.Rows.length > 0) {
-                    resolve(spResponse.PrimaryQueryResult.RelevantResults.Table.Rows.map((item: any) => mapSPResultToIntranetSearchResult(item)));
+                    resolve(spResponse.PrimaryQueryResult.RelevantResults.Table.Rows.map((item: any): IIntranetSearchResult => mapSPResultToIntranetSearchResult(item)));
                 } else{
-                    resolve(undefined);
+                    resolve([]);
                 }
             })
             .catch((error: any): void => {
