@@ -38,7 +38,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         super(props);
 
         this.state = {
-            showAlert: true,
+            showAlert: sessionStorage.getItem('nm-alert') === '1' ? false : true,
             showAlertPopup: false,
             showGuidedSearch: false,
             currentSearchTerm: 'Search for People, Clients, Matters, and Internet Content here...',
@@ -50,7 +50,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
     }
 
     private handleCloseAlert = () => {
-        this.setState({ showAlert: false })
+        this.setState({ showAlert: false });
+        sessionStorage.setItem('nm-alert', '1');
     }
 
     private handleShowAlertPopup = () => {
