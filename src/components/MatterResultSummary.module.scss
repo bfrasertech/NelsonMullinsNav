@@ -29,6 +29,7 @@
         ul{
             line-height: 16px;
             list-style: none;
+            padding-inline-start: 20px;
             li{
                 padding: 5px 0;
                 a, a:hover, a:visited{
@@ -48,5 +49,8 @@
                 }
             }
         }
+    }
+    .matterNumber{
+        margin-left: 4px;
     }
 }

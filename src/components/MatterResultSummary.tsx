@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink } from '@fortawesome/pro-solid-svg-icons';
+import { trimWithEllipsis } from '../services/Utilities';
 
 import { IMatter } from '../services/MatterSearch.Service';
 import { navigate } from '../services/Utilities';
@@ -35,7 +36,8 @@ export const MatterResultSummary = (
                     navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)
                   }
                 >
-                  {`${matter.name} (${matter.matterNumber})`}
+                  <span title={matter.name}>${trimWithEllipsis(matter.name, 45)}</span>
+                  <span className={classes.matterNumber}>{`(${matter.matterNumber})`}</span>
                 </button>
               </li>
             );

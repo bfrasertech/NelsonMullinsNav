@@ -27,7 +27,9 @@
         height: 100%;
         border: 1px solid #e8edf1;
         ul{
+            line-height: 16px;
             list-style: none;
+            padding-inline-start: 20px;
             li{
                 padding: 5px 0;
                 a, a:hover, a:visited{
@@ -51,5 +53,8 @@
     .noResults{
         line-height: 16px;
         font-size: 16px;
+    }
+    .clientNumber{
+        margin-left: 4px;
     }
 }

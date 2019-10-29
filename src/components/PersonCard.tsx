@@ -30,7 +30,7 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
             <span>{props.person.extension}</span>
           </div>
         </div>
-        <div className={classes.title}>{props.person.title}</div>
+        <div title={props.person.title} className={classes.title}>{trimWithEllipsis(props.person.title, 34)}</div>
         <div className={classes.department}>{props.person.department}</div>
         <div className={classes.rate}>Standard Rate: $000</div>
         <div className={classes.assistant}>

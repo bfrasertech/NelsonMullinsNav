@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink } from '@fortawesome/pro-solid-svg-icons';
+import { trimWithEllipsis } from '../services/Utilities';
 
 import { IClient } from '../services/ClientSearch.Service';
 import { navigate } from '../services/Utilities';
@@ -36,7 +37,8 @@ export const ClientResultSummary = (
                       navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)
                     }
                   >
-                    {`${client.name} (${client.clientNumber})`}
+                    <span title={client.name}>${trimWithEllipsis(client.name, 45)}</span>
+                    <span className={classes.clientNumber}>{`(${client.clientNumber})`}</span>
                   </button>
                 </li>
               );
