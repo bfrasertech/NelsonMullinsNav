@@ -107,6 +107,7 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
                         matterResults={this.state.matterResults}
                         intranetSearchResults={this.state.intranetSearchResults}
                         searchTerm={this.state.currentSearchTerm}
+                        top={this.state.showAlert ? 130 : 80}
                         handleClose={this.handleCloseGuidedSearch} />
                 }
             </div>

@@ -21,6 +21,7 @@ export interface IGuidedSearchProps {
   matterResults: IMatter[];
   intranetSearchResults: IIntranetSearchResult[];
   searchTerm: string;
+  top: number;
   handleClose: () => void;
 }
 export interface IGuidedSearchState { }
@@ -72,7 +73,7 @@ export class GuidedSearch extends React.Component<
 
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
-      <div ref={this.setWrapperRef} className={classes.container}>
+      <div ref={this.setWrapperRef} className={classes.container} style={{top: `${this.props.top}px`}}>
 
         <PeopleResultsSummary peopleResults={this.props.peopleResults} />
         <ClientResultSummary clientResults={this.props.clientResults} />
