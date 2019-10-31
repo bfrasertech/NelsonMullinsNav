@@ -37,7 +37,7 @@ export const ClientResultSummary = (
                       navigate(`/sitepages/client.aspx?CLIENT_UNO=${client.id}`)
                     }
                   >
-                    <span title={client.name}>${trimWithEllipsis(client.name, 45)}</span>
+                    <span title={client.name}>{trimWithEllipsis(client.name, 45)}</span>
                     <span className={classes.clientNumber}>{`(${client.clientNumber})`}</span>
                   </button>
                 </li>

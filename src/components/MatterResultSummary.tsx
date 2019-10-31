@@ -36,7 +36,7 @@ export const MatterResultSummary = (
                     navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)
                   }
                 >
-                  <span title={matter.name}>${trimWithEllipsis(matter.name, 45)}</span>
+                  <span title={matter.name}>{trimWithEllipsis(matter.name, 45)}</span>
                   <span className={classes.matterNumber}>{`(${matter.matterNumber})`}</span>
                 </button>
               </li>
