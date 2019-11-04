@@ -37,7 +37,7 @@ export const MatterResultSummary = (
                   }
                 >
                   <span title={matter.name}>{trimWithEllipsis(matter.name, 45)}</span>
-                  <span className={classes.matterNumber}>{`(${matter.matterNumber})`}</span>
+                  <span className={classes.matterNumber}>{`(${matter.matterCode})`}</span>
                 </button>
               </li>
             );

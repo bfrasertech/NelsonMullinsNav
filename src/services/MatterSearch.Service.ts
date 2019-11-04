@@ -2,18 +2,19 @@ export interface IMatter {
     id: string;
     name: string;
     matterNumber: string;
+    matterCode: string;
 }
 
 const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/cmsmatters';
 
-const mapResultToMatter = (result: any): IMatter => ({ id: result.matter_uno, name: result.long_matt_name, matterNumber: result.matter_uno });
+const mapResultToMatter = (result: any): IMatter => ({ id: result.matter_uno, name: result.long_matt_name, matterNumber: result.matter_uno, matterCode: result.matter_code });
 
 export const searchMatters = (searchTerm: string): Promise<IMatter[]> => {
 
 
     return new Promise<IMatter[]>((resolve: (matters: IMatter[]) => void, reject: (error: any) => void): void => {
 
-        fetch(`${baseUri}?$top=5&$orderby=long_matt_name&$inlinecount=allpages&$format=json&$select=matter_uno,long_matt_name,inactive&$filter=substringof('${searchTerm}', long_matt_name) and inactive eq 'N'`,
+        fetch(`${baseUri}?$top=5&$orderby=long_matt_name&$inlinecount=allpages&$format=json&$select=matter_uno,long_matt_name,inactive,matter_code&$filter=substringof('${searchTerm}', long_matt_name) and inactive eq 'N'`,
             {
                 method: 'GET', credentials: "include"
             })

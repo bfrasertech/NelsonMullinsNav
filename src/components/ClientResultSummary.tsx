@@ -38,7 +38,7 @@ export const ClientResultSummary = (
                     }
                   >
                     <span title={client.name}>{trimWithEllipsis(client.name, 45)}</span>
-                    <span className={classes.clientNumber}>{`(${client.clientNumber})`}</span>
+                    <span className={classes.clientNumber}>{`(${client.clientCode})`}</span>
                   </button>
                 </li>
               );
