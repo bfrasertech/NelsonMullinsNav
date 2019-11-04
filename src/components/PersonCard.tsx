@@ -6,6 +6,8 @@ import { navigate } from '../services/Utilities';
 
 import classes from './PersonCard.module.scss';
 
+const personPlaceholder: any = require('../images/person.png');
+
 export interface IPersonCardProps {
   person: peopleSearchServices.IPerson;
 }
@@ -15,7 +17,7 @@ const PERSON_PROFILE_PREFIX: string = 'https://people.nmrs.com/';
 export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonCardProps> => {
   return (
     <div className={classes.card}>
-      <div className={classes.photo} style={{ backgroundImage: `url(${props.person.photoUrl}), url('../images//person.png')` }}>
+      <div className={classes.photo} onError={() => alert('no image')} style={{ backgroundImage: `url(${props.person.photoUrl}), url(${personPlaceholder})` }}>
 
       </div>
       <div className={classes.dataContainer}>
