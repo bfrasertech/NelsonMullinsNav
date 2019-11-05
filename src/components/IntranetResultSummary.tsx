@@ -27,6 +27,7 @@ export const IntranetResultSummary = (
         </div>
       </div>
       <div className={classes.inner}>
+        { props.intranetSearchResults && props.intranetSearchResults.length > 0 &&
         <ul>
           {props.intranetSearchResults.map((result: IIntranetSearchResult, index: number) => (
             <li key={index}>
@@ -38,7 +39,11 @@ export const IntranetResultSummary = (
               </button>
             </li>
           ))}
-        </ul>
+        </ul>}
+        {!props.intranetSearchResults ||
+        (props.intranetSearchResults.length <= 0 && (
+          <div className={classes.noResults}>No results to display...</div>
+        ))}
       </div>
     </div>
   );

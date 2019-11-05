@@ -25,24 +25,29 @@ export const MatterResultSummary = (
         </div>
       </div>
       <div className={classes.inner}>
-        <ul>
-          {props.matterResults.map((matter: IMatter) => {
-            return (
-              <li key={matter.id}>
-                <button
-                  type="button"
-                  className={classes.linkButton}
-                  onClick={() =>
-                    navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)
-                  }
-                >
-                  <span title={matter.name}>{trimWithEllipsis(matter.name, 45)}</span>
-                  <span className={classes.matterNumber}>{`(${matter.matterCode})`}</span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+        {props.matterResults && props.matterResults.length > 0 &&
+          <ul>
+            {props.matterResults.map((matter: IMatter) => {
+              return (
+                <li key={matter.id}>
+                  <button
+                    type="button"
+                    className={classes.linkButton}
+                    onClick={() =>
+                      navigate(`/sitepages/matter.aspx?MATTER_UNO=${matter.id}`)
+                    }
+                  >
+                    <span title={matter.name}>{trimWithEllipsis(matter.name, 45)}</span>
+                    <span className={classes.matterNumber}>{`(${matter.matterCode})`}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>}
+         {!props.matterResults ||
+          (props.matterResults.length <= 0 && (
+            <div className={classes.noResults}>No results to display...</div>
+          ))}
       </div>
     </div>
   );

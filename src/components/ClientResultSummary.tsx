@@ -47,7 +47,7 @@ export const ClientResultSummary = (
         )}
         {!props.clientResults ||
           (props.clientResults.length <= 0 && (
-            <span className={classes.noResults}>No results to display...</span>
+            <div className={classes.noResults}>No results to display...</div>
           ))}
       </div>
     </div>

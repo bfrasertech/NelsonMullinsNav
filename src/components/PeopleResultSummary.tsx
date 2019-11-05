@@ -14,22 +14,40 @@ export interface IPeopleResultSummaryProps {
 }
 
 export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.ReactElement<IPeopleResultSummaryProps> => {
-  return (
-    <div className={classes.container}>
-      <div className={classes.header}>
-        <div>
-          <span className={classes.headerText}>People Directory</span>
-          <FontAwesomeIcon className={classes.infoIcon} icon={faInfoCircle} />
+  if (props.peopleResults && props.peopleResults.length > 0) {
+    return (
+      <div className={classes.container}>
+        <div className={classes.header}>
+          <div>
+            <span className={classes.headerText}>People Directory</span>
+            <FontAwesomeIcon className={classes.infoIcon} icon={faInfoCircle} />
+          </div>
+          <div>
+            <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+          </div>
         </div>
-        <div>
-          <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+        {
+          props.peopleResults.map((person: peopleSearchServices.IPerson) => {
+            return (
+              <PersonCard person={person} />
+            );
+          })
+        }
+      </div>);
+  } else {
+    return (
+      <div className={classes.container}>
+        <div className={classes.header}>
+          <div>
+            <span className={classes.headerText}>People Directory</span>
+            <FontAwesomeIcon className={classes.infoIcon} icon={faInfoCircle} />
+          </div>
+          <div>
+            <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+          </div>
         </div>
+        <div className={classes.noResults}>No results to display...</div>
       </div>
-
-      {props.peopleResults.map((person: peopleSearchServices.IPerson) => {
-        return (
-          <PersonCard person={person} />
-        );
-      })}
-    </div>);
+    );
+  }
 }
