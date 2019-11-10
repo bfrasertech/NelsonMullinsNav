@@ -29,7 +29,7 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
           </div>
           <div className={classes.phoneContainer}>
             <span className={classes.phonePrefix}>Phone:</span>
-            <span>{props.person.extension}</span>
+            <span>{props.person.phoneNumber}</span>
           </div>
         </div>
         <div title={props.person.title} className={classes.title}>{trimWithEllipsis(props.person.title, 34)}</div>

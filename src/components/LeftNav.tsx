@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faClipboardListCheck, faHome, faQuestionSquare, faTachometerAlt, faGavel, faUsers, faBalanceScale, faBuilding} from '@fortawesome/pro-solid-svg-icons';
+import { faClipboardListCheck, faHome, faQuestionSquare, faTachometerAlt, faGavel, faUsers, faBalanceScale, faBuilding } from '@fortawesome/pro-solid-svg-icons';
 
 import classes from './LeftNav.module.scss';
 
@@ -134,41 +134,41 @@ export default class LeftNav extends React.Component<
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <FontAwesomeIcon icon={faHome} /><span className={classes.leftMenuText}>Firm</span>
-                  </li>
+              </li>
               <li ref={(el) => this.menuRefs['managementGroups'] = el}
                 onMouseEnter={() => this.showSubMenu('managementGroups')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <FontAwesomeIcon icon={faGavel} /><span className={classes.leftMenuText}>Management Groups</span>
-                  </li>
+              </li>
               <li ref={(el) => this.menuRefs['teams'] = el}
                 onMouseEnter={() => this.showSubMenu('teams')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <FontAwesomeIcon icon={faUsers} /><span className={classes.leftMenuText}>Teams</span>
-                  </li>
+              </li>
               <li ref={(el) => this.menuRefs['committees'] = el}
                 onMouseEnter={() => this.showSubMenu('committees')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <FontAwesomeIcon icon={faBalanceScale} /><span className={classes.leftMenuText}>Committees</span>
-                  </li>
+              </li>
               <li ref={(el) => this.menuRefs['offices'] = el}
                 onMouseEnter={() => this.showSubMenu('offices')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <FontAwesomeIcon icon={faBuilding} /><span className={classes.leftMenuText}>Offices</span>
-                  </li>
+              </li>
               <li ref={(el) => this.menuRefs['administration'] = el}
                 onMouseEnter={() => this.showSubMenu('administration')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <FontAwesomeIcon icon={faClipboardListCheck} /><span className={classes.leftMenuText}>Administration</span>
-                  </li>
-                  <li 
+              </li>
+              <li
               >
                 <FontAwesomeIcon icon={faQuestionSquare} /><span className={classes.leftMenuText}>How Do I?</span>
-                  </li>
+              </li>
             </ul>
             {this.state.idToShow === 'managementGroups' &&
               <div
@@ -223,7 +223,7 @@ export default class LeftNav extends React.Component<
                     return (
                       <ul>
                         {group.map((navItem: NavServices.ICommittee) => {
-                          return <li><a href="#">{navItem.name}</a> </li>;
+                          return <li><button type='button' className={classes.linkButton} onClick={() => navigate(`/sitepages/committee.aspx?committee_uno=${navItem.id}`)}>{navItem.name}</button></li>;
                         })}
                       </ul>
                     );
@@ -246,7 +246,7 @@ export default class LeftNav extends React.Component<
                     return (
                       <ul>
                         {group.map((navItem: NavServices.IOffice) => {
-                          return <li><a href="#">{navItem.name}</a> </li>;
+                          return <li><button type='button' className={classes.linkButton} onClick={() => navigate(`/sitepages/office.aspx?office_uno=${navItem.id}`)}>{navItem.name}</button></li>;
                         })}
                       </ul>
                     );

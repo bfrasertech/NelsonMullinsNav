@@ -10,6 +10,7 @@ export interface IPerson {
     assistantName: string;
     assistantExtension: string;
     floorPlanUrl: string;
+    phoneNumber: string;
 }
 
 const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_userdetails';
@@ -25,7 +26,8 @@ const mapResultToPerson = (result: any): IPerson => ({
      assistantExtension: result.secretary,
      photoUrl: result.userpicl, 
      networkid: result.networkid,
-     floorPlanUrl: `/PublishingImages/FloorMaps/${result.office}${result.office_room_number}.jpg`
+     floorPlanUrl: `/PublishingImages/FloorMaps/${result.office}${result.office_room_number}.jpg`,
+     phoneNumber: result.phonenumber
     });
 
 export const searchPeople = (searchTerm: string): Promise<IPerson[]> => {
