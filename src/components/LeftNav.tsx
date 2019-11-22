@@ -200,7 +200,7 @@ export default class LeftNav extends React.Component<
                     return (
                       <ul>
                         {group.map((navItem: NavServices.ITeamEntry) => {
-                          return <li><a href="#">{navItem.name}</a> </li>;
+                          return <li><button type='button' className={classes.linkButton} onClick={() => navigate(`/sitepages/practice.aspx?team_uno=${navItem.id}`)}>{navItem.name}</button></li>;
                         })}
                       </ul>
                     );
