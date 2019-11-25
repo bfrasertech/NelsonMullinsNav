@@ -36,11 +36,14 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
         <div className={classes.department}>{props.person.department}</div>
         <div className={classes.rate}>Standard Rate: $000</div>
         <div className={classes.assistant}>
-          <span className={classes.assistantPrefix}>Assistant:</span>
+          <span className={classes.assistantPrefix}>AA:</span>
           <span className={classes.assistantName}>
             <a href="#">{props.person.assistantName ? props.person.assistantName : 'N/A'}</a>
           </span>
-          <span>{`x${props.person.assistantExtension ? props.person.assistantExtension : '0000'}`}</span>
+        </div>
+        <div className={classes.assistant}>
+          <span className={classes.assistantPrefix}>AA Phone:</span>
+          <span className={classes.assistantName}>{`${props.person.assistantExtension ? props.person.assistantExtension : '0000'}`}</span>
         </div>
         <div className={classes.floorPlan}>
           {' '}
