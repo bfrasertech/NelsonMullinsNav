@@ -9,7 +9,6 @@ import classes from './IntranetResultSummary.module.scss';
 
 export interface IIntranetResultSummaryProps {
   intranetSearchResults: IIntranetSearchResult[];
-  searchTerm: string;
   onMoreClick: () => void;
   onResultClick: (url: string) => void;
 }
@@ -25,9 +24,7 @@ export const IntranetResultSummary = (
           <button
             type="button"
             className={classes.moreLinkButton}
-            onClick={() =>
-              navigate(`/sitepages/search.aspx?s=Intranet&i1=${props.searchTerm}`)
-            }
+            onClick={() => props.onMoreClick()}
           >
             <span className={classes.moreText}>More</span>{' '}
             <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />

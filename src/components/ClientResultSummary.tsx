@@ -9,8 +9,8 @@ import { navigate } from '../services/Utilities';
 import classes from './ClientResultSummary.module.scss';
 
 export interface IClientResultSumaryProps {
+  onClientMoreClick: () => void;
   clientResults: IClient[];
-  searchTerm: string;
 }
 
 export const ClientResultSummary = (
@@ -24,9 +24,7 @@ export const ClientResultSummary = (
           <button
             type="button"
             className={classes.moreLinkButton}
-            onClick={() =>
-              navigate(`/sitepages/search.aspx?s=Clients&${isNaN( props.searchTerm as any)? 'c2' : 'c1'}=*${props.searchTerm}*`) // c1 = client number, c2 = client name
-            }
+            onClick={() => props.onClientMoreClick()}
           >
             <span className={classes.moreText}>More</span>{' '}
             <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />

@@ -10,8 +10,8 @@ import { PersonCard } from './PersonCard';
 import classes from './PeopleResultSummary.module.scss';
 
 export interface IPeopleResultSummaryProps {
+  onPeopleMoreClick: () => void;
   peopleResults: peopleSearchServices.IPerson[];
-  searchTerm: string;
 }
 
 export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.ReactElement<IPeopleResultSummaryProps> => {
@@ -27,9 +27,7 @@ export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.Re
             <button
               type="button"
               className={classes.linkButton}
-              onClick={() =>
-                navigate(`/sitepages/search.aspx?s=People&d1=*${props.searchTerm}*`)
-              }
+              onClick={() => props.onPeopleMoreClick()}
             >
               <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
             </button>
@@ -55,9 +53,7 @@ export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.Re
             <button
               type="button"
               className={classes.linkButton}
-              onClick={() =>
-                navigate(`/sitepages/search.aspx?s=People&d1=*${props.searchTerm}*`)
-              }
+              onClick={() => props.onPeopleMoreClick()}
             >
               <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
             </button>

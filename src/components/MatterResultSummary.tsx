@@ -9,8 +9,8 @@ import { navigate } from '../services/Utilities';
 import classes from './MatterResultSummary.module.scss';
 
 export interface IMatterResultSumaryProps {
+  onMatterMoreClick: () => void;
   matterResults: IMatter[];
-  searchTerm: string;
 }
 
 export const MatterResultSummary = (
@@ -24,9 +24,7 @@ export const MatterResultSummary = (
           <button
             type="button"
             className={classes.moreLinkButton}
-            onClick={() =>
-              navigate(`/sitepages/search.aspx?s=Matters&${isNaN( props.searchTerm as any)? 'm2' : 'm1'}=*${props.searchTerm}*`) // m1 = matter number, m2 = matter name
-            }
+            onClick={() => props.onMatterMoreClick()}
           >
             <span className={classes.moreText}>More</span>{' '}
             <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />

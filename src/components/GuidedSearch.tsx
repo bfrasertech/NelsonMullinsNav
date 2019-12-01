@@ -59,29 +59,40 @@ export class GuidedSearch extends React.Component<
     }
   }
 
+  public handlePeopleMoreClick = () => {
+    navigate(`/sitepages/search.aspx?s=People&d1=*${this.props.searchTerm}*`)
+  }
+
+  public handleClientMoreClick = () => {
+    navigate(`/sitepages/search.aspx?s=Clients&${isNaN( this.props.searchTerm as any)? 'c2' : 'c1'}=*${this.props.searchTerm}*`) // c1 = client number, c2 = client name
+  }
+
+  public handleMatterMoreClick = () => {
+    navigate(`/sitepages/search.aspx?s=Matters&${isNaN( this.props.searchTerm as any)? 'm2' : 'm1'}=*${this.props.searchTerm}*`) // m1 = matter number, m2 = matter name
+  }
+
   public handleIntranetMoreClick = () => {
-    navigate(`/_layouts/15/osssearchresults.aspx?k=${this.props.searchTerm}`);
+    navigate(`/sitepages/search.aspx?s=Intranet&i1=*${this.props.searchTerm}*`)
   }
 
   public handleIntranetResultClick = (url: string) => {
     navigate(url);
   }
 
-  public handleIntranetSearchTypeClick = () => {
-    navigate(`/_layouts/15/osssearchresults.aspx?k=*`);
+  public handleGoogleClick = () => {
+    navigate(`https://www.google.com?q=${this.props.searchTerm}`);
   }
 
   public render(): React.ReactElement<IGuidedSearchProps> {
     return (
       <div ref={this.setWrapperRef} className={classes.container} style={{top: `${this.props.top}px`}}>
 
-        <PeopleResultsSummary peopleResults={this.props.peopleResults} searchTerm={this.props.searchTerm} />
-        <ClientResultSummary clientResults={this.props.clientResults} searchTerm={this.props.searchTerm} />
-        <MatterResultSummary matterResults={this.props.matterResults} searchTerm={this.props.searchTerm} />
-        <SearchTypeList onIntranetClick={this.handleIntranetSearchTypeClick} />
+        <PeopleResultsSummary peopleResults={this.props.peopleResults} onPeopleMoreClick={this.handlePeopleMoreClick} />
+        <ClientResultSummary clientResults={this.props.clientResults} onClientMoreClick={this.handleClientMoreClick} />
+        <MatterResultSummary matterResults={this.props.matterResults} onMatterMoreClick={this.handleMatterMoreClick} />
+        <SearchTypeList onPeopleClick={this.handlePeopleMoreClick} onClientClick={this.handleClientMoreClick}  onMatterClick={this.handleMatterMoreClick} onIntranetClick={this.handleIntranetMoreClick} onGoogleClick={this.handleGoogleClick} />
         <IntranetResultSummary 
           intranetSearchResults={this.props.intranetSearchResults} 
-          searchTerm={this.props.searchTerm}
           onMoreClick={this.handleIntranetMoreClick}
           onResultClick={this.handleIntranetResultClick} />
 
