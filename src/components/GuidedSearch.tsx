@@ -77,7 +77,7 @@ export class GuidedSearch extends React.Component<
 
         <PeopleResultsSummary peopleResults={this.props.peopleResults} searchTerm={this.props.searchTerm} />
         <ClientResultSummary clientResults={this.props.clientResults} searchTerm={this.props.searchTerm} />
-        <MatterResultSummary matterResults={this.props.matterResults} />
+        <MatterResultSummary matterResults={this.props.matterResults} searchTerm={this.props.searchTerm} />
         <SearchTypeList onIntranetClick={this.handleIntranetSearchTypeClick} />
         <IntranetResultSummary 
           intranetSearchResults={this.props.intranetSearchResults} 

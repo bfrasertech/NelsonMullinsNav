@@ -10,6 +10,7 @@ import classes from './MatterResultSummary.module.scss';
 
 export interface IMatterResultSumaryProps {
   matterResults: IMatter[];
+  searchTerm: string;
 }
 
 export const MatterResultSummary = (
@@ -20,8 +21,16 @@ export const MatterResultSummary = (
       <div className={classes.header}>
         <div>Matter Lookup</div>
         <div>
+        <button
+              type="button"
+              className={classes.moreLinkButton}
+              onClick={() =>
+                navigate(`/sitepages/search.aspx?s=Matters&c1=${props.searchTerm}`) // m1 = matter number, m2 = matter name
+              }
+            >
           <span className={classes.moreText}>More</span>{' '}
           <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+          </button>
         </div>
       </div>
       <div className={classes.inner}>
