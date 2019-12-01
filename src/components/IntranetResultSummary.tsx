@@ -26,7 +26,7 @@ export const IntranetResultSummary = (
             type="button"
             className={classes.moreLinkButton}
             onClick={() =>
-              navigate(`/sitepages/search.aspx?s=Intranet&c1=${props.searchTerm}`)
+              navigate(`/sitepages/search.aspx?s=Intranet&i1=${props.searchTerm}`)
             }
           >
             <span className={classes.moreText}>More</span>{' '}
