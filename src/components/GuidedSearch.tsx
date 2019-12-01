@@ -76,7 +76,7 @@ export class GuidedSearch extends React.Component<
       <div ref={this.setWrapperRef} className={classes.container} style={{top: `${this.props.top}px`}}>
 
         <PeopleResultsSummary peopleResults={this.props.peopleResults} searchTerm={this.props.searchTerm} />
-        <ClientResultSummary clientResults={this.props.clientResults} />
+        <ClientResultSummary clientResults={this.props.clientResults} searchTerm={this.props.searchTerm} />
         <MatterResultSummary matterResults={this.props.matterResults} />
         <SearchTypeList onIntranetClick={this.handleIntranetSearchTypeClick} />
         <IntranetResultSummary 
