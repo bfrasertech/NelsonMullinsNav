@@ -21,15 +21,15 @@ export const MatterResultSummary = (
       <div className={classes.header}>
         <div>Matter Lookup</div>
         <div>
-        <button
-              type="button"
-              className={classes.moreLinkButton}
-              onClick={() =>
-                navigate(`/sitepages/search.aspx?s=Matters&c1=${props.searchTerm}`) // m1 = matter number, m2 = matter name
-              }
-            >
-          <span className={classes.moreText}>More</span>{' '}
-          <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+          <button
+            type="button"
+            className={classes.moreLinkButton}
+            onClick={() =>
+              navigate(`/sitepages/search.aspx?s=Matters&c1=${props.searchTerm}`) // m1 = matter number, m2 = matter name
+            }
+          >
+            <span className={classes.moreText}>More</span>{' '}
+            <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
           </button>
         </div>
       </div>
@@ -53,7 +53,7 @@ export const MatterResultSummary = (
               );
             })}
           </ul>}
-         {!props.matterResults ||
+        {!props.matterResults ||
           (props.matterResults.length <= 0 && (
             <div className={classes.noResults}>No results to display...</div>
           ))}

@@ -21,15 +21,15 @@ export const ClientResultSummary = (
       <div className={classes.header}>
         <div>Client Directory</div>
         <div>
-        <button
-              type="button"
-              className={classes.moreLinkButton}
-              onClick={() =>
-                navigate(`/sitepages/search.aspx?s=Clients&c1=${props.searchTerm}`) // c1 = client number, c2 = client name
-              }
-            >
-          <span className={classes.moreText}>More</span>{' '}
-          <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+          <button
+            type="button"
+            className={classes.moreLinkButton}
+            onClick={() =>
+              navigate(`/sitepages/search.aspx?s=Clients&c1=${props.searchTerm}`) // c1 = client number, c2 = client name
+            }
+          >
+            <span className={classes.moreText}>More</span>{' '}
+            <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
           </button>
         </div>
       </div>
