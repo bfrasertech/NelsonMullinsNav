@@ -25,7 +25,7 @@ export const ClientResultSummary = (
             type="button"
             className={classes.moreLinkButton}
             onClick={() =>
-              navigate(`/sitepages/search.aspx?s=Clients&c1=${props.searchTerm}`) // c1 = client number, c2 = client name
+              navigate(`/sitepages/search.aspx?s=Clients&${isNaN( props.searchTerm as any)? 'c2' : 'c1'}=*${props.searchTerm}*`) // c1 = client number, c2 = client name
             }
           >
             <span className={classes.moreText}>More</span>{' '}

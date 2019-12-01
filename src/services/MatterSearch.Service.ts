@@ -14,7 +14,7 @@ export const searchMatters = (searchTerm: string): Promise<IMatter[]> => {
 
     return new Promise<IMatter[]>((resolve: (matters: IMatter[]) => void, reject: (error: any) => void): void => {
 
-        fetch(`${baseUri}?$top=5&$orderby=long_matt_name&$inlinecount=allpages&$format=json&$select=matter_uno,long_matt_name,inactive,matter_code&$filter=substringof('${searchTerm}', long_matt_name) and inactive eq 'N'`,
+        fetch(`${baseUri}?$top=5&$orderby=long_matt_name&$inlinecount=allpages&$format=json&$select=matter_uno,long_matt_name,inactive,matter_code&$filter=((substringof('${searchTerm}', long_matt_name) or substringof('${searchTerm}', matter_code)) and inactive eq 'N')`,
             {
                 method: 'GET', credentials: "include"
             })

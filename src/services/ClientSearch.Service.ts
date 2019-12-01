@@ -14,7 +14,7 @@ export const searchClients = (searchTerm: string): Promise<IClient[]> => {
 
     return new Promise<IClient[]>((resolve: (clients: IClient[]) => void, reject: (error: any) => void): void => {
 
-        fetch(`${baseUri}?$top=5&$orderby=client_name&$inlinecount=allpages&$format=json&$select=Client_uno,client_name,inactive,client_code&$filter=substringof('${searchTerm}', client_name) eq true and inactive eq 'N'`,
+        fetch(`${baseUri}?$top=5&$orderby=client_name&$inlinecount=allpages&$format=json&$select=Client_uno,client_name,inactive,client_code&$filter=((substringof('${searchTerm}', client_name) or substringof('${searchTerm}', client_code)) and inactive eq 'N')`,
             {
                 method: 'GET', credentials: "include"
             })

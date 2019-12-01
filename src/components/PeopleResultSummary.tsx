@@ -28,7 +28,7 @@ export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.Re
               type="button"
               className={classes.linkButton}
               onClick={() =>
-                navigate(`/sitepages/search.aspx?s=People&d1=${props.searchTerm}`)
+                navigate(`/sitepages/search.aspx?s=People&d1=*${props.searchTerm}*`)
               }
             >
               <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
@@ -56,7 +56,7 @@ export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.Re
               type="button"
               className={classes.linkButton}
               onClick={() =>
-                navigate(`/sitepages/search.aspx?s=People&d1=${props.searchTerm}`)
+                navigate(`/sitepages/search.aspx?s=People&d1=*${props.searchTerm}*`)
               }
             >
               <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
