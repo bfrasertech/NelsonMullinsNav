@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink, faInfoCircle } from '@fortawesome/pro-solid-svg-icons';
-
+import { navigate } from '../services/Utilities';
 
 import * as peopleSearchServices from '../services/PeopleSearch.Service';
 import { PersonCard } from './PersonCard';
@@ -11,6 +11,7 @@ import classes from './PeopleResultSummary.module.scss';
 
 export interface IPeopleResultSummaryProps {
   peopleResults: peopleSearchServices.IPerson[];
+  searchTerm: string;
 }
 
 export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.ReactElement<IPeopleResultSummaryProps> => {
@@ -23,7 +24,15 @@ export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.Re
             <FontAwesomeIcon className={classes.infoIcon} icon={faInfoCircle} />
           </div>
           <div>
-            <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+            <button
+              type="button"
+              className={classes.linkButton}
+              onClick={() =>
+                navigate(`/sitepages/search.aspx?s=People&d1=${props.searchTerm}`)
+              }
+            >
+              <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+            </button>
           </div>
         </div>
         {
@@ -43,7 +52,15 @@ export const PeopleResultsSummary = (props: IPeopleResultSummaryProps): React.Re
             <FontAwesomeIcon className={classes.infoIcon} icon={faInfoCircle} />
           </div>
           <div>
-            <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+            <button
+              type="button"
+              className={classes.linkButton}
+              onClick={() =>
+                navigate(`/sitepages/search.aspx?s=People&d1=${props.searchTerm}`)
+              }
+            >
+              <span className={classes.moreText}>More</span> <FontAwesomeIcon className={classes.moreIcon} icon={faExternalLink} />
+            </button>
           </div>
         </div>
         <div className={classes.noResults}>No results to display...</div>

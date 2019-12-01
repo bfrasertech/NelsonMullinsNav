@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 .container {
   width: 100%;
   display: flex;
@@ -16,29 +16,34 @@
     color: #000;
     line-height: 17px;
     margin: 0 0 7px 0;
-    .headerText{
+    .headerText {
       margin-right: 5px;
     }
-    .infoIcon{
+    .infoIcon {
       color: #689ac5;
       height: 14px;
       width: 14px;
     }
-    .moreText{
-      font-family: 'Open Sans', sans-serif;
+    .moreText {
+      font-family: "Open Sans", sans-serif;
       font-size: 12px;
       font-weight: 600;
       color: #689ac5;
     }
-    .moreIcon{
+    .moreIcon {
       color: #689ac5;
       width: 17px;
       height: 13px;
     }
   }
-  .noResults{
+  .noResults {
     line-height: 16px;
     font-size: 16px;
     margin: 30px;
+  }
+  .linkButton{
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 }
