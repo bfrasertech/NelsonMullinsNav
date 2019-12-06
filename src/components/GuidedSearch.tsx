@@ -72,7 +72,7 @@ export class GuidedSearch extends React.Component<
   }
 
   public handleIntranetMoreClick = () => {
-    navigate(`/sitepages/search.aspx?s=Intranet&i1=*${this.props.searchTerm}*`)
+    navigate(`/sitepages/search.aspx?s=Intranet&k=${this.props.searchTerm}`)
   }
 
   public handleIntranetResultClick = (url: string) => {
