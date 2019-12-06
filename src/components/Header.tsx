@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+import { debounce } from 'throttle-debounce';
 
 import { AlertBanner } from './AlertBanner';
 import { NavToggleButton } from './NavToggleButton';
@@ -34,6 +35,8 @@ export interface IHeaderState {
 }
 
 export default class Header extends React.Component<IHeaderProps, IHeaderState> {
+    private debouncedSearch: any;
+
     constructor(props: IHeaderProps) {
         super(props);
 
@@ -47,6 +50,20 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             peopleResults: [],
             intranetSearchResults: []
         }
+
+        this.debouncedSearch = debounce(300, (searchTerm: string) => {
+            searchSite(this.props.context, searchTerm).then((searchResults: any) => {
+                searchClients(searchTerm).then(cResults => {
+                    searchMatters(searchTerm).then(mResults => {
+                        searchPeople(searchTerm).then(pResults => {
+    
+                            this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults, intranetSearchResults: searchResults });
+                        });
+                    });
+    
+                });
+            });
+        });
     }
 
     private handleCloseAlert = () => {
@@ -67,17 +84,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
         if (searchTerm.length < 3) {
             return;
         }
-        searchSite(this.props.context, searchTerm).then((searchResults: any) => {
-            searchClients(searchTerm).then(cResults => {
-                searchMatters(searchTerm).then(mResults => {
-                    searchPeople(searchTerm).then(pResults => {
 
-                        this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults, intranetSearchResults: searchResults });
-                    });
-                });
-
-            });
-        });
+        this.debouncedSearch(searchTerm);
     }
 
     private handleCloseGuidedSearch = () => {

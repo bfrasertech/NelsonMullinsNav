@@ -27,7 +27,8 @@
     "@types/webpack-env": "1.13.1",
     "moment-timezone": "^0.5.27",
     "react": "^15.6.2",
-    "react-dom": "^15.6.2"
+    "react-dom": "^15.6.2",
+    "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-pro": "^5.11.2",
