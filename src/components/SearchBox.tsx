@@ -3,6 +3,8 @@ import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/pro-regular-svg-icons';
 
+import { navigate } from '../services/Utilities';
+
 import classes from './SearchBox.module.scss';
 
 export interface ISearchBoxProps {
@@ -48,6 +50,10 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
         fn();
     }
 
+    private handleAdvancedSearchClick = (): void => {
+        navigate(`/sitepages/search.aspx`);
+    }
+
     public render(): React.ReactElement<ISearchBoxProps> {
         return (
             <div className={classes.searchContainer}>
@@ -59,6 +65,7 @@ export class SearchBox extends React.Component<ISearchBoxProps, ISearchBoxState>
                     onKeyDown={(e) => { if (e.key === 'Enter') { this.handleSearch(); } }}
                     value={this.state.searchTerm}>
                 </input>
+                <button type='button' className={classes.advancedSearchButton} onClick={this.handleAdvancedSearchClick}>Advanced Search</button>
                 <button
                     type='button'
                     className={classes.searchButton}

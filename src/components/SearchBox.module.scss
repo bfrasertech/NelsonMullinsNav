@@ -7,7 +7,7 @@
     width: 50%;
     .searchBox{
         border: none;
-        background: #E9E9E9;
+        background: #fff;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -21,6 +21,13 @@
         min-width: 200px;
         width: 70%;
     }    
+    .advancedSearchButton{
+        background: #fff;
+        border: none;
+        cursor: pointer;
+        color: #669aC5;
+        margin-right: 18px;
+    }
     .searchButton{
         max-height: 3em;
         font-size: 1.1em;
