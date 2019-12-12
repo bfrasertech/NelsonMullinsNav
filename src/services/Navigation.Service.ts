@@ -37,6 +37,7 @@ export interface ICommittee{
 export interface IAdministration{
     id: string;
     name: string;
+    grpid: string;
 }
 
 export const fetchManagementGroups = (): Promise<IManagementGroup[]> => {
@@ -139,12 +140,12 @@ export const fetchOffices = (): Promise<IOffice[]> => {
     });
 }
 
-const mapResultToAdmin = (result: any): IAdministration => ({id: result.spid, name: result.title});
+const mapResultToAdmin = (result: any): IAdministration => ({id: result.spid, name: result.title, grpid: result.spid});
 export const fetchAdministration = (): Promise<IAdministration[]> => {
 
     return new Promise<IAdministration[]>((resolve: (offices: IAdministration[]) => void, reject: (error: any) => void): void => {
 
-        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_admingroups?&$orderby=title&$inlinecount=allpages&$format=json&$select=spid,title`,
+        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_admingroups?&$orderby=title&$inlinecount=allpages&$format=json&$select=spid,title,spid`,
             {
                 method: 'GET', credentials: "include"
             })
