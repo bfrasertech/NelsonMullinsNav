@@ -40,26 +40,29 @@ export interface IAdministration{
     grpid: string;
 }
 
+const mapResultToMgmtGroup = (result: any): IManagementGroup => ({ id: result.id, name: result.mgmt_group_name });
 export const fetchManagementGroups = (): Promise<IManagementGroup[]> => {
 
     return new Promise<IManagementGroup[]>((resolve: (offices: IManagementGroup[]) => void, reject: (error: any) => void): void => {
 
-        resolve([{
-            "id": '1',
-            "name": "Corporate",
-        },
-        {
-            "id": '2',
-            "name": "Litigation"
-        },
-        {
-            "id": "3",
-            "name": "Government Relations"
-        },
-        {
-            "id": "4",
-            "name": "Intellectual Property"
-        }]);
+        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/nmrs_management?&$orderby=sortorder&$inlinecount=allpages&$format=json&$select=id,mgmt_group_name`,
+            {
+                method: 'GET', credentials: "include"
+            })
+            .then((response: any): Promise<any[]> => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    reject(response.statusText);
+                }
+            })
+            .then((mgmtItems: any): void => {
+                resolve(mgmtItems.d.results.map((item: any): IManagementGroup => mapResultToMgmtGroup(item)));
+            })
+            .catch((error: any): void => {
+                console.log('Error getting management groups');
+                reject(error);
+            });
     });
 }
 
