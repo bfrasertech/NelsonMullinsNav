@@ -51,7 +51,8 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             intranetSearchResults: []
         }
 
-        this.debouncedSearch = debounce(300, (searchTerm: string) => {
+        debounce()
+        this.debouncedSearch = debounce(150, (searchTerm: string) => {
             searchSite(this.props.context, searchTerm).then((searchResults: any) => {
                 searchClients(searchTerm).then(cResults => {
                     searchMatters(searchTerm).then(mResults => {
