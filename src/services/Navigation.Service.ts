@@ -1,3 +1,6 @@
+
+import * as config from 'config'; 
+
 const managementGroupsCacheKey: string = 'nmrs-mgmt-grps-cache';
 const teamsCacheKey: string = 'nmrs-teams-cache';
 const officesCacheKey: string = 'nmrs-offices-cache';
@@ -35,6 +38,7 @@ export const fetchManagementGroups = (): Promise<IManagementGroup[]> => {
 
     return new Promise<IManagementGroup[]>((resolve: (offices: IManagementGroup[]) => void, reject: (error: any) => void): void => {
 
+        console.log(config.url);
         const cachedManagementGroups = sessionStorage.getItem(managementGroupsCacheKey);
         if (cachedManagementGroups){
             resolve(JSON.parse(cachedManagementGroups));
