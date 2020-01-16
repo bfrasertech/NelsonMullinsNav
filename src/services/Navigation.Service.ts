@@ -38,13 +38,12 @@ export const fetchManagementGroups = (): Promise<IManagementGroup[]> => {
 
     return new Promise<IManagementGroup[]>((resolve: (offices: IManagementGroup[]) => void, reject: (error: any) => void): void => {
 
-        console.log(config.url);
         const cachedManagementGroups = sessionStorage.getItem(managementGroupsCacheKey);
         if (cachedManagementGroups){
             resolve(JSON.parse(cachedManagementGroups));
         }else{
 
-        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/nmrs_management?&$orderby=sortorder&$inlinecount=allpages&$format=json&$select=id,mgmt_group_name`,
+        fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/nmrs_management?&$orderby=sortorder&$inlinecount=allpages&$format=json&$select=id,mgmt_group_name`,
             {
                 method: 'GET', credentials: "include"
             })
@@ -78,7 +77,7 @@ export const fetchTeams = (): Promise<ITeamEntry[]> => {
             resolve(JSON.parse(cachedTeams));
         }else{
 
-        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/nmrs_teams?&$orderby=title&$inlinecount=allpages&$format=json&$select=id,title`,
+        fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/nmrs_teams?&$orderby=title&$inlinecount=allpages&$format=json&$select=id,title`,
             {
                 method: 'GET', credentials: "include"
             })
@@ -111,7 +110,7 @@ export const fetchCommittees = (): Promise<ICommittee[]> => {
         if (cachedCommittees){
             resolve(JSON.parse(cachedCommittees));
         }else{
-        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/nmrs_committees?&$orderby=title&$inlinecount=allpages&$format=json&$select=id,title`,            {
+        fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/nmrs_committees?&$orderby=title&$inlinecount=allpages&$format=json&$select=id,title`,            {
                 method: 'GET', credentials: "include"
             })
             .then((response: any): Promise<any[]> => {
@@ -143,7 +142,7 @@ export const fetchOffices = (): Promise<IOffice[]> => {
         if (cachedOffices){
             resolve(JSON.parse(cachedOffices));
         }else{
-        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_offices?&$orderby=name&$inlinecount=allpages&$format=json&$select=spid,name`,
+        fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/hcp_offices?&$orderby=name&$inlinecount=allpages&$format=json&$select=spid,name`,
             {
                 method: 'GET', credentials: "include"
             })
@@ -176,7 +175,7 @@ export const fetchAdministration = (): Promise<IAdministration[]> => {
         if (cachedAdmins){
             resolve(JSON.parse(cachedAdmins));
         }else{
-        fetch(`https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_admingroups?&$orderby=title&$inlinecount=allpages&$format=json&$select=spid,title,spid`,
+        fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/hcp_admingroups?&$orderby=title&$inlinecount=allpages&$format=json&$select=spid,title,spid`,
             {
                 method: 'GET', credentials: "include"
             })

@@ -1,1 +1,1 @@
-{ "url": "production url" }
+{ "intranetBaseUrl": "https://nmconnect.nmrs.com", "handshakeBaseUrl": "https://hs.nmrs.com" }

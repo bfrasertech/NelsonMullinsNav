@@ -1,3 +1,5 @@
+import * as config from 'config'; 
+
 export interface IMatter {
     id: string;
     name: string;
@@ -5,7 +7,7 @@ export interface IMatter {
     matterCode: string;
 }
 
-const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/cmsmatters';
+const baseUri = `${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/cmsmatters`;
 
 const mapResultToMatter = (result: any): IMatter => ({ id: result.matter_uno, name: result.long_matt_name, matterNumber: result.matter_uno, matterCode: result.matter_code });
 

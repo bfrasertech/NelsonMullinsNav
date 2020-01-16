@@ -1,3 +1,5 @@
+import * as config from 'config'; 
+
 export interface IClient {
     id: string;
     name: string;
@@ -5,7 +7,7 @@ export interface IClient {
     clientCode: string;
 }
 
-const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/cmsclients';
+const baseUri = `${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/cmsclients`;
 
 const mapResultToClient = (result: any): IClient => ({ id: result.client_uno, name: result.client_name, clientNumber: result.client_uno, clientCode: result.client_code });
 

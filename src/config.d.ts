@@ -1,5 +1,6 @@
 declare interface IConfig {
-    url: string;
+    intranetBaseUrl: string;
+    handshakeBaseUrl: string;
   }
   
   declare module 'config' {

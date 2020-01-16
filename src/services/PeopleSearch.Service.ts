@@ -1,3 +1,5 @@
+import * as config from 'config';
+
 export interface IPerson {
     id: string;
     name: string;
@@ -13,7 +15,7 @@ export interface IPerson {
     phoneNumber: string;
 }
 
-const baseUri = 'https://hs-dev.nmrs.com/handshakewebservices/odata/odata.ashx/hcp_userdetails';
+const baseUri = `${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/hcp_userdetails`;
 //
 const mapResultToPerson = (result: any): IPerson => ({ 
     id: result.empluno,
