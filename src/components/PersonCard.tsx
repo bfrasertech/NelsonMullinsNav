@@ -34,7 +34,8 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
         </div>
         <div title={props.person.title} className={classes.title}>{trimWithEllipsis(props.person.title, 34)}</div>
         <div className={classes.department}>{props.person.department}</div>
-        <div className={classes.rate}>Standard Rate: $000</div>
+        {props.person.rate > 0 &&
+          <div className={classes.rate}>{`Standard Rate: $${props.person.rate.toFixed(2)}`}</div>}
         <div className={classes.assistant}>
           <span className={classes.assistantPrefix}>AA:</span>
           <span className={classes.assistantName}>

@@ -6,7 +6,7 @@ export interface IPerson {
     extension: string;
     title: string;
     department: string;
-    rate: string;
+    rate: number;
     photoUrl: string;
     networkid: string;
     assistantName: string;
@@ -23,7 +23,7 @@ const mapResultToPerson = (result: any): IPerson => ({
      extension: result.extension, 
      title: result.jobtitle, 
      department: result.department, 
-     rate: '750', 
+     rate: result.goal_rate, 
      assistantName: result.assistantname, 
      assistantExtension: result.assistantphone,
      photoUrl: result.userpicl, 
