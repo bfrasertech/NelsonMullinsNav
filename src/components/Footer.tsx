@@ -74,15 +74,23 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
                 <span>ATL</span>
               </p>
               <p>
-                <span>BAL</span>
+                <span>BCT</span>
               </p>
             </div>
             <div className={classes.location}>
               <p>
-                <span>BOC</span>
+                <span>BNA</span>
               </p>
               <p>
-                <span>BOX</span>
+                <span>BOS</span>
+              </p>
+            </div>
+            <div className={classes.location}>
+              <p>
+                <span>BWI</span>
+              </p>
+              <p>
+                <span>CAE</span>
               </p>
             </div>
             <div className={classes.location}>
@@ -90,23 +98,47 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
                 <span>CHS</span>
               </p>
               <p>
-                <span>CHT</span>
+                <span>CLT</span>
               </p>
             </div>
             <div className={classes.location}>
               <p>
-                <span>PGH</span>
+                <span>DCA</span>
               </p>
               <p>
-                <span>CRN</span>
+                <span>DEN</span>
               </p>
             </div>
             <div className={classes.location}>
               <p>
-                <span>HUN</span>
+                <span>FLL</span>
               </p>
+              <p>
+                <span>GSP</span>
+              </p>
+            </div>
+            <div className={classes.location}>
+              <p>
+                <span>HTS</span>
+              </p>
+              <p>
+                <span>INT</span>
+              </p>
+            </div>
+            <div className={classes.location}>
               <p>
                 <span>JAX</span>
+              </p>
+              <p>
+                <span>JFK</span>
+              </p>
+            </div>
+            <div className={classes.location}>
+              <p>
+                <span>LAX</span>
+              </p>
+              <p>
+                <span>MCO</span>
               </p>
             </div>
             <div className={classes.location}>
@@ -114,44 +146,31 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
                 <span>MIA</span>
               </p>
               <p>
-                <span>MRT</span>
+                <span>MYR</span>
               </p>
             </div>
             <div className={classes.location}>
               <p>
-                <span>NYC</span>
+                <span>PBI</span>
               </p>
               <p>
-                <span>ORL</span>
+                <span>RDU</span>
               </p>
             </div>
             <div className={classes.location}>
               <p>
-                <span>PMB</span>
+                <span>TLH</span>
               </p>
               <p>
-                <span>RAL</span>
+                <span>TPA</span>
               </p>
             </div>
             <div className={classes.location}>
-              <p>
-                <span>TAL</span>
-              </p>
-              <p>
-                <span>TAM</span>
-              </p>
-            </div>
-            <div className={classes.location}>
-              <p>
-                <span>WDC</span>
-              </p>
               <p>
                 <span>WPB</span>
               </p>
-            </div>
-            <div className={classes.location}>
               <p>
-                <span>WIN</span>
+                <span></span>
               </p>
             </div>
           </div>
