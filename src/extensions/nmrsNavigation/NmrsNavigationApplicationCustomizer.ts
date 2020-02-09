@@ -9,6 +9,8 @@ import {
   PlaceholderContent
 } from '@microsoft/sp-application-base';
 
+import { SPPermission } from '@microsoft/sp-page-context';
+
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
 import App, { IAppProps } from '../../components/App';
 import {Footer, IFooterProps } from '../../components/Footer';
@@ -69,17 +71,21 @@ export default class NmrsNavigationApplicationCustomizer
   // can find it. 
   private hideSuiteBar = (): boolean => {
 
-    if (this.suiteBarHidden) return true; // short circuit if we've already hidden it.
+    if (this.isAdmin()) { 
+      return true; // short circuit. no need to hide for admins
+    }else {
+      if (this.suiteBarHidden) return true; // short circuit if we've already hidden it.
 
-    const suiteBar: HTMLElement = document.getElementById('SuiteNavPlaceHolder');
+      const suiteBar: HTMLElement = document.getElementById('SuiteNavPlaceHolder');
 
-    if (!suiteBar) {
-      return false;
+      if (!suiteBar) {
+        return false;
+      }
+
+      suiteBar.style.display = 'none';
+      this.suiteBarHidden = true;
+      return true;
     }
-
-    suiteBar.style.display = 'none';
-    this.suiteBarHidden = true;
-    return true;
   }
 
   private loadFooter = (): boolean => {
@@ -95,6 +101,16 @@ export default class NmrsNavigationApplicationCustomizer
     ReactDOM.render(element, footerSection);
     this.footerLoaded = true;
     return true;
+  }
+
+  private isAdmin(): boolean{
+    try{
+      const currentPermission = this.context.pageContext.web.permissions;
+      return currentPermission.hasPermission(SPPermission.manageWeb);
+    } catch(e){
+
+      return false;
+    }
   }
 
   private loadChatBot = (): void => {
