@@ -37,7 +37,7 @@ export const searchPeople = (searchTerm: string): Promise<IPerson[]> => {
 
     return new Promise<IPerson[]>((resolve: (people: IPerson[]) => void, reject: (error: any) => void): void => {
 
-        fetch(`${baseUri}?$top=8&$orderby=displayname&$inlinecount=allpages&$format=json&$filter=((substringof('${searchTerm}', displayname) or (substringof('${searchTerm}', firstname) or (substringof('${searchTerm}', lastname)) and emp_status eq 'A')`,
+        fetch(`${baseUri}?$top=8&$orderby=displayname&$inlinecount=allpages&$format=json&$filter=((substringof('${searchTerm}', displayname) or substringof('${searchTerm}', firstname) or substringof('${searchTerm}', lastname)) and (isactive eq 1))`,
             {
                 method: 'GET', credentials: "include"
             })
