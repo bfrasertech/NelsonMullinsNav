@@ -1,11 +1,11 @@
 
 import * as config from 'config'; 
 
-const managementGroupsCacheKey: string = 'nmrs-mgmt-grps-cache';
-const teamsCacheKey: string = 'nmrs-teams-cache';
-const officesCacheKey: string = 'nmrs-offices-cache';
-const committeesCacheKey: string = 'nmrs-committees-cache';
-const adminsCacheKey: string = 'nmrs-admins-cache';
+const managementGroupsCacheKey: string = 'nmrs-local-mgmt-grps-cache';
+const teamsCacheKey: string = 'nmrs-local-teams-cache';
+const officesCacheKey: string = 'nmrs-local-offices-cache';
+const committeesCacheKey: string = 'nmrs-local-committees-cache';
+const adminsCacheKey: string = 'nmrs-local-admins-cache';
 
 export interface IOffice {
     id: string;
