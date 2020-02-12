@@ -1,5 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('../fonts/open-sans-v17-latin-regular.woff') format('woff'), url('../fonts/open-sans-v17-latin-regular.ttf') format('truetype');
+  }
+  
+  @font-face {
+    font-family: 'QuattroCentoSansRegular';
+    src: url('../fonts/quattrocento-sans-v12-latin-regular.woff') format('woff'), url('../fonts/quattrocento-sans-v12-latin-regular.ttf') format('truetype');
+  } 
 
 .leftNav{
     height: 100%;
@@ -8,7 +15,7 @@
     left: 0;
     z-index: 10;
     background-color: #475666;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'OpenSansRegular', sans-serif;
     font-size: 14px;
 }
 .menuContainer{
@@ -76,7 +83,7 @@
         }
     }
     .subMenu{
-        font-family: 'Open Sans', sans-serif;
+        font-family: 'OpenSansRegular', sans-serif;
         font-size: 12px;
         position: absolute;
         left: 220px;
