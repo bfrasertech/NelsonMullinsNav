@@ -9,7 +9,7 @@ import { SearchBox } from './SearchBox';
 import { GuidedSearch } from './GuidedSearch';
 
 import { searchClients, IClient } from '../services/ClientSearch.Service';
-import { searchMatters, IMatter } from '../services/MatterSearch.Service';
+import { searchMatters, searchMattersByClientCode, searchMattersByClientMatterCode, IMatter } from '../services/MatterSearch.Service';
 import { searchPeople, IPerson } from '../services/PeopleSearch.Service';
 import { searchSite, IIntranetSearchResult } from '../services/spdata.service';
 
@@ -53,18 +53,61 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
         debounce()
         this.debouncedSearch = debounce(150, (searchTerm: string) => {
-            searchSite(this.props.context, searchTerm).then((searchResults: any) => {
-                searchClients(searchTerm).then(cResults => {
-                    searchMatters(searchTerm).then(mResults => {
-                        searchPeople(searchTerm).then(pResults => {
-    
-                            this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults, intranetSearchResults: searchResults });
+            searchTerm = searchTerm.trim();
+
+            if (this.isClientNumberSearchOnly(searchTerm)) {
+                searchSite(this.props.context, searchTerm).then((searchResults: any) => {
+                    searchClients(searchTerm).then(cResults => {
+
+                        if (cResults && cResults.length === 1) {
+                            searchMattersByClientCode(cResults[0].clientCode).then(mResults => {
+                                searchPeople(searchTerm).then(pResults => {
+                                    this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults, intranetSearchResults: searchResults });
+                                });
+                            });
+                        } else {
+                            searchPeople(searchTerm).then(pResults => {
+                                this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: [], peopleResults: pResults, intranetSearchResults: searchResults });
+                            });
+                        }
+                    });
+                });
+            } else if (this.isClientAndMatterSearchOnly(searchTerm)) {
+                const normalizedSearchTerm = searchTerm.replace('-', '.');
+                const searchTermParts = normalizedSearchTerm.split('.');
+
+                searchSite(this.props.context, searchTerm).then((searchResults: any) => {
+                    searchClients(searchTermParts[0]).then(cResults => {
+                        searchMattersByClientMatterCode(normalizedSearchTerm).then(mResults => {
+                            searchPeople(searchTerm).then(pResults => {
+
+                                this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults, intranetSearchResults: searchResults });
+                            });
                         });
                     });
-    
                 });
-            });
+            } else {
+                searchSite(this.props.context, searchTerm).then((searchResults: any) => {
+                    searchClients(searchTerm).then(cResults => {
+                        searchMatters(searchTerm).then(mResults => {
+                            searchPeople(searchTerm).then(pResults => {
+
+                                this.setState({ showGuidedSearch: true, currentSearchTerm: searchTerm, clientResults: cResults, matterResults: mResults, peopleResults: pResults, intranetSearchResults: searchResults });
+                            });
+                        });
+
+                    });
+                });
+            }
         });
+    }
+
+    private isClientNumberSearchOnly(searchTerm: string): boolean {
+        return /^\d+$/.test(searchTerm);
+    }
+
+    private isClientAndMatterSearchOnly(searchTerm: string): boolean {
+        return /^\d+[\.-]\d+$/.test(searchTerm);
     }
 
     private handleCloseAlert = () => {
