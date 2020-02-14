@@ -133,6 +133,7 @@ export default class LeftNav extends React.Component<
               <li ref={(el) => this.menuRefs['firm'] = el}
                 onMouseEnter={() => this.showSubMenu('firm')}
                 onMouseLeave={() => this.hideSubMenu()}
+                onClick={() => navigate('/sitepages/firm-history.aspx')}
               >
                 <FontAwesomeIcon icon={faHome} /><span className={classes.leftMenuText}>Firm</span>
               </li>
