@@ -45,7 +45,7 @@ export const fetchManagementGroups = (): Promise<IManagementGroup[]> => {
 
         fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/nmrs_management?&$orderby=sortorder&$inlinecount=allpages&$format=json&$select=id,mgmt_group_name`,
             {
-                method: 'GET', credentials: "include"
+                method: 'GET', credentials: "include", cache: "no-store"
             })
             .then((response: any): Promise<any[]> => {
                 if (response.ok) {
@@ -79,7 +79,7 @@ export const fetchTeams = (): Promise<ITeamEntry[]> => {
 
         fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/nmrs_teams?&$orderby=title&$inlinecount=allpages&$format=json&$select=id,title`,
             {
-                method: 'GET', credentials: "include"
+                method: 'GET', credentials: "include", cache: "no-store"
             })
             .then((response: any): Promise<any[]> => {
                 if (response.ok) {
@@ -111,7 +111,7 @@ export const fetchCommittees = (): Promise<ICommittee[]> => {
             resolve(JSON.parse(cachedCommittees));
         }else{
         fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/nmrs_committees?&$orderby=title&$inlinecount=allpages&$format=json&$select=id,title`,            {
-                method: 'GET', credentials: "include"
+                method: 'GET', credentials: "include", cache: "no-store"
             })
             .then((response: any): Promise<any[]> => {
                 if (response.ok) {
@@ -144,7 +144,7 @@ export const fetchOffices = (): Promise<IOffice[]> => {
         }else{
         fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/hcp_offices?&$orderby=name&$inlinecount=allpages&$format=json&$select=spid,name`,
             {
-                method: 'GET', credentials: "include"
+                method: 'GET', credentials: "include", cache: "no-store"
             })
             .then((response: any): Promise<any[]> => {
                 if (response.ok) {
@@ -177,7 +177,7 @@ export const fetchAdministration = (): Promise<IAdministration[]> => {
         }else{
         fetch(`${config.handshakeBaseUrl}/handshakewebservices/odata/odata.ashx/hcp_admingroups?&$orderby=title&$inlinecount=allpages&$format=json&$select=spid,title,spid`,
             {
-                method: 'GET', credentials: "include"
+                method: 'GET', credentials: "include", cache: "no-store"
             })
             .then((response: any): Promise<any[]> => {
                 if (response.ok) {
