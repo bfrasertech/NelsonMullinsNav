@@ -3,8 +3,8 @@
     background-color: #fff;
     border: none;
     height: 30px;
-    width: 30px;
-    margin: 28px 22px;
+    width: 80px;
+    margin: 0;
     cursor: pointer;
     outline: none;
     svg{
@@ -14,9 +14,11 @@
 }
 .navCloseButton{
     height: 100%;
+    margin: 0;
     background-color: #475666;
     width: 80px;
     color: #fff;
     border: none;
     cursor: pointer;
+    outline: none;
 }
