@@ -11,6 +11,16 @@ npm i -g gulp
 gulp
 ```
 
+### Environment Builds in windows
+You can choose to build for dev or production. This is important because each environment has a different
+handshake server url.
+see config.gulp.js and src/config/config.dev, config.production, config.local
+```windows powershell
+$env:NODE_ENV="production" // or $env:NODE_ENV="dev"
+gulp bundle --ship
+gulp package-solution --ship
+```
+
 This package produces the following:
 
 * lib/* - intermediate-stage commonjs build artifacts

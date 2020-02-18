@@ -7,13 +7,9 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "build-dev": "SET NODE_ENV=dev && gulp bundle --ship",
-    "build-local": "SET NODE_ENV=local && gulp bundle --ship",
-    "build-prod": "SET NODE_ENV=production && gulp bundle --ship",
     "build": "gulp bundle",
     "clean": "gulp clean",
-    "test": "gulp test",
-    "package": "gulp package-solution --ship"
+    "test": "gulp test"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
