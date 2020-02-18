@@ -51,7 +51,6 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
             intranetSearchResults: []
         }
 
-        debounce()
         this.debouncedSearch = debounce(150, (searchTerm: string) => {
             searchTerm = searchTerm.trim();
 
