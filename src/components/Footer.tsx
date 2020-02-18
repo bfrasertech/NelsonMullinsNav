@@ -175,10 +175,10 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
             </div>
           </div>
           <div className={classes.helpPanel}>
-            <button type="button">
+            <a href="mailto:d7119680.nelsonmullins.onmicrosoft.com@amer.teams.ms?subject=NMConnect" target="_blank">
               <FontAwesomeIcon icon={faEnvelope} size={'2x'} />
               <span>Help</span>{' '}
-            </button>
+              </a>
           </div>
         </div>
       </div>
