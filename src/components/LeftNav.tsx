@@ -167,10 +167,6 @@ export default class LeftNav extends React.Component<
               >
                 <FontAwesomeIcon icon={faClipboardListCheck} /><span className={classes.leftMenuText}>Administration</span>
               </li>
-              <li
-              >
-                <FontAwesomeIcon icon={faQuestionSquare} /><span className={classes.leftMenuText}>How Do I?</span>
-              </li>
             </ul>
             {this.state.idToShow === 'managementGroups' &&
               <div

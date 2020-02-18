@@ -3,7 +3,7 @@
   "solution": {
     "name": "NMRS Navigation",
     "id": "66b40486-1d32-4fbb-80b0-08cf0d7f76ff",
-    "version": "1.4.7.0",
+    "version": "1.4.8.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "features": [
