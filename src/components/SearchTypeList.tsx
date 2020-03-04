@@ -29,13 +29,13 @@ export const SearchTypeList = (props: ISearchTypeListProps): React.ReactElement<
                     >Clients</button></li>
                     <li><button
                         type="button"
-                        className={classes.linkButton}
+                        className={classes.linkButton} style={{backgroundColor: '#f8f8f8'}}
                         onClick={() => props.onMatterClick()}
                     >Matters</button></li>
                     <li><button className={classes.linkButton} type="button" onClick={() => props.onIntranetClick()}>Intranet</button></li>
                     <li><button
                         type="button"
-                        className={classes.linkButton}
+                        className={classes.linkButton} style={{backgroundColor: '#f8f8f8'}}
                         onClick={() => props.onGoogleClick()}
                     >Google</button></li>
                 </ul>

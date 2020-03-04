@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLink } from '@fortawesome/pro-solid-svg-icons';
-
+import { trimWithEllipsis } from '../services/Utilities';
 import { IIntranetSearchResult } from '../services/spdata.service';
 import { navigate } from '../services/Utilities';
 
@@ -35,12 +35,12 @@ export const IntranetResultSummary = (
         {props.intranetSearchResults && props.intranetSearchResults.length > 0 &&
           <ul>
             {props.intranetSearchResults.map((result: IIntranetSearchResult, index: number) => (
-              <li key={index}>
+              <li key={index} className={classes.resultItem}>
                 <button className={classes.linkButton} type="button" onClick={() => props.onResultClick(result.url)}>
                   <div>
                     <a href="#">{result.title}</a>
                   </div>
-                  <div>{result.description}</div>
+                  <div className={classes.description}>{trimWithEllipsis(result.description, 130)}</div>
                 </button>
               </li>
             ))}
