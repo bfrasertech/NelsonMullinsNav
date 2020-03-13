@@ -89,6 +89,8 @@
         position: absolute;
         left: 220px;
         width: 1200px;
+        max-height: 70%;
+        overflow: auto;
         //box-shadow: 5px 10px #475666;
         .heading{
             width: 100%;

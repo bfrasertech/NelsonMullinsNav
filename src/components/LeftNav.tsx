@@ -115,6 +115,19 @@ export default class LeftNav extends React.Component<
     this.setState({ idToShow: undefined });
   }
 
+  private calculateSubMenuTop = (menuTop: number): number => {
+
+    let subMenuTop = 150;
+
+    if (window.innerHeight > 1200){
+      subMenuTop = menuTop - 200;
+    } else{
+      subMenuTop = menuTop - 250;
+    }
+    
+    return Math.max(subMenuTop, 180);
+  }
+
   public render(): React.ReactElement<ILeftNavProps> {
     if (this.props.show) {
       return (
@@ -186,7 +199,7 @@ export default class LeftNav extends React.Component<
             }
             {this.state.idToShow === 'teams' &&
               <div
-                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                className={classes.subMenu} style={{ top: `${(this.calculateSubMenuTop(this.state.subMenuTop)).toString()}px` }}
                 onMouseEnter={() => this.showSubMenu('teams')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
