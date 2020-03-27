@@ -122,15 +122,17 @@ export default class LeftNav extends React.Component<
 
   private calculateSubMenuTop = (menuTop: number): number => {
 
+    const minMenuTop = 130;
     let subMenuTop = 150;
 
     if (window.innerHeight > 1200){
       subMenuTop = menuTop - 200;
     } else{
-      subMenuTop = menuTop - 250;
+      subMenuTop = menuTop - 280;
     }
     
-    return Math.max(subMenuTop, 180);
+    return Math.max(subMenuTop, minMenuTop);
+    
   }
 
   public render(): React.ReactElement<ILeftNavProps> {
@@ -227,7 +229,7 @@ export default class LeftNav extends React.Component<
             }
             {this.state.idToShow === 'committees' &&
               <div
-                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                className={classes.subMenu} style={{ top: `${(this.calculateSubMenuTop(this.state.subMenuTop)).toString()}px` }}
                 onMouseEnter={() => this.showSubMenu('committees')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
@@ -250,7 +252,7 @@ export default class LeftNav extends React.Component<
             }
             {this.state.idToShow === 'offices' &&
               <div
-                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                className={classes.subMenu} style={{ top: `${(this.calculateSubMenuTop(this.state.subMenuTop)).toString()}px` }}
                 onMouseEnter={() => this.showSubMenu('offices')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
@@ -273,7 +275,7 @@ export default class LeftNav extends React.Component<
             }
             {this.state.idToShow === 'administration' &&
               <div
-                className={classes.subMenu} style={{ top: `${(this.state.subMenuTop - 180).toString()}px` }}
+                className={classes.subMenu} style={{ top: `${(this.calculateSubMenuTop(this.state.subMenuTop)).toString()}px` }}
                 onMouseEnter={() => this.showSubMenu('administration')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
