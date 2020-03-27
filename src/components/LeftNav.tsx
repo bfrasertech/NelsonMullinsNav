@@ -112,6 +112,11 @@ export default class LeftNav extends React.Component<
   }
 
   private hideSubMenu = () => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    if (urlSearchParams.has('nav-keep-open')){
+      return;
+    }
+
     this.setState({ idToShow: undefined });
   }
 
