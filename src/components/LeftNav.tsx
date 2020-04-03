@@ -122,7 +122,7 @@ export default class LeftNav extends React.Component<
 
   private calculateSubMenuTop = (menuTop: number): number => {
 
-    const minMenuTop = 130;
+    const minMenuTop = 110;
     let subMenuTop = 150;
 
     if (window.innerHeight > 1200){
@@ -214,7 +214,7 @@ export default class LeftNav extends React.Component<
                   <span className={classes.headerText}>Teams</span>{' '}
                 </div>
                 {
-                  this.chunkArray(this.state.teams, 21).map(group => {
+                  this.chunkArray(this.state.teams, 20).map(group => {
                     return (
                       <ul>
                         {group.map((navItem: NavServices.ITeamEntry) => {
