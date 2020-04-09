@@ -17,9 +17,10 @@ const PERSON_PROFILE_PREFIX: string = 'https://people.nmrs.com/';
 export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonCardProps> => {
   return (
     <div className={classes.card}>
+      <a href={`${PERSON_PROFILE_PREFIX}${props.person.networkid}`} target="_blank">
       <div className={classes.photo} onError={() => alert('no image')} style={{ backgroundImage: `url(${props.person.photoUrl}), url(${personPlaceholder})` }}>
-
       </div>
+      </a>
       <div className={classes.dataContainer}>
         <div className={classes.header}>
           <div className={classes.name}>
