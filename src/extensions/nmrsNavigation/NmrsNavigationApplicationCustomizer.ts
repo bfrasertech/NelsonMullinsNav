@@ -97,9 +97,6 @@ export default class NmrsNavigationApplicationCustomizer
       return false;
     }
 
-    if (window.document.documentElement.clientWidth <= 1366){
-      footerSection.style.display = 'none';
-    }
     const element: React.ReactElement<IFooterProps> = React.createElement(Footer);
     ReactDOM.render(element, footerSection);
     this.footerLoaded = true;

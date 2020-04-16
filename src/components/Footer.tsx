@@ -39,6 +39,12 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
     return (
       <div className={classes.outerContainer}>
         <div className={classes.container}>
+        <div className={classes.helpPanel}>
+            <a href="mailto:d7119680.nelsonmullins.onmicrosoft.com@amer.teams.ms?subject=NMConnect" target="_blank">
+              <FontAwesomeIcon icon={faEnvelope} size={'2x'} style={{color: '#c68900'}} />
+              <span>Help</span>{' '}
+              </a>
+          </div>
           <div className={classes.leftPanel}>
             <div className={classes.timeZoneContainer}>
               <p className={classes.header}>West Coast</p>
@@ -173,12 +179,6 @@ export class Footer extends React.Component<IFooterProps, IFooterState> {
                 <span></span>
               </p>
             </div>
-          </div>
-          <div className={classes.helpPanel}>
-            <a href="mailto:d7119680.nelsonmullins.onmicrosoft.com@amer.teams.ms?subject=NMConnect" target="_blank">
-              <FontAwesomeIcon icon={faEnvelope} size={'2x'} />
-              <span>Help</span>{' '}
-              </a>
           </div>
         </div>
       </div>
