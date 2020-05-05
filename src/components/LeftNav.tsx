@@ -185,7 +185,7 @@ export default class LeftNav extends React.Component<
                 onMouseEnter={() => this.showSubMenu('administration')}
                 onMouseLeave={() => this.hideSubMenu()}
               >
-                <FontAwesomeIcon icon={faClipboardListCheck} /><span className={classes.leftMenuText}>Administration</span>
+                <FontAwesomeIcon icon={faClipboardListCheck} /><span className={classes.leftMenuText}>Departments</span>
               </li>
             </ul>
             {this.state.idToShow === 'managementGroups' &&
@@ -280,7 +280,7 @@ export default class LeftNav extends React.Component<
                 onMouseLeave={() => this.hideSubMenu()}
               >
                 <div className={classes.heading}>
-                  <span className={classes.headerText}>Administration</span>{' '}
+                  <span className={classes.headerText}>Departments</span>{' '}
                 </div>
                 {
                   this.chunkArray(this.state.administration, 10).map(group => {
