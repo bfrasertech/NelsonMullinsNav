@@ -18,8 +18,8 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
   return (
     <div className={classes.card}>
       <a href={`${PERSON_PROFILE_PREFIX}${props.person.networkid}`} target="_blank">
-      <div className={classes.photo} onError={() => alert('no image')} style={{ backgroundImage: `url(${props.person.photoUrl}), url(${personPlaceholder})` }}>
-      </div>
+        <div className={classes.photo} onError={() => alert('no image')} style={{ backgroundImage: `url(${props.person.photoUrl}), url(${personPlaceholder})` }}>
+        </div>
       </a>
       <div className={classes.dataContainer}>
         <div className={classes.header}>
@@ -37,16 +37,17 @@ export const PersonCard = (props: IPersonCardProps): React.ReactElement<IPersonC
         <div className={classes.department}>{props.person.department}</div>
         {props.person.rate > 0 &&
           <div className={classes.rate}>{`Standard Rate: $${props.person.rate.toFixed(2)}`}</div>}
-        <div className={classes.assistant}>
+        {props.person.assistantName && <div className={classes.assistant}>
           <span className={classes.assistantPrefix}>AA:</span>
           <span className={classes.assistantName}>
             <a href="#">{props.person.assistantName ? props.person.assistantName : 'N/A'}</a>
           </span>
-        </div>
-        <div className={classes.assistant}>
-          <span className={classes.assistantPrefix}>AA Phone:</span>
-          <span className={classes.assistantName}>{`${props.person.assistantExtension ? props.person.assistantExtension : '0000'}`}</span>
-        </div>
+        </div>}
+        {props.person.assistantExtension &&
+          <div className={classes.assistant}>
+            <span className={classes.assistantPrefix}>AA Phone:</span>
+            <span className={classes.assistantName}>{`${props.person.assistantExtension ? props.person.assistantExtension : '0000'}`}</span>
+          </div>}
         <div className={classes.floorPlan}>
           {' '}
           <button
