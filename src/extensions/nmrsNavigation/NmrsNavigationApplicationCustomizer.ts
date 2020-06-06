@@ -11,6 +11,8 @@ import {
 
 import { SPPermission } from '@microsoft/sp-page-context';
 
+import * as config from 'config'; 
+
 import * as strings from 'NmrsNavigationApplicationCustomizerStrings';
 import App, { IAppProps } from '../../components/App';
 import {Footer, IFooterProps } from '../../components/Footer';
@@ -59,7 +61,10 @@ export default class NmrsNavigationApplicationCustomizer
       }
     }, 100);
 
-    this.loadChatBot();
+    if (config.showChatBot){
+      this.loadChatBot();
+    }
+
     return Promise.resolve();
   }
 

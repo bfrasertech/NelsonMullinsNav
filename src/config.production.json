@@ -1,1 +1,1 @@
-{ "intranetBaseUrl": "https://nmconnect.nmrs.com", "handshakeBaseUrl": "https://hs.nmrs.com" }
+{ "intranetBaseUrl": "https://nmconnect.nmrs.com", "handshakeBaseUrl": "https://hs.nmrs.com", "showChatBot": false }
