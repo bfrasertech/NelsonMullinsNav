@@ -28,7 +28,7 @@ const mapResultToPerson = (result: any): IPerson => ({
      assistantExtension: result.assistantphone,
      photoUrl: result.userpicl, 
      networkid: result.networkid,
-     floorPlanUrl: `/PublishingImages/FloorMaps/${result.office}${result.office_room_number}.jpg`,
+     floorPlanUrl: `/sitepages/officemaps.aspx?building=${result.office}&office=${result.office_room_number}`,
      phoneNumber: result.phonenumber
     });
 
